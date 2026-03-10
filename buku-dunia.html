@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 BUKU DUNIA — Ringkasan Buku Terbaik Sepanjang Masa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   ROOT
+══════════════════════════════════════ */
+:root{
+  --ink:    #1a1208;
+  --paper:  #faf6ef;
+  --cream:  #f5ede0;
+  --gold:   #c9922a;
+  --gold2:  #e8b84b;
+  --rust:   #b5451b;
+  --sage:   #4a7c59;
+  --slate:  #3d4f6b;
+  --rose:   #9b3a5a;
+  --card-bg:#fffdf8;
+  --border: rgba(26,18,8,.1);
+  --shadow: rgba(26,18,8,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+  line-height:1.7;
+}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px;}
+
+/* ══════════════════════════════════════
+   GRAIN OVERLAY
+══════════════════════════════════════ */
+body::before{
+  content:'';position:fixed;inset:0;z-index:1000;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;opacity:.8;
+}
+
+/* ══════════════════════════════════════
+   HEADER / MASTHEAD
+══════════════════════════════════════ */
+header{
+  background:var(--ink);
+  padding:0;
+  position:sticky;top:0;z-index:900;
+  box-shadow:0 2px 30px rgba(0,0,0,.3);
+}
+.header-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 40px;gap:20px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;font-weight:900;
+  color:var(--gold2);
+  letter-spacing:-1px;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.logo span{color:rgba(255,255,255,.3);font-style:italic;font-weight:400;font-size:1.1rem;}
+
+.search-wrap{
+  flex:1;max-width:460px;position:relative;
+}
+.search-input{
+  width:100%;padding:10px 20px 10px 44px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:50px;
+  color:#fff;font-family:'DM Sans',sans-serif;font-size:.9rem;
+  outline:none;transition:all .25s;
+}
+.search-input::placeholder{color:rgba(255,255,255,.3);}
+.search-input:focus{background:rgba(255,255,255,.12);border-color:var(--gold);}
+.search-icon{
+  position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  color:rgba(255,255,255,.35);font-size:1rem;pointer-events:none;
+}
+.header-stats{
+  display:flex;gap:24px;white-space:nowrap;
+}
+.hstat{text-align:center;}
+.hstat-num{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold2);line-height:1;}
+.hstat-lbl{font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+
+/* Category nav */
+.cat-nav{
+  display:flex;gap:0;overflow-x:auto;
+  scrollbar-width:none;
+}
+.cat-nav::-webkit-scrollbar{display:none;}
+.cat-btn{
+  padding:12px 24px;
+  font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  background:transparent;border:none;cursor:pointer;
+  white-space:nowrap;
+  border-bottom:3px solid transparent;
+  transition:all .2s;
+}
+.cat-btn:hover{color:rgba(255,255,255,.8);}
+.cat-btn.active{color:var(--gold2);border-bottom-color:var(--gold);}
+
+/* ══════════════════════════════════════
+   HERO SECTION
+══════════════════════════════════════ */
+.hero{
+  background:var(--ink);
+  padding:80px 40px 60px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 50%,rgba(201,146,42,.15),transparent 60%),
+             radial-gradient(ellipse at 80% 50%,rgba(181,69,27,.12),transparent 60%);
+}
+.hero-eyebrow{
+  font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;
+  letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;position:relative;z-index:1;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,6vw,5rem);
+  font-weight:900;line-height:1.1;
+  color:#fff;margin-bottom:20px;position:relative;z-index:1;
+}
+.hero-title em{color:var(--gold2);font-style:italic;}
+.hero-sub{
+  font-family:'Lora',serif;font-style:italic;
+  font-size:clamp(1rem,2vw,1.25rem);
+  color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 40px;
+  position:relative;z-index:1;line-height:1.8;
+}
+.hero-rule{
+  width:80px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto;position:relative;z-index:1;
+}
+
+/* ══════════════════════════════════════
+   FEATURED — HORIZONTAL SCROLL
+══════════════════════════════════════ */
+.section{padding:60px 40px;}
+.section-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:32px;
+  border-bottom:2px solid var(--ink);
+  padding-bottom:12px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,3vw,2rem);font-weight:700;
+}
+.section-count{
+  font-size:.75rem;color:var(--gold);font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+}
+
+/* Books grid */
+.books-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:28px;
+}
+
+/* ══════════════════════════════════════
+   BOOK CARD
+══════════════════════════════════════ */
+.book-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;
+  cursor:pointer;
+  position:relative;
+}
+.book-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px var(--shadow);
+}
+.book-card-spine{
+  height:5px;
+}
+.book-card-body{padding:28px;}
+.book-cat-tag{
+  display:inline-block;
+  font-size:.65rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:4px 10px;border-radius:2px;
+  margin-bottom:14px;
+}
+.book-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:700;line-height:1.3;
+  margin-bottom:6px;
+}
+.book-author{
+  font-family:'Lora',serif;font-style:italic;
+  font-size:.85rem;color:rgba(26,18,8,.5);
+  margin-bottom:16px;
+}
+.book-hook{
+  font-size:.9rem;line-height:1.7;
+  color:rgba(26,18,8,.7);
+  margin-bottom:20px;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.book-meta{
+  display:flex;gap:16px;align-items:center;
+  padding-top:16px;border-top:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.book-rating{font-size:.85rem;font-weight:600;}
+.book-pages{font-size:.75rem;color:rgba(26,18,8,.4);}
+.book-read-btn{
+  margin-left:auto;
+  font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:8px 18px;border-radius:2px;
+  border:none;cursor:pointer;transition:all .2s;
+  background:var(--ink);color:var(--gold2);
+}
+.book-read-btn:hover{background:#2d2010;}
+
+/* ══════════════════════════════════════
+   MODAL — FULL BOOK SUMMARY
+══════════════════════════════════════ */
+.modal-overlay{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(15,10,5,.85);
+  backdrop-filter:blur(8px);
+  opacity:0;pointer-events:none;
+  transition:opacity .35s;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+
+.modal{
+  background:var(--card-bg);
+  width:100%;max-width:760px;
+  max-height:90vh;
+  border-radius:8px;
+  overflow:hidden;
+  transform:translateY(40px) scale(.97);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+  display:flex;flex-direction:column;
+  box-shadow:0 40px 120px rgba(0,0,0,.5);
+}
+.modal-overlay.open .modal{transform:translateY(0) scale(1);}
+
+.modal-header{
+  padding:0;
+  flex-shrink:0;
+}
+.modal-spine{height:6px;}
+.modal-header-content{
+  padding:32px 40px 24px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.modal-close{
+  position:absolute;top:24px;right:32px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(26,18,8,.06);border:none;
+  font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;color:var(--ink);
+}
+.modal-close:hover{background:rgba(26,18,8,.12);}
+
+.modal-cat{
+  font-size:.65rem;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:10px;display:block;
+}
+.modal-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;
+  line-height:1.2;margin-bottom:6px;
+}
+.modal-author{
+  font-family:'Lora',serif;font-style:italic;
+  font-size:1rem;color:rgba(26,18,8,.5);margin-bottom:16px;
+}
+.modal-badges{display:flex;gap:10px;flex-wrap:wrap;}
+.badge{
+  font-size:.7rem;font-weight:600;letter-spacing:1px;
+  padding:5px 12px;border-radius:50px;
+  background:rgba(26,18,8,.06);color:rgba(26,18,8,.6);
+}
+
+.modal-body{
+  overflow-y:auto;padding:40px;flex:1;
+}
+.modal-body::-webkit-scrollbar{width:6px;}
+.modal-body::-webkit-scrollbar-track{background:transparent;}
+.modal-body::-webkit-scrollbar-thumb{background:var(--gold);border-radius:6px;}
+
+/* Summary content */
+.summary-hook{
+  font-family:'Lora',serif;font-size:1.15rem;
+  line-height:1.85;color:rgba(26,18,8,.75);
+  font-style:italic;margin-bottom:32px;
+  padding:24px 28px;
+  background:linear-gradient(135deg,rgba(201,146,42,.06),rgba(232,184,75,.04));
+  border-left:4px solid var(--gold);
+  border-radius:0 6px 6px 0;
+}
+.sum-section{margin-bottom:36px;}
+.sum-section-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.sum-section-title::after{
+  content:'';flex:1;height:1px;background:var(--border);
+}
+.sum-section p{
+  font-size:.95rem;line-height:1.85;
+  color:rgba(26,18,8,.75);margin-bottom:12px;
+}
+.key-lessons{
+  display:flex;flex-direction:column;gap:12px;margin-top:8px;
+}
+.lesson-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 18px;
+  background:rgba(26,18,8,.02);
+  border:1px solid var(--border);
+  border-radius:6px;
+  transition:background .2s;
+}
+.lesson-item:hover{background:rgba(201,146,42,.05);}
+.lesson-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:900;
+  color:var(--gold);line-height:1;flex-shrink:0;
+  min-width:28px;
+}
+.lesson-text{
+  font-size:.9rem;line-height:1.7;color:rgba(26,18,8,.75);
+}
+.lesson-text strong{color:var(--ink);}
+.quote-block{
+  margin:24px 0;
+  padding:20px 28px;
+  border-left:3px solid var(--rust);
+  background:rgba(181,69,27,.04);
+  border-radius:0 6px 6px 0;
+}
+.quote-block p{
+  font-family:'Lora',serif;font-style:italic;
+  font-size:1rem;line-height:1.8;color:rgba(26,18,8,.7);
+}
+.quote-block cite{
+  display:block;margin-top:8px;
+  font-size:.78rem;color:var(--rust);font-style:normal;font-weight:600;
+  letter-spacing:1px;
+}
+.verdict{
+  padding:20px 24px;border-radius:6px;
+  background:linear-gradient(135deg,rgba(26,18,8,.04),rgba(26,18,8,.02));
+  border:1px solid var(--border);margin-top:8px;
+}
+.verdict-label{
+  font-size:.7rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+}
+.verdict p{font-size:.9rem;line-height:1.7;color:rgba(26,18,8,.7);}
+
+/* ══════════════════════════════════════
+   QUOTE OF THE DAY STRIP
+══════════════════════════════════════ */
+.quote-strip{
+  background:var(--ink);
+  padding:50px 40px;
+  text-align:center;
+}
+.qs-label{
+  font-size:.7rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+}
+.qs-text{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1.2rem,3vw,1.8rem);
+  color:rgba(255,255,255,.85);
+  max-width:700px;margin:0 auto 16px;line-height:1.7;
+}
+.qs-author{
+  font-size:.85rem;color:rgba(255,255,255,.35);
+  letter-spacing:1px;
+}
+.qs-nav{display:flex;gap:12px;justify-content:center;margin-top:24px;}
+.qs-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.5);font-size:.9rem;cursor:pointer;transition:all .2s;
+}
+.qs-btn:hover{background:var(--gold);color:#000;border-color:var(--gold);}
+
+/* ══════════════════════════════════════
+   STATS BAR
+══════════════════════════════════════ */
+.stats-bar{
+  background:var(--cream);
+  padding:40px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:20px;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.stat-item{text-align:center;}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;
+}
+.stat-lbl{
+  font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(26,18,8,.45);margin-top:6px;
+}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{
+  background:var(--ink);
+  padding:50px 40px;
+  text-align:center;
+}
+.footer-logo{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:900;color:var(--gold2);margin-bottom:12px;
+}
+footer p{font-size:.85rem;color:rgba(255,255,255,.3);line-height:1.8;}
+
+/* ══════════════════════════════════════
+   PROGRESS BAR (reading)
+══════════════════════════════════════ */
+.reading-progress{
+  position:fixed;top:0;left:0;right:0;height:3px;
+  background:transparent;z-index:9999;
+}
+.reading-progress-fill{
+  height:100%;background:linear-gradient(90deg,var(--gold),var(--rust));
+  width:0%;transition:width .1s;
+}
+
+/* ══════════════════════════════════════
+   NO RESULTS
+══════════════════════════════════════ */
+.no-results{
+  text-align:center;padding:80px 20px;
+  grid-column:1/-1;
+}
+.no-results h3{
+  font-family:'Playfair Display',serif;font-size:1.5rem;
+  margin-bottom:10px;color:rgba(26,18,8,.4);
+}
+.no-results p{font-size:.9rem;color:rgba(26,18,8,.35);}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media(max-width:768px){
+  .header-top{padding:14px 20px;}
+  .header-stats{display:none;}
+  .hero{padding:50px 20px 40px;}
+  .section{padding:40px 20px;}
+  .modal-body,.modal-header-content{padding:24px 20px;}
+  .books-grid{grid-template-columns:1fr;}
+  .stats-bar{padding:30px 20px;}
+}
+
+/* ══════════════════════════════════════
+   REVEAL ANIMATION
+══════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s cubic-bezier(.34,1.2,.64,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.1s;}
+.reveal-delay-2{transition-delay:.2s;}
+.reveal-delay-3{transition-delay:.3s;}
+</style>
+</head>
+<body>
+
+<!-- READING PROGRESS -->
+<div class="reading-progress"><div class="reading-progress-fill" id="prog"></div></div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="header-top">
+    <a class="logo" href="#">📚 Buku<span>Dunia</span></a>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="search-input" type="text" placeholder="Cari judul buku, penulis, atau topik...">
+    </div>
+    <div class="header-stats">
+      <div class="hstat"><div class="hstat-num" id="total-books">24</div><div class="hstat-lbl">Buku</div></div>
+      <div class="hstat"><div class="hstat-num">6</div><div class="hstat-lbl">Kategori</div></div>
+      <div class="hstat"><div class="hstat-num" id="read-count">0</div><div class="hstat-lbl">Dibaca</div></div>
+    </div>
+  </div>
+  <nav class="cat-nav" id="cat-nav">
+    <button class="cat-btn active" data-cat="all">Semua</button>
+    <button class="cat-btn" data-cat="self">Self-Development</button>
+    <button class="cat-btn" data-cat="psikologi">Psikologi</button>
+    <button class="cat-btn" data-cat="cinta">Cinta & Hubungan</button>
+    <button class="cat-btn" data-cat="bisnis">Bisnis & Finansial</button>
+    <button class="cat-btn" data-cat="fiksi">Fiksi Dunia</button>
+    <button class="cat-btn" data-cat="lokal">Sastra Indonesia</button>
+  </nav>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <p class="hero-eyebrow">✦ Perpustakaan Digital Terkurasi by MUNNNN666 ✦</p>
+  <h1 class="hero-title">Setiap Buku<br>adalah <em>Dunia Baru</em></h1>
+  <p class="hero-sub">Ringkasan mendalam dari 24 buku terbaik sepanjang masa — dari psikologi hingga romansa, dari bisnis hingga sastra. Satu bacaan, seribu pelajaran.</p>
+  <div class="hero-rule"></div>
+</section>
+
+<!-- ══════════ STATS BAR ══════════ -->
+<div class="stats-bar">
+  <div class="stat-item reveal"><div class="stat-num">24</div><div class="stat-lbl">Buku Terkurasi</div></div>
+  <div class="stat-item reveal reveal-delay-1"><div class="stat-num">6</div><div class="stat-lbl">Kategori</div></div>
+  <div class="stat-item reveal reveal-delay-2"><div class="stat-num">100+</div><div class="stat-lbl">Pelajaran Hidup</div></div>
+  <div class="stat-item reveal reveal-delay-3"><div class="stat-num">∞</div><div class="stat-lbl">Inspirasi</div></div>
+</div>
+
+<!-- ══════════ BOOKS SECTION ══════════ -->
+<section class="section">
+  <div class="section-header reveal">
+    <h2 class="section-title" id="section-title">Semua Buku</h2>
+    <span class="section-count" id="section-count">24 BUKU</span>
+  </div>
+  <div class="books-grid" id="books-grid"></div>
+</section>
+
+<!-- ══════════ QUOTE STRIP ══════════ -->
+<div class="quote-strip">
+  <p class="qs-label">✦ Quote Inspiratif ✦</p>
+  <p class="qs-text" id="qs-text">"Seseorang yang membaca hidup seribu kali. Seseorang yang tidak membaca hanya hidup sekali."</p>
+  <p class="qs-author" id="qs-author">— George R.R. Martin</p>
+  <div class="qs-nav">
+    <button class="qs-btn" onclick="prevQuote()">←</button>
+    <button class="qs-btn" onclick="nextQuote()">→</button>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-logo">📚 BukuDunia</div>
+  <p>Dibuat dengan cinta untuk para pecinta buku dan pencari ilmu.<br>
+  Setiap ringkasan adalah undangan — untuk membaca buku aslinya lebih dalam.</p>
+</footer>
+
+<!-- ══════════ MODAL ══════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-spine" id="modal-spine"></div>
+      <div class="modal-header-content">
+        <button class="modal-close" onclick="closeModalBtn()">✕</button>
+        <span class="modal-cat" id="modal-cat"></span>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-author" id="modal-author"></p>
+        <div class="modal-badges" id="modal-badges"></div>
+      </div>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   BOOK DATA
+══════════════════════════════════════════════ */
+const BOOKS = [
+  /* ─── SELF-DEVELOPMENT ─── */
+  {
+    id:1, cat:'self', catLabel:'Self-Development',
+    title:'Atomic Habits',
+    author:'James Clear',
+    year:2018, pages:320,
+    rating:'⭐ 4.9',
+    color:'#4a7c59',
+    hook:'Perubahan besar tidak datang dari keputusan besar — melainkan dari kebiasaan kecil yang dilakukan secara konsisten setiap hari.',
+    summary: {
+      overview:`<p>Atomic Habits adalah salah satu buku self-development paling berpengaruh di abad ke-21. James Clear, setelah mengalami kecelakaan parah yang hampir merenggut hidupnya, membangun kembali karier baseballnya secara perlahan melalui kebiasaan kecil yang konsisten. Buku ini adalah distilasi dari proses luar biasa tersebut.</p>
+      <p>Premis utama buku ini sederhana namun revolusioner: perbaikan 1% setiap hari selama setahun akan membuat kamu 37 kali lebih baik dari sebelumnya. Sebaliknya, penurunan 1% setiap hari akan menghancurkan segalanya. Compound interest berlaku bukan hanya untuk uang, tapi untuk kebiasaan.</p>`,
+      lessons:[
+        {n:'01', t:'The Four Laws of Behavior Change', d:'<strong>Make it Obvious, Make it Attractive, Make it Easy, Make it Satisfying.</strong> Keempat hukum ini adalah fondasi untuk membangun kebiasaan baik. Untuk membuang kebiasaan buruk, balik semuanya: Make it Invisible, Make it Unattractive, Make it Difficult, Make it Unsatisfying.'},
+        {n:'02', t:'Identity-Based Habits', d:'Jangan fokus pada <em>apa yang ingin kamu capai</em>, tapi pada <em>siapa yang ingin kamu jadikan dirimu</em>. Bukan "Aku ingin menurunkan berat badan" tapi "Aku adalah orang yang menjaga kesehatan." Setiap kebiasaan kecil adalah bukti identitas barumu.'},
+        {n:'03', t:'Habit Stacking', d:'Tumpuk kebiasaan baru di atas kebiasaan yang sudah ada. Formula: <strong>"Setelah [KEBIASAAN SAAT INI], aku akan [KEBIASAAN BARU]."</strong> Contoh: Setelah menuangkan kopi pagi, aku akan menulis jurnal selama 5 menit.'},
+        {n:'04', t:'The 2-Minute Rule', d:'Ketika memulai kebiasaan baru, sederhanakan hingga hanya butuh 2 menit. "Membaca sebelum tidur tiap malam" menjadi "Baca satu halaman sebelum tidur." Mulai sebelum kamu siap — momentum adalah segalanya.'},
+        {n:'05', t:'Environment Design', d:'Manusia bukan produk dari keinginannya, tapi dari lingkungannya. Ubah lingkunganmu sehingga isyarat kebiasaan baik terlihat jelas, dan kebiasaan buruk menjadi sulit dilakukan.'},
+      ],
+      quote:{text:`"Kamu tidak naik ke level tujuan-tujuanmu. Kamu turun ke level sistem-sistemmu."`, src:'— James Clear, Atomic Habits'},
+      verdict:`Wajib dibaca oleh siapapun yang ingin membuat perubahan nyata dalam hidupnya. Buku ini bukan tentang motivasi — tapi tentang sistem. Dan sistem selalu mengalahkan motivasi.`,
+    }
+  },
+  {
+    id:2, cat:'self', catLabel:'Self-Development',
+    title:'Ikigai',
+    author:'Héctor García & Francesc Miralles',
+    year:2016, pages:194,
+    rating:'⭐ 4.7',
+    color:'#c9922a',
+    hook:'Rahasia umur panjang dan kebahagiaan orang Jepang tersimpan dalam satu kata: Ikigai — alasan untuk bangun pagi.',
+    summary:{
+      overview:`<p>Ikigai (ee-key-guy) adalah konsep Jepang yang tidak memiliki padanan kata yang tepat dalam bahasa Indonesia. Secara harfiah berarti "alasan untuk hidup" — perpaduan antara apa yang kamu cintai, apa yang kamu kuasai, apa yang dibutuhkan dunia, dan apa yang bisa menghasilkan uang.</p>
+      <p>Penulis melakukan riset langsung ke Okinawa, wilayah dengan konsentrasi centenarian (orang berusia 100+ tahun) tertinggi di dunia. Mereka menemukan bahwa rahasia umur panjang bukan diet atau olahraga semata — melainkan punya <em>alasan untuk bangun setiap pagi</em>.</p>`,
+      lessons:[
+        {n:'01', t:'Empat Elemen Ikigai', d:'Ikigai berada di persimpangan empat lingkaran: <strong>Passion</strong> (apa yang kamu cintai), <strong>Mission</strong> (apa yang dunia butuhkan), <strong>Vocation</strong> (apa yang bisa menghasilkan uang), dan <strong>Profession</strong> (apa yang kamu kuasai). Menemukan titik tengah keempatnya adalah menemukan ikigai-mu.'},
+        {n:'02', t:'Moai — Komunitas Sosial', d:'Orang Okinawa memiliki "moai" — kelompok sosial kecil yang saling mendukung seumur hidup. Hubungan sosial yang dalam dan bermakna adalah salah satu prediktor kebahagiaan dan umur panjang terkuat yang diketahui ilmu pengetahuan.'},
+        {n:'03', t:'Flow State', d:'Temukan aktivitas yang membawamu ke kondisi "flow" — di mana waktu terasa berhenti dan kamu sepenuhnya terserap. Orang yang sering mengalami flow dilaporkan memiliki tingkat kepuasan hidup yang jauh lebih tinggi.'},
+        {n:'04', t:'Jangan Pernah Pensiun', d:'Tidak ada kata pensiun dalam kosakata Okinawa. Mereka terus bekerja — bukan karena terpaksa, tapi karena pekerjaan itu adalah ekspresi dari ikigai mereka. Tujuan hidup yang jelas adalah obat terbaik melawan penuaan.'},
+      ],
+      quote:{text:`"Hanya mereka yang menemukan apa yang membuat mereka bangun setiap pagi yang akan hidup dengan kepuasan sejati."`, src:'— Héctor García, Ikigai'},
+      verdict:`Buku tipis yang mungkin mengubah cara pandangmu tentang hidup, pekerjaan, dan kebahagiaan. Cocok dibaca saat kamu merasa hilang arah.`,
+    }
+  },
+  {
+    id:3, cat:'self', catLabel:'Self-Development',
+    title:'The Subtle Art of Not Giving a F*ck',
+    author:'Mark Manson',
+    year:2016, pages:224,
+    rating:'⭐ 4.6',
+    color:'#b5451b',
+    hook:'Berhenti berusaha menjadi positif setiap saat. Hadapi kenyataan pahit hidup — dan justru di situlah kebebasan sejati ditemukan.',
+    summary:{
+      overview:`<p>Di era Instagram yang penuh filter kebahagiaan palsu, Mark Manson hadir dengan pendekatan yang segar dan jujur: <em>hidup tidak selalu baik-baik saja, dan itu tidak apa-apa.</em> Buku ini bukan tentang tidak peduli pada segalanya — tapi tentang memilih dengan bijak apa yang layak kamu pedulikan.</p>
+      <p>Ditulis dengan bahasa yang lugas, humoris, dan kadang kasar, buku ini menjadi fenomena global karena berani melawan narasi toxic positivity yang merajalela.</p>`,
+      lessons:[
+        {n:'01', t:'The Backwards Law', d:'Semakin kamu mengejar perasaan positif, semakin kamu diingatkan bahwa kamu tidak memilikinya. Mengejar kebahagiaan hanya memperkuat fakta bahwa kamu belum bahagia. Paradoksnya: <strong>menerima ketidaksempurnaan adalah jalan menuju ketenangan sejati.</strong>'},
+        {n:'02', t:'You Are Not Special', d:'Budaya modern mengajarkan bahwa kita semua "spesial." Namun ketika semua orang spesial, tidak ada yang benar-benar spesial. Menerima bahwa kita adalah orang biasa justru membebaskan kita dari beban ekspektasi yang tidak realistis.'},
+        {n:'03', t:'Tanggung Jawab vs. Kesalahan', d:'Banyak hal buruk terjadi padamu bukan karena kesalahanmu — tapi tetap menjadi tanggung jawabmu. <strong>Pilih responmu.</strong> Kamu tidak bisa mengontrol apa yang terjadi, tapi kamu selalu bisa mengontrol bagaimana kamu merespons.'},
+        {n:'04', t:'Fail Forward', d:'Kegagalan adalah jalan menuju pertumbuhan, bukan hambatan. Jika kamu tidak bisa menemukan sumber penderitaan yang bermakna dalam hidupmu, kamu tidak akan menemukan apapun yang bermakna sama sekali.'},
+      ],
+      quote:{text:`"Siapa kamu ditentukan oleh apa yang ingin kamu pertahankan — bukan oleh apa yang ingin kamu capai."`, src:'— Mark Manson'},
+      verdict:`Anti-self-help yang justru menjadi self-help terbaik. Untuk mereka yang sudah bosan dengan motivasi hampa dan ingin kejujuran yang sesungguhnya.`,
+    }
+  },
+  {
+    id:4, cat:'self', catLabel:'Self-Development',
+    title:'Think and Grow Rich',
+    author:'Napoleon Hill',
+    year:1937, pages:238,
+    rating:'⭐ 4.8',
+    color:'#3d4f6b',
+    hook:'Setelah mewawancarai 500 orang terkaya Amerika selama 20 tahun, Napoleon Hill menemukan rahasia yang mereka semua miliki bersama.',
+    summary:{
+      overview:`<p>Ditulis pada tahun 1937 namun tetap relevan hingga hari ini, Think and Grow Rich adalah hasil riset Napoleon Hill selama dua dekade mewawancarai lebih dari 500 miliarder Amerika — termasuk Andrew Carnegie, Henry Ford, dan Thomas Edison.</p>
+      <p>Buku ini bukan sekadar tentang cara menjadi kaya secara finansial, melainkan tentang filosofi kesuksesan yang dapat diterapkan di semua bidang kehidupan.</p>`,
+      lessons:[
+        {n:'01', t:'Desire — Titik Awal Semua Pencapaian', d:'Semua pencapaian dimulai dari satu hal: <strong>keinginan yang membara.</strong> Bukan sebuah harapan, bukan sebuah keinginan biasa — melainkan obsesi yang mengonsumsi pikiran dan jiwa. Tuliskan tujuanmu, tentukan harganya, dan tetapkan tenggat waktu.'},
+        {n:'02', t:'Faith — Keyakinan yang Divisualisasikan', d:'Otak bawah sadar tidak bisa membedakan antara pengalaman nyata dan yang dibayangkan dengan jelas. Visualisasikan kesuksesanmu dengan detail seolah sudah terjadi — dan otak akan mulai bekerja untuk mewujudkannya.'},
+        {n:'03', t:'Mastermind Alliance', d:'Tidak ada orang yang berhasil sendirian. Bangun kelompok mastermind — orang-orang yang memiliki misi sejalan dan bersedia saling mendukung, menantang, dan mengangkat satu sama lain ke level yang lebih tinggi.'},
+        {n:'04', t:'The Subconscious Mind', d:'Pikiran bawah sadar adalah jembatan antara pikiran manusia dan kekuatan yang lebih besar. Setiap pikiran yang ditanamkan berulang kali ke bawah sadar akan cepat atau lambat terwujud dalam kenyataan.'},
+      ],
+      quote:{text:`"Apapun yang bisa dikonsepkan dan diyakini oleh pikiran manusia, dapat dicapai."`, src:'— Napoleon Hill'},
+      verdict:`Klasik yang telah mengubah jutaan kehidupan. Bukan self-help biasa — ini adalah filosofi kesuksesan yang telah teruji selama hampir 100 tahun.`,
+    }
+  },
+
+  /* ─── PSIKOLOGI ─── */
+  {
+    id:5, cat:'psikologi', catLabel:'Psikologi & Mindset',
+    title:'Thinking, Fast and Slow',
+    author:'Daniel Kahneman',
+    year:2011, pages:499,
+    rating:'⭐ 4.8',
+    color:'#3d4f6b',
+    hook:'Pemenang Nobel Ekonomi membongkar dua sistem berpikir dalam otak manusia — dan bagaimana keduanya sering menipu kita setiap hari.',
+    summary:{
+      overview:`<p>Daniel Kahneman, satu-satunya psikolog yang memenangkan Nobel Ekonomi, memperkenalkan konsep yang mengubah cara kita memahami pengambilan keputusan manusia. Buku ini adalah puncak dari 40 tahun penelitiannya bersama Amos Tversky tentang bias kognitif dan irasionalitas manusia.</p>`,
+      lessons:[
+        {n:'01', t:'System 1 vs System 2', d:'<strong>System 1</strong>: Cepat, otomatis, intuitif, emosional — bekerja tanpa usaha. <strong>System 2</strong>: Lambat, logis, analitis — membutuhkan konsentrasi. Sebagian besar keputusan kita dibuat oleh System 1, bukan System 2 yang kita kira sedang kita gunakan.'},
+        {n:'02', t:'Anchoring Effect', d:'Angka atau informasi pertama yang kita terima menjadi "jangkar" yang mempengaruhi semua penilaian berikutnya. Ini mengapa toko memasang harga "coret" — jangkar harga tinggi membuat diskon terasa lebih menarik dari yang sebenarnya.'},
+        {n:'03', t:'Loss Aversion', d:'Rasa sakit kehilangan Rp100.000 secara psikologis terasa dua kali lebih kuat dari kesenangan mendapatkan Rp100.000 yang sama. <strong>Manusia lebih termotivasi untuk menghindari kerugian daripada meraih keuntungan.</strong>'},
+        {n:'04', t:'WYSIATI', d:'"What You See Is All There Is" — kita membuat keputusan berdasarkan informasi yang ada di depan kita, mengabaikan informasi yang tidak terlihat. Ini mengapa kesan pertama sangat kuat dan sering bertahan lama.'},
+      ],
+      quote:{text:`"Kita buta terhadap kebutaan kita sendiri. Kita hampir tidak tahu bagaimana kita berpikir."`, src:'— Daniel Kahneman'},
+      verdict:`Bacaan wajib untuk siapapun yang ingin memahami mengapa manusia sering membuat keputusan yang irasional — termasuk dirimu sendiri.`,
+    }
+  },
+  {
+    id:6, cat:'psikologi', catLabel:'Psikologi & Mindset',
+    title:"Man's Search for Meaning",
+    author:'Viktor E. Frankl',
+    year:1946, pages:165,
+    rating:'⭐ 4.9',
+    color:'#4a7c59',
+    hook:'Seorang psikiater yang selamat dari kamp konsentrasi Nazi menemukan bahwa manusia dapat bertahan dari segalanya — jika mereka memiliki MENGAPA.',
+    summary:{
+      overview:`<p>Ditulis dalam sembilan hari berdasarkan pengalaman Viktor Frankl sebagai tahanan di Auschwitz dan kamp konsentrasi Nazi lainnya, buku ini adalah salah satu dokumen paling penting tentang kondisi manusia yang pernah ditulis. Di tengah penderitaan yang paling ekstrem, Frankl menemukan kebenaran universal tentang makna hidup.</p>`,
+      lessons:[
+        {n:'01', t:'Logotherapy — Terapi Makna', d:'Frankl mendirikan aliran psikologi "logotherapy" yang berpusat pada satu keyakinan: <strong>dorongan utama manusia bukan mencari kesenangan (Freud) atau kekuasaan (Adler), melainkan mencari makna.</strong> Manusia dapat bertahan dari hampir segalanya jika mereka tahu <em>mengapa</em> mereka hidup.'},
+        {n:'02', t:'Kebebasan Terakhir', d:'Di kamp konsentrasi, segalanya bisa dirampas. Makanan, keluarga, pakaian, nama. Tapi ada satu hal yang tidak bisa dirampas oleh siapapun: <strong>kebebasan untuk memilih sikapmu terhadap kondisi yang tidak bisa kamu ubah.</strong>'},
+        {n:'03', t:'Tiga Jalan Menuju Makna', d:'Frankl mengidentifikasi tiga cara menemukan makna: (1) <strong>Melalui karya</strong> — menciptakan sesuatu. (2) <strong>Melalui cinta</strong> — mengalami seseorang atau sesuatu. (3) <strong>Melalui penderitaan</strong> — memilih sikap terhadap penderitaan yang tidak bisa dihindari.'},
+      ],
+      quote:{text:`"Ketika kita tidak lagi bisa mengubah situasi, kita ditantang untuk mengubah diri kita sendiri."`, src:'— Viktor E. Frankl'},
+      verdict:`Buku terpendek dengan dampak terpanjang. Membacanya akan membuatmu tidak pernah lagi mengeluhkan masalah kecil dengan cara yang sama.`,
+    }
+  },
+  {
+    id:7, cat:'psikologi', catLabel:'Psikologi & Mindset',
+    title:'Mindset: The New Psychology of Success',
+    author:'Carol S. Dweck',
+    year:2006, pages:276,
+    rating:'⭐ 4.7',
+    color:'#9b3a5a',
+    hook:'Penelitian revolusioner yang membuktikan bahwa bukan bakat atau kecerdasan yang menentukan kesuksesanmu — melainkan caramu memandang kemampuanmu.',
+    summary:{
+      overview:`<p>Carol Dweck, profesor psikologi Stanford, menghabiskan puluhan tahun meneliti satu pertanyaan sederhana: mengapa beberapa orang memeluk tantangan sementara yang lain menghindarinya? Jawabannya mengubah dunia pendidikan dan pengembangan diri selamanya.</p>`,
+      lessons:[
+        {n:'01', t:'Fixed vs Growth Mindset', d:'<strong>Fixed Mindset</strong>: Percaya kecerdasan dan bakat adalah sifat tetap yang tidak bisa diubah. Menghindari tantangan karena takut terlihat bodoh. <strong>Growth Mindset</strong>: Percaya kemampuan bisa dikembangkan melalui usaha dan pembelajaran. Memeluk tantangan sebagai kesempatan tumbuh.'},
+        {n:'02', t:'Kekuatan "Belum"', d:'Ubah "Aku tidak bisa melakukan ini" menjadi "Aku belum bisa melakukan ini." Satu kata kecil ini mengubah sebuah kegagalan menjadi karya yang sedang dalam proses. Ini adalah inti dari growth mindset.'},
+        {n:'03', t:'Puji Proses, Bukan Hasil', d:'Penelitian Dweck menunjukkan: anak-anak yang dipuji karena "keras kepala dan usaha" lebih tahan banting dan sukses dibanding anak yang dipuji karena "pintar." Memuji hasil menciptakan fixed mindset; memuji proses membangun growth mindset.'},
+      ],
+      quote:{text:`"Dalam growth mindset, tantangan adalah peluang untuk berkembang. Dalam fixed mindset, tantangan mengancam."`, src:'— Carol S. Dweck'},
+      verdict:`Revolusioner dalam kesederhanaannya. Setelah membaca buku ini, kamu tidak akan melihat kegagalan dengan cara yang sama lagi.`,
+    }
+  },
+  {
+    id:8, cat:'psikologi', catLabel:'Psikologi & Mindset',
+    title:'The Power of Now',
+    author:'Eckhart Tolle',
+    year:1997, pages:236,
+    rating:'⭐ 4.7',
+    color:'#4a7c59',
+    hook:'Masa lalu adalah memori. Masa depan adalah imajinasi. Satu-satunya yang nyata adalah momen ini — dan kebanyakan dari kita tidak pernah benar-benar hadir di sini.',
+    summary:{
+      overview:`<p>Eckhart Tolle menulis buku ini setelah mengalami transformasi spiritual mendalam yang mengakhiri depresi parahnya. The Power of Now menjadi salah satu buku spiritual terlaris sepanjang masa, menjangkau lebih dari 30 juta pembaca di seluruh dunia.</p>`,
+      lessons:[
+        {n:'01', t:'Kamu Bukan Pikiranmu', d:'Pikiran datang dan pergi — kamu adalah yang mengamatinya. Ketika kamu bisa mengamati pikiranmu tanpa terbawa olehnya, kamu menemukan ketenangan yang tidak bergantung pada kondisi eksternal apapun.'},
+        {n:'02', t:'The Pain-Body', d:'Tolle memperkenalkan konsep "pain-body" — akumulasi rasa sakit emosional masa lalu yang hidup dalam dirimu dan terus mencari makanan berupa drama dan penderitaan baru. Mengenalinya adalah langkah pertama membebaskan diri darinya.'},
+        {n:'03', t:'Momen Ini Selalu Akan Pernah Ada', d:'Apapun yang terjadi di masa depan — sukses, gagal, sedih, gembira — semuanya akan terjadi di momen "sekarang." Jika kamu bisa berdamai dengan momen ini, kamu berdamai dengan segalanya.'},
+      ],
+      quote:{text:`"Kebanyakan penderitaan manusia tidak perlu ada. Ini diciptakan sendiri selama kamu tidak hadir di momen ini."`, src:'— Eckhart Tolle'},
+      verdict:`Untuk mereka yang kepalanya terlalu penuh dan hatinya terlalu berat. Buku ini bukan ilmu pengetahuan — ia adalah pengalaman langsung.`,
+    }
+  },
+
+  /* ─── CINTA & HUBUNGAN ─── */
+  {
+    id:9, cat:'cinta', catLabel:'Cinta & Hubungan',
+    title:'The 5 Love Languages',
+    author:'Gary Chapman',
+    year:1992, pages:208,
+    rating:'⭐ 4.8',
+    color:'#9b3a5a',
+    hook:'Mengapa pasangan yang saling mencintai bisa merasa tidak dicintai? Karena mereka berbicara dalam bahasa cinta yang berbeda.',
+    summary:{
+      overview:`<p>Gary Chapman, konselor pernikahan dengan pengalaman lebih dari 30 tahun, menemukan bahwa banyak pasangan yang gagal dalam hubungan bukan karena kurang cinta — tapi karena mereka mengekspresikan dan menerima cinta dengan cara yang berbeda.</p>
+      <p>Buku ini telah membantu jutaan pasangan di seluruh dunia menemukan cara berkomunikasi yang lebih efektif dan penuh makna.</p>`,
+      lessons:[
+        {n:'01', t:'Words of Affirmation', d:'Sebagian orang merasa paling dicintai melalui <strong>kata-kata pujian, ungkapan terima kasih, dan dorongan verbal.</strong> "Kamu luar biasa," "Aku bangga padamu," "Aku mencintaimu" — bagi mereka, kata-kata ini lebih bermakna dari hadiah manapun.'},
+        {n:'02', t:'Quality Time', d:'Bagi mereka dengan bahasa cinta ini, perhatian penuh dan tidak terbagi adalah hadiah terbesar. Bukan sekadar berada di ruangan yang sama — tapi <strong>benar-benar hadir</strong>, mendengarkan, dan berinteraksi tanpa distraksi.'},
+        {n:'03', t:'Receiving Gifts', d:'Hadiah adalah simbol visual dari cinta. Bagi orang dengan bahasa cinta ini, bukan nilai materinya yang penting — tapi fakta bahwa kamu <strong>memikirkan mereka</strong> dan menuangkannya dalam sebuah simbol nyata.'},
+        {n:'04', t:'Acts of Service', d:'Bagi sebagian orang, tindakan berbicara lebih keras dari kata-kata. Memasak, mencuci piring, membantu tugas — ini adalah cara mereka berkata <strong>"Aku peduli padamu"</strong> yang paling dalam.'},
+        {n:'05', t:'Physical Touch', d:'Sentuhan fisik — pelukan, genggaman tangan, usapan — adalah cara primer beberapa orang merasakan dan mengekspresikan cinta. Tanpa sentuhan, mereka merasa terputus secara emosional, tidak peduli seberapa banyak hadiah yang diberikan.'},
+      ],
+      quote:{text:`"Jika kita ingin merasa dicintai, kita harus memberitahu pasangan kita bahasa cinta kita — mereka tidak bisa menebaknya."`, src:'— Gary Chapman'},
+      verdict:`Buku yang seharusnya dibaca sebelum memulai hubungan apapun. Akan mengubah cara kamu memahami dan mengekspresikan cinta selamanya.`,
+    }
+  },
+  {
+    id:10, cat:'cinta', catLabel:'Cinta & Hubungan',
+    title:'Attached',
+    author:'Amir Levine & Rachel Heller',
+    year:2010, pages:294,
+    rating:'⭐ 4.7',
+    color:'#c9922a',
+    hook:'Ilmu pengetahuan akhirnya menjelaskan mengapa kamu terlalu clinggy, terlalu avoidant, atau selalu merasa tidak aman dalam hubungan.',
+    summary:{
+      overview:`<p>Berdasarkan teori attachment yang dikembangkan oleh John Bowlby dan Mary Ainsworth, Amir Levine dan Rachel Heller menjelaskan bagaimana pola keterikatan yang kita pelajari di masa kecil terus membentuk cara kita berhubungan romantis sebagai orang dewasa.</p>`,
+      lessons:[
+        {n:'01', t:'Tiga Gaya Attachment', d:'<strong>Secure (Aman)</strong>: Nyaman dengan kedekatan dan kemandirian. <strong>Anxious (Cemas)</strong>: Menginginkan kedekatan ekstrem, takut ditinggalkan, sering overthinking. <strong>Avoidant (Menghindar)</strong>: Menghargai kemandirian ekstrem, merasa "tercekik" saat pasangan terlalu dekat.'},
+        {n:'02', t:'The Anxious-Avoidant Trap', d:'Orang anxious dan avoidant saling menarik seperti magnet — tapi justru itulah kombinasi paling tidak bahagia. Orang anxious memperkuat kecemasan saat avoidant mundur; avoidant semakin mundur saat anxious semakin mendekat.'},
+        {n:'03', t:'Secure Attachment Bisa Dipelajari', d:'Kabar baiknya: gaya attachment bukan takdir. Dengan pasangan yang "securely attached" atau dengan kesadaran diri yang tinggi, siapapun bisa mengembangkan pola attachment yang lebih sehat.'},
+      ],
+      quote:{text:`"Bukan kelemahan untuk bergantung pada pasanganmu. Itu adalah kebutuhan biologis yang paling manusiawi."`, src:'— Amir Levine'},
+      verdict:`Akan membuat kamu akhirnya mengerti mengapa kamu berperilaku seperti itu dalam hubungan — dan bagaimana mengubahnya.`,
+    }
+  },
+  {
+    id:11, cat:'cinta', catLabel:'Cinta & Hubungan',
+    title:'Men Are from Mars, Women Are from Venus',
+    author:'John Gray',
+    year:1992, pages:368,
+    rating:'⭐ 4.5',
+    color:'#3d4f6b',
+    hook:'Pria dan wanita tidak hanya berbeda dalam hal fisik — cara mereka berpikir, berkomunikasi, dan membutuhkan cinta berbeda secara fundamental.',
+    summary:{
+      overview:`<p>John Gray menggunakan metafora yang sederhana namun kuat: seolah pria dan wanita berasal dari planet yang berbeda. Buku ini menjadi salah satu buku hubungan terlaris sepanjang masa karena menyentuh kebenaran universal tentang perbedaan cara pria dan wanita dalam menghadapi stres, berkomunikasi, dan mencintai.</p>`,
+      lessons:[
+        {n:'01', t:'Cave vs. Talk', d:'Saat stres, pria cenderung masuk ke "gua" — membutuhkan waktu sendiri untuk memproses masalah. Wanita cenderung ingin berbicara dan berbagi. Keduanya normal dan valid — tapi sering disalahpahami sebagai penolakan atau ketidakpedulian.'},
+        {n:'02', t:'Rubber Band Theory', d:'Pria seperti karet gelang — mereka mendekat, lalu menjauh untuk mendapatkan ruang, lalu kembali mendekat lebih kuat dari sebelumnya. Wanita yang memahami ini tidak akan panik saat pasangannya butuh jarak.'},
+        {n:'03', t:'Bahasa Kebutuhan yang Berbeda', d:'Wanita sering ingin didengar, divalidasi, dan dipahami — bukan langsung diberi solusi. Pria sering ingin dihargai dan dipercaya kemampuannya. Memberi yang lain butuhkan, bukan yang kamu butuhkan, adalah kunci hubungan yang harmonis.'},
+      ],
+      quote:{text:`"Ketika wanita berbagi masalah, dia tidak selalu mencari solusi. Dia ingin didengar dan dipahami."`, src:'— John Gray'},
+      verdict:`Meski beberapa konsepnya diperdebatkan oleh psikologi modern, wawasan praktisnya tentang komunikasi pasangan tetap relevan dan sangat berguna.`,
+    }
+  },
+
+  /* ─── BISNIS & FINANSIAL ─── */
+  {
+    id:12, cat:'bisnis', catLabel:'Bisnis & Finansial',
+    title:'Rich Dad Poor Dad',
+    author:'Robert T. Kiyosaki',
+    year:1997, pages:336,
+    rating:'⭐ 4.7',
+    color:'#c9922a',
+    hook:'Dua ayah dengan dua filosofi uang yang berlawanan — dan satu pelajaran yang mengubah cara jutaan orang memandang kekayaan.',
+    summary:{
+      overview:`<p>Robert Kiyosaki tumbuh dengan dua figur ayah: "Poor Dad" — ayah kandungnya yang berpendidikan tinggi namun selalu kesulitan uang — dan "Rich Dad" — ayah temannya yang putus sekolah namun menjadi salah satu orang terkaya di Hawaii. Perbedaan cara pandang keduanya tentang uang menjadi fondasi buku ini.</p>`,
+      lessons:[
+        {n:'01', t:'Aset vs. Liabilitas', d:'<strong>Aset</strong> adalah sesuatu yang memasukkan uang ke kantongmu. <strong>Liabilitas</strong> adalah sesuatu yang mengeluarkan uang dari kantongmu. Orang kaya membeli aset. Orang miskin dan kelas menengah membeli liabilitas yang mereka kira aset — seperti rumah mewah dan mobil baru.'},
+        {n:'02', t:'Rat Race', d:'Sebagian besar orang terjebak dalam "rat race" — bekerja untuk bayar tagihan, mendapat kenaikan gaji, lalu membeli barang yang lebih mahal, lalu bekerja lebih keras lagi. Keluar dari rat race membutuhkan literasi finansial, bukan gaji yang lebih besar.'},
+        {n:'03', t:'Bekerja untuk Belajar, Bukan Uang', d:'Kiyosaki muda sengaja bekerja di berbagai posisi bukan untuk gaji terbaik, tapi untuk <strong>mempelajari skill terpenting</strong>: penjualan, akuntansi, hukum, investasi. Kombinasi skill membuat seseorang lebih berharga dari spesialis murni.'},
+        {n:'04', t:'Mindset Orang Kaya', d:'Orang miskin berkata "Aku tidak mampu." Orang kaya bertanya "Bagaimana aku bisa mampu?" Satu kalimat menutup pikiran; yang lain membukanya. Finansial bebas dimulai dari dalam kepala.'},
+      ],
+      quote:{text:`"Orang miskin dan kelas menengah bekerja untuk uang. Orang kaya membuat uang bekerja untuk mereka."`, src:'— Robert Kiyosaki'},
+      verdict:`Buku terbaik untuk memulai perjalanan literasi finansialmu. Bukan panduan teknis investasi — ini adalah perubahan paradigma tentang uang.`,
+    }
+  },
+  {
+    id:13, cat:'bisnis', catLabel:'Bisnis & Finansial',
+    title:'Zero to One',
+    author:'Peter Thiel',
+    year:2014, pages:224,
+    rating:'⭐ 4.6',
+    color:'#3d4f6b',
+    hook:'Co-founder PayPal dan investor awal Facebook berbagi filosofi kontrarian tentang bagaimana bisnis yang benar-benar besar diciptakan.',
+    summary:{
+      overview:`<p>Peter Thiel mengumpulkan catatan kuliah dari kelasnya di Stanford untuk menghasilkan salah satu buku bisnis paling provokatif dekade ini. Berbeda dari kebanyakan buku bisnis, Zero to One tidak mengajari cara bersaing lebih baik — tapi mengapa kompetisi itu sendiri adalah musuh kesuksesan sejati.</p>`,
+      lessons:[
+        {n:'01', t:'0 ke 1 vs 1 ke N', d:'Menyalin sesuatu yang sudah ada adalah bergerak dari 1 ke N — menambahkan lebih banyak dari yang sudah dikenal. Menciptakan sesuatu yang benar-benar baru adalah bergerak dari 0 ke 1. <strong>Hanya langkah 0 ke 1 yang menciptakan nilai sejati.</strong>'},
+        {n:'02', t:'Monopoli adalah Tujuan', d:'Thiel berpendapat bahwa kompetisi sempurna menghancurkan profit. Bisnis yang benar-benar baik harus membangun monopoli di nichnya — bukan monopoli ilegal, tapi monopoli melalui inovasi yang tidak bisa ditiru.'},
+        {n:'03', t:'Contrarian Question', d:'"Kebenaran penting apa yang sangat sedikit orang yang setuju denganmu?" Pertanyaan ini adalah tes pemikiran kontrarian. Bisnis terbaik dibangun di atas ide yang semua orang anggap salah — sampai terbukti benar.'},
+        {n:'04', t:'Power Law dalam Startup', d:'Sebagian kecil keputusan akan menentukan sebagian besar hasilmu. Satu investasi terbaik mengalahkan seluruh portofolio. Satu market terbaik lebih berharga dari semua market lainnya. Fokus pada yang paling penting.'},
+      ],
+      quote:{text:`"Bisnis yang berhasil adalah bisnis yang menemukan solusi untuk masalah yang belum terpecahkan."`, src:'— Peter Thiel'},
+      verdict:`Bacaan wajib bagi siapapun yang ingin membangun sesuatu yang benar-benar baru, bukan hanya mengikuti tren.`,
+    }
+  },
+  {
+    id:14, cat:'bisnis', catLabel:'Bisnis & Finansial',
+    title:'The Lean Startup',
+    author:'Eric Ries',
+    year:2011, pages:336,
+    rating:'⭐ 4.6',
+    color:'#4a7c59',
+    hook:'Metode yang merevolusi cara startup dibangun — bukan dengan merencanakan segalanya dulu, tapi dengan bereksperimen cepat dan belajar dari pelanggan nyata.',
+    summary:{
+      overview:`<p>Eric Ries memperkenalkan metodologi yang mengubah cara dunia membangun bisnis baru. Terinspirasi dari lean manufacturing Toyota, The Lean Startup mengadvokasi pendekatan ilmiah dalam membangun produk: validasi hipotesis dengan cepat dan murah sebelum menginvestasikan sumber daya besar.</p>`,
+      lessons:[
+        {n:'01', t:'Build-Measure-Learn', d:'Loop fundamental startup: <strong>Bangun</strong> versi minimum produk (MVP), <strong>ukur</strong> respons pelanggan nyata, <strong>pelajari</strong> apakah hipotesismu benar. Ulangi lebih cepat dari kompetitor. Kecepatan pembelajaran adalah keunggulan kompetitif terbesar.'},
+        {n:'02', t:'MVP — Minimum Viable Product', d:'Jangan bangun produk sempurna dulu — bangun versi paling sederhana yang bisa menguji hipotesis utamamu. Facebook dimulai hanya untuk satu universitas. Twitter dimulai sebagai fitur internal. Amazon hanya menjual buku.'},
+        {n:'03', t:'Pivot atau Persevere', d:'Setelah belajar dari data nyata, ada dua pilihan: <strong>Pivot</strong> — ubah strategi karena hipotesis terbukti salah, atau <strong>Persevere</strong> — lanjutkan karena data memvalidasi arah. Kemampuan pivot tepat waktu adalah yang memisahkan startup sukses dari yang gagal.'},
+      ],
+      quote:{text:`"Satu-satunya cara untuk memenangkan adalah belajar lebih cepat dari siapapun."`, src:'— Eric Ries'},
+      verdict:`Metodologi yang telah membantu ribuan startup menghindari kegagalan mahal. Relevan tidak hanya untuk bisnis, tapi untuk semua proyek dalam hidupmu.`,
+    }
+  },
+  {
+    id:15, cat:'bisnis', catLabel:'Bisnis & Finansial',
+    title:'The Psychology of Money',
+    author:'Morgan Housel',
+    year:2020, pages:256,
+    rating:'⭐ 4.8',
+    color:'#b5451b',
+    hook:'Keputusan finansial terbaik bukan tentang matematika atau spreadsheet — tapi tentang bagaimana perasaan, ego, dan sejarahmu membentuk hubunganmu dengan uang.',
+    summary:{
+      overview:`<p>Morgan Housel berargumen bahwa kesuksesan finansial bukan tentang kecerdasan atau pengetahuan teknis, melainkan tentang perilaku. Orang biasa dengan perilaku finansial yang sederhana namun konsisten akan mengalahkan insinyur keuangan yang berbakat namun berperilaku buruk.</p>`,
+      lessons:[
+        {n:'01', t:'No One Is Crazy', d:'Semua orang membuat keputusan finansial berdasarkan pengalaman unik mereka. Seseorang yang tumbuh dalam kemiskinan dan seseorang yang kaya raya akan memandang risiko investasi yang sama dengan cara yang sangat berbeda — dan keduanya tidak salah.'},
+        {n:'02', t:'Compounding Membutuhkan Waktu', d:'Warren Buffett memiliki $84 miliar dari total kekayaan $84.5 miliar SETELAH usia 65 tahun. Kekuatannya bukan dari kepintaran memilih saham — tapi dari <strong>konsistensi selama 70+ tahun.</strong> Waktu adalah senjata paling kuat dalam finansial.'},
+        {n:'03', t:'Cukup adalah Kunci', d:'Salah satu keterampilan finansial terpenting adalah <strong>mengetahui kapan berhenti mengambil risiko.</strong> Semakin banyak yang kamu miliki, semakin tidak perlu kamu mengambil risiko untuk mendapatkan lebih banyak.'},
+        {n:'04', t:'Save Without a Goal', d:'Menabung untuk tujuan tertentu itu baik. Tapi menabung tanpa tujuan — hanya untuk memiliki fleksibilitas — adalah bahkan lebih berharga. Fleksibilitas adalah keuntungan terbesar dalam menghadapi ketidakpastian.'},
+      ],
+      quote:{text:`"Menjadi cukup secara finansial lebih tentang mengendalikan waktumu daripada tentang berapa banyak yang kamu miliki."`, src:'— Morgan Housel'},
+      verdict:`Buku finansial terbaik yang tidak terasa seperti buku finansial. Ditulis dengan cerita dan kebijaksanaan yang akan membuatmu berpikir ulang tentang uang.`,
+    }
+  },
+
+  /* ─── FIKSI DUNIA ─── */
+  {
+    id:16, cat:'fiksi', catLabel:'Fiksi Dunia',
+    title:'The Alchemist',
+    author:'Paulo Coelho',
+    year:1988, pages:208,
+    rating:'⭐ 4.7',
+    color:'#c9922a',
+    hook:'Perjalanan seorang gembala muda dari Spanyol ke Mesir yang mengajarkan bahwa alam semesta berkonspirasi untuk membantu mereka yang berani mengikuti impiannya.',
+    summary:{
+      overview:`<p>The Alchemist adalah salah satu buku terlaris sepanjang masa — diterjemahkan ke lebih dari 80 bahasa dan terjual lebih dari 65 juta kopi. Paulo Coelho menulis novel filosofis ini dalam waktu hanya dua minggu, terinspirasi dari sebuah cerita yang ditemukannya tentang seorang penggembala.</p>
+      <p>Di balik kemasan petualangan sederhana, tersembunyi kebijaksanaan mendalam tentang tujuan hidup, keberanian untuk bermimpi, dan keberanian yang lebih besar untuk mewujudkannya.</p>`,
+      lessons:[
+        {n:'01', t:'Personal Legend', d:'Setiap orang memiliki "Personal Legend" — sesuatu yang sangat ingin mereka lakukan sejak masa kecil. Dunia dan semua rintangan dalam hidup adalah bagian dari proses untuk mewujudkannya, bukan hambatannya.'},
+        {n:'02', t:'The Soul of the World', d:'Ketika kamu menginginkan sesuatu dengan segenap hatimu, seluruh alam semesta akan berkonspirasi untuk membantumu mendapatkannya. Bukan klise — tapi deskripsi tentang bagaimana konsentrasi penuh pada satu tujuan mengubah cara kamu melihat peluang.'},
+        {n:'03', t:'Omens dan Tanda', d:'Santiago belajar membaca "tanda-tanda" dari alam. Dalam konteks praktis: perhatikan apa yang berulang kali menarik perhatianmu, siapa yang kamu temui berulang kali, apa yang terus mengganggu pikiranmu. Alam bawah sadar sering berbicara melalui "kebetulan."'},
+      ],
+      quote:{text:`"Ketika kamu menginginkan sesuatu dengan segenap hatimu, seluruh alam semesta berkonspirasi untuk membantumu mendapatkannya."`, src:'— Paulo Coelho, The Alchemist'},
+      verdict:`Bukan novel biasa — ini adalah surat cinta untuk semua jiwa yang pernah bermimpi tapi takut untuk mulai. Dibaca dalam satu duduk, direnungkan seumur hidup.`,
+    }
+  },
+  {
+    id:17, cat:'fiksi', catLabel:'Fiksi Dunia',
+    title:'1984',
+    author:'George Orwell',
+    year:1949, pages:328,
+    rating:'⭐ 4.9',
+    color:'#3d4f6b',
+    hook:'Dystopia yang ditulis 70 tahun lalu — namun terasa semakin relevan di era pengawasan digital, fake news, dan manipulasi informasi masa kini.',
+    summary:{
+      overview:`<p>George Orwell menulis 1984 dalam kondisi sakit parah di sebuah pulau terpencil di Skotlandia. Novel ini lahir dari kekhawatirannya tentang totalitarianisme yang dilihatnya di Uni Soviet dan Nazi Jerman — sebuah peringatan untuk generasi mendatang.</p>
+      <p>1984 memperkenalkan konsep-konsep yang kini menjadi bagian dari kosakata kita: Big Brother, doublethink, thoughtcrime, Newspeak — semuanya terasa menakutkan familiar di abad ke-21.</p>`,
+      lessons:[
+        {n:'01', t:'Bahasa sebagai Alat Kontrol', d:'"Newspeak" dalam 1984 adalah bahasa yang dirancang untuk membatasi kemampuan berpikir kritis. Semakin terbatas kosakata seseorang, semakin terbatas kemampuannya untuk mengonsepkan perlawanan. <strong>Menguasai bahasa adalah menguasai pikiran.</strong>'},
+        {n:'02', t:'Doublethink', d:'Kemampuan untuk memegang dua keyakinan yang saling bertentangan secara bersamaan dan menerima keduanya sebagai benar. Relevan hari ini: bagaimana kita menerima narasi yang bertentangan dari media tanpa merasa perlu mempertanyakannya.'},
+        {n:'03', t:'Sejarah yang Bisa Ditulis Ulang', d:'"Siapa yang mengontrol masa lalu, mengontrol masa depan. Siapa yang mengontrol masa kini, mengontrol masa lalu." Orwell memperingatkan tentang bahaya memanipulasi catatan sejarah — dan betapa mudahnya masyarakat menerima revisi realitas.'},
+      ],
+      quote:{text:`"Di zaman penipuan universal, berbicara kebenaran adalah tindakan revolusioner."`, src:'— George Orwell, 1984'},
+      verdict:`Bukan sekadar fiksi — ini adalah buku yang seharusnya wajib dibaca setiap warga negara yang peduli pada kebebasan dan kebenaran.`,
+    }
+  },
+  {
+    id:18, cat:'fiksi', catLabel:'Fiksi Dunia',
+    title:'To Kill a Mockingbird',
+    author:'Harper Lee',
+    year:1960, pages:336,
+    rating:'⭐ 4.8',
+    color:'#4a7c59',
+    hook:'Melalui mata seorang anak perempuan di Amerika Selatan tahun 1930an, Harper Lee mengajarkan tentang keberanian moral, empati, dan ketidakadilan yang bertahan melampaui zaman.',
+    summary:{
+      overview:`<p>To Kill a Mockingbird memenangkan Pulitzer Prize pada tahun 1961 dan dianggap oleh banyak kalangan sebagai novel Amerika terbesar abad ke-20. Dikisahkan dari sudut pandang Scout Finch, seorang gadis 8 tahun, buku ini menghadirkan tema-tema berat dengan kejujuran yang mengharukan.</p>`,
+      lessons:[
+        {n:'01', t:'Empati sebagai Kompas Moral', d:'Atticus Finch mengajarkan Scout: "Kamu tidak pernah benar-benar memahami seseorang sampai kamu naik ke dalam kulitnya dan berjalan mengelilinginya." Empati bukan kelemahan — ia adalah kebijaksanaan tertinggi.'},
+        {n:'02', t:'Keberanian Moral', d:'Keberanian sejati bukan membawa senjata. Keberanian adalah ketika kamu tahu kamu akan kalah sebelum mulai, tapi tetap melakukannya dan bertahan sampai akhir. Atticus membela yang tidak bisa dimenangkan karena itu benar.'},
+        {n:'03', t:'Prasangka dan Kepolosan', d:'Boo Radley — tokoh yang ditakuti anak-anak karena rumor dan prasangka — ternyata adalah pelindung yang paling tulus. Buku ini adalah pengingat betapa sering kita menghakimi orang berdasarkan narasi orang lain, bukan pengalaman langsung.'},
+      ],
+      quote:{text:`"Kamu tidak pernah benar-benar memahami seseorang sampai kamu melihat sesuatu dari sudut pandangnya."`, src:'— Harper Lee, To Kill a Mockingbird'},
+      verdict:`Novel yang akan membuatmu menangis, marah, dan pada akhirnya — penuh harapan. Abadi karena kemanusiaannya yang begitu dalam dan jujur.`,
+    }
+  },
+  {
+    id:19, cat:'fiksi', catLabel:'Fiksi Dunia',
+    title:'The Little Prince',
+    author:'Antoine de Saint-Exupéry',
+    year:1943, pages:96,
+    rating:'⭐ 4.9',
+    color:'#9b3a5a',
+    hook:'Buku anak-anak yang sesungguhnya ditulis untuk orang dewasa — tentang cinta, kehilangan, kesepian, dan kebenaran yang hanya bisa dilihat dengan hati.',
+    summary:{
+      overview:`<p>Le Petit Prince ditulis oleh seorang pilot Prancis yang hilang di Gurun Sahara selama Perang Dunia II. Buku terpendek dalam daftar ini adalah salah satu yang paling dalam. Setiap baris mengandung makna berlapis yang baru terasa setelah kamu menua dan mengalami lebih banyak kehilangan.</p>`,
+      lessons:[
+        {n:'01', t:'Hanya Hati yang Melihat dengan Benar', d:'"L\'essentiel est invisible pour les yeux" — hal terpenting tidak terlihat oleh mata. Nilai sejati seseorang, kedalaman cinta, makna persahabatan — semuanya hanya bisa dirasakan, bukan dilihat.'},
+        {n:'02', t:'Menjinakkan — Menciptakan Ikatan', d:'Rubah mengajarkan pangeran kecil arti "menjinakkan" — menciptakan ikatan yang membuat seseorang unik di antara jutaan yang mirip. "Kamu menjadi bertanggung jawab selamanya atas apa yang telah kamu jinakkan."'},
+        {n:'03', t:'Orang Dewasa yang Kehilangan Dirinya', d:'Setiap orang dewasa yang ditemui pangeran kecil mewakili cara manusia kehilangan keajaiban dalam diri mereka — yang terlalu sibuk, yang terlalu serakah, yang terlalu membutuhkan validasi. Siapakah kamu di antara mereka?'},
+      ],
+      quote:{text:`"Kamu menjadi bertanggung jawab selamanya atas apa yang telah kamu jinakkan."`, src:'— Antoine de Saint-Exupéry, The Little Prince'},
+      verdict:`Bacalah dua kali: sekali saat kamu muda, sekali lagi saat kamu merasa telah kehilangan sesuatu. Maknanya akan berbeda, dan keduanya sama benarnya.`,
+    }
+  },
+
+  /* ─── SASTRA INDONESIA ─── */
+  {
+    id:20, cat:'lokal', catLabel:'Sastra Indonesia',
+    title:'Laskar Pelangi',
+    author:'Andrea Hirata',
+    year:2005, pages:534,
+    rating:'⭐ 4.8',
+    color:'#c9922a',
+    hook:'Kisah nyata tentang sepuluh anak miskin di Belitung yang, dengan satu guru luar biasa dan tekad yang membara, membuktikan bahwa kemiskinan tidak pernah bisa memadamkan mimpi.',
+    summary:{
+      overview:`<p>Laskar Pelangi adalah fenomena sastra Indonesia yang mengubah lanskap penerbitan nasional. Berdasarkan kisah nyata Andrea Hirata sendiri, buku ini terjual lebih dari 5 juta eksemplar di Indonesia dan diterjemahkan ke 40 bahasa. Ia membuktikan bahwa cerita lokal yang jujur bisa menembus dunia.</p>`,
+      lessons:[
+        {n:'01', t:'Mimpi Adalah Hak Semua Orang', d:'Ikal, Lintang, Mahar dan kawan-kawan tumbuh dalam kemiskinan ekstrem — tapi mereka bermimpi tanpa batas. Lintang, anak nelayan yang harus bersepeda 80 km sehari untuk bersekolah, menjadi simbol bahwa hambatan fisik tidak pernah sebesar hambatan mental.'},
+        {n:'02', t:'Guru yang Mengubah Dunia', d:'Bu Muslimah adalah contoh nyata bagaimana seorang guru yang berdedikasi bisa mengubah hidup puluhan anak selamanya. Dampak seorang pendidik yang tulus melampaui ruang kelas dan bertahan seumur hidup.'},
+        {n:'03', t:'Persahabatan sebagai Kekuatan', d:'Sepuluh anak dengan latar belakang berbeda menjadi satu — "Laskar Pelangi" — dan kekuatan persatuan itu mengalahkan semua keterbatasan individual mereka. Bersama, mereka meraih lebih dari yang bisa dilakukan sendiri.'},
+      ],
+      quote:{text:`"Bermimpilah setinggi langit. Jika engkau jatuh, engkau akan jatuh di antara bintang-bintang."`, src:'— Andrea Hirata, Laskar Pelangi'},
+      verdict:`Buku Indonesia yang wajib dibaca setiap generasi. Sebuah ode untuk pendidikan, persahabatan, dan keberanian bermimpi di tengah kemustahilan.`,
+    }
+  },
+  {
+    id:21, cat:'lokal', catLabel:'Sastra Indonesia',
+    title:'Perahu Kertas',
+    author:'Dee Lestari',
+    year:2009, pages:480,
+    rating:'⭐ 4.7',
+    color:'#9b3a5a',
+    hook:'Kugy dan Keenan — dua jiwa yang seperti perahu kertas: ringan, penuh mimpi, hanyut dalam arus yang berbeda, tapi selalu menemukan jalan kembali satu sama lain.',
+    summary:{
+      overview:`<p>Dee Lestari, salah satu penulis Indonesia paling berbakat, menciptakan kisah cinta yang tidak biasa — bukan hanya tentang dua orang yang saling mencintai, tapi tentang dua manusia yang sama-sama berjuang mempertahankan jati diri mereka di tengah tekanan dunia.</p>`,
+      lessons:[
+        {n:'01', t:'Kejujuran pada Diri Sendiri', d:'Kugy dan Keenan adalah dua orang yang paling takut mengkhianati impian mereka sendiri. Di tengah tekanan untuk "realistis," keduanya memilih setia pada panggilan jiwa — bahkan saat itu menyakitkan dan tampak tidak masuk akal.'},
+        {n:'02', t:'Cinta yang Memberi Ruang', d:'Perahu Kertas mengajarkan bahwa cinta yang sejati bukan selalu yang berteriak paling keras atau yang paling posesif — tapi yang memberi ruang bagi orang yang dicintai untuk tumbuh menjadi versi terbaik dirinya.'},
+        {n:'03', t:'Mimpi yang Ditunda Bukan Mimpi yang Mati', d:'Keduanya sempat menyimpan mimpi — Kugy dengan dongengnya, Keenan dengan lukisannya. Tapi mimpi yang disimpan dalam hati tidak pernah mati; ia hanya menunggu saat yang tepat untuk kembali menyala.'},
+      ],
+      quote:{text:`"Kugy percaya bahwa dongeng adalah jembatan antara dunia yang ada dan dunia yang seharusnya ada."`, src:'— Dee Lestari, Perahu Kertas'},
+      verdict:`Roman Indonesia yang melampaui genre. Untuk para pemimpi yang pernah bertanya apakah impian mereka terlalu besar — jawabannya selalu tidak.`,
+    }
+  },
+  {
+    id:22, cat:'lokal', catLabel:'Sastra Indonesia',
+    title:'Bumi',
+    author:'Tere Liye',
+    year:2014, pages:440,
+    rating:'⭐ 4.7',
+    color:'#3d4f6b',
+    hook:'Di balik keseharian Raib yang tampak normal, tersimpan kekuatan luar biasa — dan sebuah dunia paralel yang lebih besar dari yang bisa dibayangkan.',
+    summary:{
+      overview:`<p>Bumi adalah awal dari serial fantasi terbaik Tere Liye yang membuktikan bahwa fiksi ilmiah dan fantasi berkualitas tinggi bisa lahir dari penulis Indonesia. Dengan dunia yang dibangun secara konsisten dan karakter yang kuat, serial ini mengubah lanskap fiksi remaja Indonesia.</p>`,
+      lessons:[
+        {n:'01', t:'Keberanian Menghadapi yang Tidak Diketahui', d:'Raib, Seli, dan Ali menghadapi dunia yang sama sekali asing dengan cara yang berbeda — tapi ketiganya belajar bahwa keberanian bukan tidak takut, melainkan melangkah meski takut. Ini berlaku di dunia paralel maupun di kehidupan nyata.'},
+        {n:'02', t:'Persahabatan Melampaui Perbedaan', d:'Tiga karakter utama dengan kepribadian kontras — si pemalu Raib, si optimis Seli, dan si rasional Ali — saling melengkapi. Kelemahan satu adalah kekuatan yang lain. Persahabatan yang kuat dibangun dari perbedaan, bukan kesamaan.'},
+        {n:'03', t:'Warisan dan Identitas', d:'Sepanjang seri, Raib berjuang memahami warisan kekuatannya dan identitas sejatinya. Pertanyaan "siapa aku sebenarnya" adalah perjalanan universal yang paling manusiawi — dan Tere Liye menjawabnya melalui petualangan yang epik.'},
+      ],
+      quote:{text:`"Kita tidak memilih dari keluarga mana kita lahir, tapi kita memilih menjadi siapa kita nantinya."`, src:'— Tere Liye, Bumi'},
+      verdict:`Pintu masuk terbaik ke dunia fiksi fantasi Indonesia. Sekali mulai, kamu tidak akan bisa berhenti sampai membaca seluruh serinya.`,
+    }
+  },
+  {
+    id:23, cat:'lokal', catLabel:'Sastra Indonesia',
+    title:'Pulang',
+    author:'Tere Liye',
+    year:2015, pages:400,
+    rating:'⭐ 4.8',
+    color:'#b5451b',
+    hook:'Dalam dunia bayangan yang penuh kekerasan dan kekuasaan, seorang pemuda bernama Bujang berjuang menemukan makna kesetiaan, balas dendam, dan apa artinya pulang ke rumah.',
+    summary:{
+      overview:`<p>Pulang adalah mahakarya Tere Liye — sebuah thriller aksi yang menghadirkan dunia shadow economy global dengan intensitas sinematik. Namun di balik semua aksi dan ketegangan, ini adalah cerita tentang seorang anak yang mencari ayahnya, dan seorang manusia yang mencari dirinya sendiri.</p>`,
+      lessons:[
+        {n:'01', t:'Kesetiaan yang Dipilih', d:'Bujang loyal kepada keluarga Tong bukan karena terpaksa, tapi karena pilihan. Tere Liye mengeksplorasi bagaimana kesetiaan yang dipilih dengan sadar berbeda secara fundamental dari kepatuhan yang dipaksakan.'},
+        {n:'02', t:'Warisan Bukan Takdir', d:'Bujang lahir dari keluarga dengan masa lalu berdarah. Pertanyaan sentral buku ini: apakah kita harus menanggung dosa dan pilihan leluhur kita? Jawabannya adalah eksplorasi indah tentang kebebasan dan tanggung jawab moral.'},
+        {n:'03', t:'Makna Pulang', d:'"Pulang" bukan hanya tentang kembali ke tempat asal — tapi tentang menemukan kedamaian dengan diri sendiri. Rumah yang sesungguhnya bukan lokasi geografis, melainkan kondisi batin di mana kamu bisa menjadi dirimu yang paling jujur.'},
+      ],
+      quote:{text:`"Kau boleh pergi ke mana saja di dunia ini, tapi kau tidak bisa melarikan diri dari dirimu sendiri."`, src:'— Tere Liye, Pulang'},
+      verdict:`Thriller kelas dunia dengan jiwa sastra yang dalam. Bukti bahwa penulis Indonesia bisa bercerita di panggung global tanpa kehilangan akar lokalnya.`,
+    }
+  },
+  {
+    id:24, cat:'lokal', catLabel:'Sastra Indonesia',
+    title:'Negeri 5 Menara',
+    author:'Ahmad Fuadi',
+    year:2009, pages:423,
+    rating:'⭐ 4.7',
+    color:'#4a7c59',
+    hook:'Man Jadda Wajada — siapa yang bersungguh-sungguh, dia yang berhasil. Kisah nyata enam santri dari pelosok Indonesia yang menggapai mimpi ke penjuru dunia.',
+    summary:{
+      overview:`<p>Ahmad Fuadi menulis kisah semi-autobiografi tentang masa remajanya di Pondok Madani — pesantren yang mengubah hidupnya dan mengantarkannya ke Washington DC, London, dan Quebec. Buku ini menjadi fenomena nasional karena menyentuh kerinduan universal akan pendidikan yang membentuk karakter, bukan sekadar nilai.</p>`,
+      lessons:[
+        {n:'01', t:'Man Jadda Wajada', d:'Mantra pesantren yang menjadi jiwa buku ini: <strong>"Siapa yang bersungguh-sungguh, dia yang berhasil."</strong> Bukan tentang bakat atau nasib — tapi tentang kesungguhan yang konsisten. Filosofi sederhana ini telah mengubah hidup jutaan pembaca.'},
+        {n:'02', t:'Visualisasi sebagai Doa', d:'Enam santri bermimpi di bawah menara masjid, membayangkan diri mereka di berbagai penjuru dunia. Bertahun-tahun kemudian, mimpi itu menjadi kenyataan satu per satu. Visualisasi yang konsisten adalah bentuk doa yang paling aktif.'},
+        {n:'03', t:'Komunitas sebagai Penguat', d:'Persahabatan "Sahibul Menara" adalah contoh bagaimana lingkungan yang tepat membesarkan mimpi yang mungkin terlihat mustahil. Pilih temanmu dengan bijak — mereka akan membentuk siapa kamu.'},
+      ],
+      quote:{text:`"Man Jadda Wajada. Siapa yang bersungguh-sungguh, pasti berhasil."`, src:'— Ahmad Fuadi, Negeri 5 Menara'},
+      verdict:`Buku yang akan membuatmu ingin menjadi versi terbaik dirimu. Inspirasi yang lahir dari keringat nyata, bukan teori kosong.`,
+    }
+  },
+];
+
+/* ═══════════════════════════════════════════════
+   INSPIRATIONAL QUOTES
+═══════════════════════════════════════════════ */
+const QUOTES = [
+  {t:`"Seseorang yang membaca hidup seribu kali. Seseorang yang tidak membaca hanya hidup sekali."`, a:'— George R.R. Martin'},
+  {t:`"Buku adalah teman yang paling diam, dan paling setia; guru yang paling sabar."`, a:'— Charles W. Eliot'},
+  {t:`"Tidak ada teman yang setia seperti buku."`, a:'— Ernest Hemingway'},
+  {t:`"Membaca adalah mimpi yang bisa kamu pilih sendiri."`, a:'— Ralph Waldo Emerson'},
+  {t:`"Sebuah ruangan tanpa buku seperti tubuh tanpa jiwa."`, a:'— Marcus Tullius Cicero'},
+  {t:`"Buku yang baik adalah teman terbaik kamu untuk masa sekarang dan masa depan."`, a:'— Martin Tupper'},
+  {t:`"Dunia buku adalah dunia yang paling indah dari semuanya."`, a:'— Thomas Bailey Aldrich'},
+  {t:`"Membaca memberi kita tempat untuk pergi ketika kita harus tinggal di mana kita berada."`, a:'— Mason Cooley'},
+];
+
+/* ═══════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════ */
+let activeCategory = 'all';
+let searchQuery = '';
+let readBooks = new Set();
+let qIdx = 0;
+
+/* ═══════════════════════════════════════════════
+   CAT COLOR HELPERS
+═══════════════════════════════════════════════ */
+const CAT_COLORS = {
+  self:      {bg:'rgba(74,124,89,.1)',  text:'#4a7c59', border:'rgba(74,124,89,.25)'},
+  psikologi: {bg:'rgba(61,79,107,.1)', text:'#3d4f6b', border:'rgba(61,79,107,.25)'},
+  cinta:     {bg:'rgba(155,58,90,.1)', text:'#9b3a5a', border:'rgba(155,58,90,.25)'},
+  bisnis:    {bg:'rgba(201,146,42,.1)',text:'#c9922a', border:'rgba(201,146,42,.25)'},
+  fiksi:     {bg:'rgba(181,69,27,.1)', text:'#b5451b', border:'rgba(181,69,27,.25)'},
+  lokal:     {bg:'rgba(61,79,107,.1)', text:'#3d4f6b', border:'rgba(61,79,107,.25)'},
+};
+
+function catStyle(cat){
+  const c = CAT_COLORS[cat] || {bg:'rgba(26,18,8,.06)',text:'rgba(26,18,8,.5)',border:'rgba(26,18,8,.1)'};
+  return `background:${c.bg};color:${c.text};border:1px solid ${c.border};`;
+}
+
+/* ═══════════════════════════════════════════════
+   RENDER BOOKS
+═══════════════════════════════════════════════ */
+function getFilteredBooks(){
+  return BOOKS.filter(b => {
+    const matchCat = activeCategory === 'all' || b.cat === activeCategory;
+    const q = searchQuery.toLowerCase();
+    const matchQ = !q || b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q) || b.hook.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+}
+
+function renderBooks(){
+  const grid = document.getElementById('books-grid');
+  const books = getFilteredBooks();
+  document.getElementById('section-count').textContent = `${books.length} BUKU`;
+
+  grid.innerHTML = '';
+
+  if(books.length === 0){
+    grid.innerHTML = `<div class="no-results"><h3>📚 Tidak ditemukan</h3><p>Coba kata kunci lain atau ubah filter kategori.</p></div>`;
+    return;
+  }
+
+  books.forEach((b, i) => {
+    const card = document.createElement('div');
+    card.className = 'book-card reveal';
+    card.style.transitionDelay = Math.min(i * 0.05, 0.4) + 's';
+    const isRead = readBooks.has(b.id);
+    card.innerHTML = `
+      <div class="book-card-spine" style="background:${b.color};"></div>
+      <div class="book-card-body">
+        <span class="book-cat-tag" style="${catStyle(b.cat)}">${b.catLabel}</span>
+        <h3 class="book-title">${b.title}</h3>
+        <p class="book-author">oleh ${b.author} · ${b.year}</p>
+        <p class="book-hook">${b.hook}</p>
+        <div class="book-meta">
+          <span class="book-rating">${b.rating}</span>
+          <span class="book-pages">📄 ${b.pages} hal</span>
+          ${isRead ? '<span style="font-size:.75rem;color:var(--sage);font-weight:700;">✓ Dibaca</span>' : ''}
+          <button class="book-read-btn" onclick="event.stopPropagation();openBook(${b.id})">Baca Ringkasan →</button>
+        </div>
+      </div>
+    `;
+    card.onclick = () => openBook(b.id);
+    grid.appendChild(card);
+    requestAnimationFrame(() => {
+      setTimeout(() => card.classList.add('visible'), 50 + i * 40);
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════ */
+function openBook(id){
+  const b = BOOKS.find(x => x.id === id);
+  if(!b) return;
+
+  document.getElementById('modal-spine').style.background = b.color;
+  const cc = CAT_COLORS[b.cat];
+  document.getElementById('modal-cat').textContent = b.catLabel;
+  document.getElementById('modal-cat').style.color = cc ? cc.text : 'var(--gold)';
+  document.getElementById('modal-title').textContent = b.title;
+  document.getElementById('modal-author').textContent = `oleh ${b.author} · ${b.year}`;
+
+  document.getElementById('modal-badges').innerHTML = `
+    <span class="badge">${b.rating}</span>
+    <span class="badge">📄 ${b.pages} halaman</span>
+    <span class="badge" style="background:${b.color};color:#fff;opacity:.9;">${b.catLabel}</span>
+  `;
+
+  const s = b.summary;
+  const lessonsHTML = s.lessons.map(l => `
+    <div class="lesson-item">
+      <div class="lesson-num">${l.n}</div>
+      <div class="lesson-text"><strong>${l.t}</strong><br><br>${l.d}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('modal-body').innerHTML = `
+    <div class="summary-hook">${b.hook}</div>
+    <div class="sum-section">
+      <h3 class="sum-section-title">📖 Gambaran Umum</h3>
+      ${s.overview}
+    </div>
+    <div class="sum-section">
+      <h3 class="sum-section-title">💡 Pelajaran Utama</h3>
+      <div class="key-lessons">${lessonsHTML}</div>
+    </div>
+    <div class="quote-block">
+      <p>${s.quote.text}</p>
+      <cite>${s.quote.src}</cite>
+    </div>
+    <div class="sum-section">
+      <h3 class="sum-section-title">🎯 Verdict</h3>
+      <div class="verdict">
+        <div class="verdict-label">Kesimpulan</div>
+        <p>${s.verdict}</p>
+      </div>
+    </div>
+    <div style="text-align:center;padding:20px 0 10px;">
+      <button onclick="markRead(${b.id})" style="font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;padding:12px 28px;border-radius:4px;border:2px solid ${b.color};background:transparent;color:${b.color};cursor:pointer;letter-spacing:1px;transition:all .2s;" onmouseover="this.style.background='${b.color}';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='${b.color}'">
+        ✓ Tandai Sudah Dibaca
+      </button>
+    </div>
+  `;
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModalBtn(){
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModal(e){
+  if(e.target === document.getElementById('modal-overlay')) closeModalBtn();
+}
+
+function markRead(id){
+  readBooks.add(id);
+  document.getElementById('read-count').textContent = readBooks.size;
+  showReadToast();
+}
+
+function showReadToast(){
+  const t = document.createElement('div');
+  t.style.cssText = `position:fixed;bottom:30px;right:30px;background:var(--sage);color:#fff;padding:12px 24px;border-radius:6px;font-weight:600;font-size:.85rem;z-index:9999;animation:slideIn .3s ease;`;
+  t.textContent = '✓ Ditandai sudah dibaca!';
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2500);
+}
+
+/* ═══════════════════════════════════════════════
+   CATEGORY FILTER
+═══════════════════════════════════════════════ */
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCategory = btn.dataset.cat;
+    const labels = {all:'Semua Buku',self:'Self-Development',psikologi:'Psikologi & Mindset',cinta:'Cinta & Hubungan',bisnis:'Bisnis & Finansial',fiksi:'Fiksi Dunia',lokal:'Sastra Indonesia'};
+    document.getElementById('section-title').textContent = labels[activeCategory] || 'Semua Buku';
+    renderBooks();
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   SEARCH
+═══════════════════════════════════════════════ */
+document.getElementById('search-input').addEventListener('input', function(){
+  searchQuery = this.value;
+  renderBooks();
+});
+
+/* ═══════════════════════════════════════════════
+   QUOTES ROTATION
+═══════════════════════════════════════════════ */
+function showQuote(i){
+  const q = QUOTES[i];
+  const tEl = document.getElementById('qs-text');
+  const aEl = document.getElementById('qs-author');
+  tEl.style.opacity = 0; tEl.style.transform = 'translateY(10px)';
+  setTimeout(() => {
+    tEl.textContent = q.t;
+    aEl.textContent = q.a;
+    tEl.style.transition = 'opacity .5s, transform .5s';
+    tEl.style.opacity = 1; tEl.style.transform = 'translateY(0)';
+  }, 300);
+}
+function nextQuote(){ qIdx = (qIdx + 1) % QUOTES.length; showQuote(qIdx); }
+function prevQuote(){ qIdx = (qIdx - 1 + QUOTES.length) % QUOTES.length; showQuote(qIdx); }
+setInterval(nextQuote, 6000);
+
+/* ═══════════════════════════════════════════════
+   READING PROGRESS
+═══════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (window.scrollY / total) * 100;
+  document.getElementById('prog').style.width = pct + '%';
+});
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════ */
+const revObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revObserver.observe(el));
+
+/* ═══════════════════════════════════════════════
+   KEYBOARD
+═══════════════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeModalBtn();
+  if(e.key === '/' && !document.getElementById('modal-overlay').classList.contains('open')){
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+  }
+});
+
+/* ═══════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════ */
+renderBooks();
+</script>
+</body>
+</html>
