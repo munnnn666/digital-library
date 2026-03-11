@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark" data-font="md">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GERAK — Panduan dari Tahu Menjadi Melakukan. Untuk semua orang: pelajar, ibu rumah tangga, karyawan, pengusaha. Buku digital gratis oleh munnnn666.">
+<meta property="og:title" content="GERAK — Dari Tahu Menjadi Melakukan">
+<meta property="og:description" content="Buku digital gratis tentang cara berhenti menunda dan mulai bergerak — relevan untuk semua orang.">
+<title>GERAK — Panduan Dari Tahu Menjadi Melakukan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --nav-h: 56px;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans:  'Syne', system-ui, sans-serif;
+  --mono:  'Syne Mono', monospace;
+  --rd: cubic-bezier(.16,1,.3,1);
+  --sp: cubic-bezier(.175,.885,.32,1.275);
+}
+
+/* DARK (default) */
+[data-theme="dark"] {
+  --bg:      #080909;
+  --bg2:     #0d0f0f;
+  --surface: #121414;
+  --card:    #171a1a;
+  --lift:    #1d2020;
+  --border:  rgba(168,230,0,.07);
+  --b2:      rgba(168,230,0,.14);
+  --b3:      rgba(168,230,0,.22);
+  --lime:    #a8e600;
+  --lime2:   #c4ff20;
+  --lime3:   #deff80;
+  --text:    #ccd0cc;
+  --text2:   #e8ece8;
+  --muted:   #607060;
+  --dim:     #2e3430;
+  --cream:   #eef2ee;
+  --red:     #ff5050;
+  --warn-bg: rgba(255,80,80,.06);
+  --warn-br: rgba(255,80,80,.18);
+  --tip-bg:  rgba(168,230,0,.05);
+  --tip-br:  rgba(168,230,0,.2);
+  --shadow:  rgba(0,0,0,.5);
+}
+
+/* LIGHT */
+[data-theme="light"] {
+  --bg:      #fafaf8;
+  --bg2:     #f2f4f0;
+  --surface: #ffffff;
+  --card:    #f8faf6;
+  --lift:    #eff2ec;
+  --border:  rgba(60,100,0,.1);
+  --b2:      rgba(60,100,0,.18);
+  --b3:      rgba(60,100,0,.28);
+  --lime:    #4a7a00;
+  --lime2:   #3a6800;
+  --lime3:   #2a5000;
+  --text:    #2a3428;
+  --text2:   #1a2418;
+  --muted:   #6a7868;
+  --dim:     #c0ccc0;
+  --cream:   #1a2418;
+  --red:     #cc2222;
+  --warn-bg: rgba(200,40,40,.05);
+  --warn-br: rgba(200,40,40,.2);
+  --tip-bg:  rgba(60,100,0,.05);
+  --tip-br:  rgba(60,100,0,.18);
+  --shadow:  rgba(0,0,0,.12);
+}
+
+/* FONT SIZE */
+[data-font="sm"] { --fbase: 14px; --fread: .92rem; --fh2: clamp(1.8rem,4vw,2.8rem); }
+[data-font="md"] { --fbase: 16px; --fread: 1.05rem; --fh2: clamp(2rem,4.5vw,3.2rem); }
+[data-font="lg"] { --fbase: 18px; --fread: 1.15rem; --fh2: clamp(2.2rem,5vw,3.6rem); }
+[data-font="xl"] { --fbase: 21px; --fread: 1.28rem; --fh2: clamp(2.4rem,5.5vw,4rem); }
+
+/* ═══ RESET ═══ */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: var(--fbase, 16px); scroll-behavior:smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  overflow-x: hidden;
+  transition: background .3s, color .3s;
+}
+a { color:inherit; text-decoration:none; }
+button { font-family:inherit; border:none; background:none; color:inherit; cursor:pointer; }
+
+/* SKIP LINK (accessibility) */
+.skip-link {
+  position:fixed; top:-100px; left:16px; z-index:99999;
+  background:var(--lime); color:var(--bg); padding:10px 18px;
+  font-family:var(--sans); font-weight:700; font-size:.85rem;
+  border-radius:0 0 4px 4px;
+  transition:top .2s;
+}
+.skip-link:focus { top:0; }
+
+/* scrollbar */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--bg2); }
+::-webkit-scrollbar-thumb { background:var(--dim); border-radius:4px; }
+
+/* PRINT */
+@media print {
+  #topnav,#toc-overlay,#fab-top,#toolbar,#prog-bar,
+  .cover-grid,.cover-glow,.ch-break-glyph,.cover-cta,
+  .cover-scroll,.nav-toc-btn { display:none!important; }
+  body { background:white!important; color:#111!important; font-size:12pt; }
+  .chapter { max-width:100%; padding:20px 0; }
+  .ch-break { min-height:auto; page-break-before:always; padding:24px 0; }
+  .practice,.hbox,.pullquote,.warn-box { border:1px solid #ccc!important; }
+  .ch-break-glyph { display:none; }
+  a[href]::after { content:" (" attr(href) ")"; font-size:.8em; color:#666; }
+}
+
+/* ═══ PROGRESS BAR ═══ */
+#prog-bar {
+  position:fixed; top:0; left:0; right:0; height:3px; z-index:9999;
+  background:linear-gradient(90deg, var(--lime), var(--lime2));
+  transform-origin:left; transform:scaleX(0);
+  box-shadow:0 0 12px var(--lime);
+  transition:transform .1s linear;
+}
+
+/* ═══ TOPNAV ═══ */
+#topnav {
+  position:fixed; top:0; left:0; right:0;
+  height:var(--nav-h); z-index:800;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 40px;
+  background:rgba(var(--nav-bg-rgb, 8,9,9),.93);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  transition:transform .3s, background .3s;
+}
+[data-theme="light"] #topnav { --nav-bg-rgb: 250,250,248; }
+#topnav.hide { transform:translateY(-100%); }
+.nav-brand {
+  font-family:var(--sans); font-size:.95rem; font-weight:800;
+  color:var(--cream); letter-spacing:.04em;
+  display:flex; align-items:center; gap:8px;
+}
+.nav-brand .dot { color:var(--lime); font-size:.7rem; }
+.nav-right { display:flex; align-items:center; gap:10px; }
+.nav-pct {
+  font-family:var(--mono); font-size:.58rem; color:var(--lime);
+  letter-spacing:.1em; min-width:36px; text-align:right;
+}
+.nav-btn {
+  font-family:var(--sans); font-size:.65rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); padding:6px 12px;
+  border:1px solid var(--border);
+  transition:color .2s, border-color .2s;
+  display:flex; align-items:center; gap:5px;
+}
+.nav-btn:hover { color:var(--lime); border-color:var(--b2); }
+.nav-btn svg { width:14px; height:14px; flex-shrink:0; }
+@media(max-width:600px) {
+  #topnav { padding:0 16px; }
+  .nav-btn.hide-sm { display:none; }
+}
+
+/* ═══ TOOLBAR (font + theme) ═══ */
+#toolbar {
+  position:fixed; bottom:80px; right:20px; z-index:700;
+  display:flex; flex-direction:column; gap:6px;
+  align-items:flex-end;
+}
+.tb-group {
+  background:var(--card);
+  border:1px solid var(--b2);
+  padding:6px;
+  display:flex; gap:4px;
+  box-shadow:0 4px 24px var(--shadow);
+}
+.tb-btn {
+  font-family:var(--sans); font-weight:700; font-size:.68rem;
+  padding:6px 10px; color:var(--muted);
+  border:1px solid transparent;
+  transition:all .2s;
+  line-height:1;
+}
+.tb-btn:hover { color:var(--lime); }
+.tb-btn.active { color:var(--lime); border-color:var(--b2); background:var(--lift); }
+.tb-theme {
+  font-size:.7rem; padding:6px 10px;
+  display:flex; align-items:center; gap:5px;
+}
+.tb-label {
+  font-family:var(--mono); font-size:.44rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--muted);
+  padding:0 4px; align-self:center;
+}
+@media(max-width:600px) { #toolbar { bottom:60px; right:12px; } }
+
+/* ═══ FAB BACK TO TOP ═══ */
+#fab-top {
+  position:fixed; bottom:20px; right:20px; z-index:700;
+  width:42px; height:42px;
+  background:var(--lime); color:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem; border:none;
+  box-shadow:0 4px 20px rgba(168,230,0,.3);
+  opacity:0; transform:translateY(12px);
+  transition:opacity .3s, transform .3s, background .2s;
+  pointer-events:none;
+}
+#fab-top.show { opacity:1; transform:none; pointer-events:auto; }
+#fab-top:hover { background:var(--lime2); }
+
+/* ═══ TOC OVERLAY ═══ */
+#toc-overlay {
+  display:none; position:fixed; inset:0; z-index:900;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(8px);
+  overflow-y:auto;
+  opacity:0; transition:opacity .3s;
+}
+#toc-overlay.open { display:flex; align-items:flex-start; justify-content:center; padding:var(--nav-h) 24px 48px; }
+#toc-overlay.vis { opacity:1; }
+.toc-panel {
+  background:var(--surface); border:1px solid var(--b2);
+  max-width:680px; width:100%;
+  position:relative; margin-top:16px;
+}
+.toc-head {
+  padding:32px 40px 24px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:flex-start; justify-content:space-between; gap:20px;
+}
+.toc-ht { font-family:var(--sans); font-size:1.6rem; font-weight:800; color:var(--lime); }
+.toc-hs { font-family:var(--serif); font-size:.88rem; color:var(--muted); margin-top:4px; font-style:italic; }
+.toc-close-btn {
+  flex-shrink:0; padding:8px 14px;
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--muted);
+  border:1px solid var(--border);
+  transition:all .2s;
+}
+.toc-close-btn:hover { color:var(--lime); border-color:var(--b2); }
+.toc-body { padding:16px 40px 40px; }
+.toc-part-label {
+  font-family:var(--mono); font-size:.52rem; letter-spacing:.38em;
+  text-transform:uppercase; color:var(--lime); opacity:.55;
+  padding:20px 0 8px; display:block;
+}
+.toc-entry {
+  display:flex; align-items:center; gap:14px;
+  padding:11px 0; border-bottom:1px solid var(--border);
+  transition:color .2s;
+  cursor:pointer;
+}
+.toc-entry:hover { color:var(--lime); }
+.toc-entry.current { color:var(--lime); }
+.toc-entry.done .te-num::after { content:'✓'; color:var(--lime); font-size:.6rem; }
+.te-num {
+  font-family:var(--mono); font-size:.6rem; color:var(--muted);
+  flex-shrink:0; width:24px;
+}
+.te-name { font-family:var(--sans); font-size:.88rem; font-weight:600; flex:1; }
+.te-meta {
+  font-family:var(--mono); font-size:.48rem; color:var(--muted);
+  display:flex; flex-direction:column; align-items:flex-end; gap:2px;
+}
+.te-time { letter-spacing:.08em; }
+.te-done {
+  font-size:.44rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--lime); opacity:0;
+  transition:opacity .2s;
+}
+.toc-entry.done .te-done { opacity:1; }
+@media(max-width:600px) {
+  .toc-head { padding:24px 20px 20px; }
+  .toc-body { padding:8px 20px 32px; }
+  .te-meta { display:none; }
+}
+
+/* ═══ CHAPTER DOTS NAV ═══ */
+#ch-dots {
+  position:fixed; top:50%; right:14px; transform:translateY(-50%);
+  z-index:600; display:flex; flex-direction:column; gap:7px;
+}
+.ch-dot {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--dim); border:1px solid var(--border);
+  transition:all .3s; cursor:pointer;
+  title: '';
+}
+.ch-dot.active {
+  background:var(--lime); width:8px; height:8px;
+  box-shadow:0 0 8px var(--lime);
+}
+@media(max-width:768px) { #ch-dots { display:none; } }
+
+/* ═══ COVER ═══ */
+#cover {
+  position:relative; min-height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center;
+  padding:calc(var(--nav-h) + 60px) 40px 90px;
+  overflow:hidden;
+}
+.cover-grid {
+  position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(168,230,0,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,230,0,.025) 1px, transparent 1px);
+  background-size:56px 56px;
+  animation:gridDrift 22s linear infinite;
+}
+[data-theme="light"] .cover-grid {
+  background-image:
+    linear-gradient(rgba(60,100,0,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60,100,0,.04) 1px, transparent 1px);
+}
+@keyframes gridDrift { from{background-position:0 0} to{background-position:56px 56px} }
+.cover-wm {
+  position:absolute; font-family:var(--sans); font-weight:800;
+  font-size:clamp(14rem,40vw,34rem); line-height:.85; letter-spacing:-.06em;
+  color:transparent; -webkit-text-stroke:1px rgba(168,230,0,.05);
+  user-select:none; pointer-events:none;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+}
+[data-theme="light"] .cover-wm { -webkit-text-stroke:1px rgba(60,100,0,.06); }
+.cg {
+  position:absolute; border-radius:50%; filter:blur(90px);
+  pointer-events:none; opacity:.7;
+}
+.cg1 {
+  width:420px; height:340px;
+  background:radial-gradient(circle, rgba(168,230,0,.1), transparent 70%);
+  top:15%; left:55%; animation:fl1 9s ease-in-out infinite;
+}
+.cg2 {
+  width:300px; height:300px;
+  background:radial-gradient(circle, rgba(255,150,0,.07), transparent 70%);
+  bottom:22%; left:18%; animation:fl2 12s ease-in-out infinite;
+}
+@keyframes fl1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-18px,16px)} }
+@keyframes fl2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(14px,-12px)} }
+.cover-inner { position:relative; z-index:2; }
+.cover-eyebrow {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.55em;
+  text-transform:uppercase; color:var(--lime); opacity:.7;
+  margin-bottom:22px; animation:aUp .7s .1s both;
+}
+.cover-title {
+  font-family:var(--sans);
+  font-size:clamp(5rem,18vw,17rem);
+  font-weight:800; line-height:.88; letter-spacing:-.04em;
+  color:var(--cream); animation:aUp .7s .2s both;
+}
+.cover-title .hl { color:var(--lime); }
+.cover-tagline {
+  font-family:var(--serif); font-style:italic;
+  font-size:clamp(1rem,2.2vw,1.45rem);
+  color:var(--muted); margin:18px 0 32px;
+  animation:aUp .7s .3s both;
+}
+.cover-audience {
+  display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
+  margin-bottom:36px; animation:aUp .7s .38s both;
+}
+.aud-tag {
+  font-family:var(--mono); font-size:.52rem; letter-spacing:.14em;
+  padding:5px 12px; border:1px solid var(--b2);
+  color:var(--muted); transition:all .25s;
+}
+.aud-tag:hover { color:var(--lime); border-color:var(--b3); }
+.cover-meta {
+  display:flex; border:1px solid var(--b2); overflow:hidden;
+  animation:aUp .7s .44s both; margin:0 auto 40px;
+  flex-wrap:wrap;
+}
+.cmeta {
+  padding:14px 26px; text-align:center;
+  border-right:1px solid var(--border);
+  flex:1; min-width:80px;
+}
+.cmeta:last-child { border-right:none; }
+.cmeta-n {
+  font-family:var(--sans); font-size:1.5rem; font-weight:800;
+  color:var(--lime); line-height:1; display:block;
+}
+.cmeta-l {
+  font-family:var(--mono); font-size:.46rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--muted); margin-top:4px; display:block;
+}
+.cover-cta { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; animation:aUp .7s .5s both; }
+.btn-main {
+  font-family:var(--sans); font-size:.82rem; font-weight:800;
+  letter-spacing:.08em; text-transform:uppercase;
+  background:var(--lime); color:var(--bg);
+  padding:13px 36px; transition:all .3s;
+  position:relative; overflow:hidden;
+}
+.btn-main:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(168,230,0,.3); }
+.btn-ghost {
+  font-family:var(--sans); font-size:.78rem; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase;
+  color:var(--muted); padding:13px 22px;
+  border:1px solid var(--border); transition:all .3s;
+}
+.btn-ghost:hover { color:var(--lime); border-color:var(--b2); }
+.cover-scroll {
+  position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:.48rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--dim);
+  animation:fi 1s 1.3s both;
+}
+.s-wire {
+  width:1px; height:40px;
+  background:linear-gradient(to bottom, var(--lime), transparent);
+  animation:swa 2.6s ease-in-out infinite;
+}
+@keyframes swa { 0%,100%{opacity:.2;transform:scaleY(.5);transform-origin:top} 50%{opacity:1;transform:scaleY(1);transform-origin:top} }
+@keyframes aUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+@keyframes fi { from{opacity:0} to{opacity:1} }
+
+/* ═══ CHAPTER ═══ */
+.chapter {
+  max-width:720px; margin:0 auto;
+  padding:88px 48px;
+}
+@media(max-width:640px) { .chapter { padding:64px 22px; } }
+
+/* reveal */
+.ch-reveal { opacity:0; transform:translateY(22px); transition:opacity .65s, transform .65s; }
+.ch-reveal.in { opacity:1; transform:none; }
+
+/* chapter kicker */
+.ch-kicker {
+  font-family:var(--mono); font-size:.56rem; letter-spacing:.4em;
+  text-transform:uppercase; color:var(--lime); opacity:.7;
+  margin-bottom:16px; display:flex; align-items:center; gap:12px;
+}
+.ch-kicker::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(90deg, var(--b2), transparent); max-width:100px;
+}
+
+/* reading time badge */
+.ch-readtime {
+  font-family:var(--mono); font-size:.48rem; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--muted);
+  background:var(--lift); border:1px solid var(--border);
+  padding:3px 10px; display:inline-block; margin-bottom:18px;
+}
+
+/* chapter heading */
+.ch-title {
+  font-family:var(--sans);
+  font-size:var(--fh2, clamp(2rem,4.5vw,3.2rem));
+  font-weight:800; line-height:.96; letter-spacing:-.03em;
+  color:var(--cream); margin-bottom:28px;
+}
+.ch-title em { font-style:italic; color:var(--lime); font-weight:400; }
+.ch-title .strike { text-decoration:line-through; color:var(--muted); font-weight:400; }
+
+/* opening */
+.ch-opener {
+  font-family:var(--serif); font-size:var(--fread,1.05rem);
+  font-style:italic; color:var(--muted);
+  border-left:3px solid var(--lime);
+  padding:10px 0 10px 22px; margin-bottom:40px;
+  line-height:1.85;
+}
+
+/* prose */
+.prose {
+  font-family:var(--serif); font-size:var(--fread,1.05rem);
+  line-height:2; color:var(--text); margin-bottom:26px;
+}
+.prose strong { color:var(--text2); font-weight:600; }
+.prose em { color:var(--lime3); font-style:italic; }
+.prose .en {
+  font-style:italic; color:var(--muted);
+  border-bottom:1px dashed var(--dim);
+  cursor:help;
+}
+
+/* dropcap */
+.dropcap::first-letter {
+  float:left; font-family:var(--sans); font-size:4.5rem;
+  line-height:.78; color:var(--lime);
+  margin-right:10px; margin-top:10px; font-weight:800;
+}
+
+/* pullquote */
+.pullquote {
+  font-family:var(--sans);
+  font-size:clamp(1.15rem,2.6vw,1.65rem);
+  font-weight:700; line-height:1.35;
+  color:var(--cream); letter-spacing:-.02em;
+  border-top:2px solid var(--lime);
+  border-bottom:1px solid var(--border);
+  padding:32px 0; margin:48px 0;
+}
+.pq-label {
+  font-family:var(--mono); font-size:.52rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--lime); opacity:.6;
+  display:block; margin-bottom:10px;
+}
+.pullquote cite {
+  display:block; font-family:var(--mono); font-size:.56rem;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); margin-top:12px; font-style:normal;
+}
+
+/* hbox */
+.hbox {
+  background:var(--tip-bg);
+  border:1px solid var(--tip-br);
+  border-left:3px solid var(--lime);
+  padding:26px 30px; margin:38px 0;
+}
+.hbox-label {
+  font-family:var(--mono); font-size:.52rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--lime); margin-bottom:12px;
+  display:flex; align-items:center; gap:10px;
+}
+.hbox-label::after { content:''; flex:1; height:1px; background:var(--b2); }
+.hbox-title { font-family:var(--sans); font-size:.95rem; font-weight:700; color:var(--cream); margin-bottom:8px; }
+.hbox p { font-size:var(--fread,.95rem); font-family:var(--serif); color:var(--muted); line-height:1.82; }
+.hbox p strong { color:var(--text); }
+
+/* example boxes (for audience examples) */
+.example-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:28px 0; }
+@media(max-width:580px) { .example-row { grid-template-columns:1fr; } }
+.example-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:2px; padding:16px 18px;
+  transition:border-color .2s;
+}
+.example-card:hover { border-color:var(--b2); }
+.ex-who {
+  font-family:var(--mono); font-size:.48rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--lime); opacity:.7; margin-bottom:7px; display:block;
+}
+.ex-text { font-family:var(--serif); font-size:.88rem; color:var(--muted); line-height:1.75; }
+.ex-text strong { color:var(--text); }
+
+/* num list */
+.num-list { list-style:none; margin:22px 0; }
+.num-list li {
+  display:flex; gap:14px; padding:12px 0;
+  border-bottom:1px solid var(--border);
+  font-size:var(--fread,.95rem); color:var(--text);
+  line-height:1.75; font-family:var(--serif);
+}
+.num-list li:last-child { border-bottom:none; }
+.num-list .n {
+  font-family:var(--mono); font-size:.68rem; font-weight:700;
+  color:var(--lime); flex-shrink:0; padding-top:2px;
+}
+
+/* stat grid */
+.stat-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--b2); margin:36px 0;
+}
+@media(max-width:480px) { .stat-grid { grid-template-columns:1fr; } }
+.sg-cell {
+  padding:20px 16px; border-right:1px solid var(--border); text-align:center;
+}
+.sg-cell:last-child { border-right:none; }
+@media(max-width:480px) { .sg-cell { border-right:none; border-bottom:1px solid var(--border); } }
+@media(max-width:480px) { .sg-cell:last-child { border-bottom:none; } }
+.sg-num {
+  font-family:var(--sans); font-size:1.8rem; font-weight:800;
+  color:var(--lime); line-height:1; display:block;
+}
+.sg-desc {
+  font-family:var(--mono); font-size:.5rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted); margin-top:6px; display:block; line-height:1.5;
+}
+
+/* practice block — interactive */
+.practice {
+  background:var(--surface); border:1px solid var(--b3);
+  padding:32px 36px; margin:46px 0;
+  position:relative;
+}
+.practice::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, transparent, var(--lime), transparent);
+}
+.practice-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:18px; }
+.practice-label {
+  font-family:var(--mono); font-size:.54rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--lime);
+  display:flex; align-items:center; gap:8px;
+}
+.practice-label::after { content:''; flex:1; height:1px; background:var(--b2); }
+.practice-done-btn {
+  font-family:var(--mono); font-size:.48rem; letter-spacing:.15em;
+  text-transform:uppercase; padding:5px 12px;
+  border:1px solid var(--border); color:var(--muted);
+  transition:all .25s; white-space:nowrap; flex-shrink:0;
+}
+.practice-done-btn:hover { border-color:var(--b2); color:var(--lime); }
+.practice-done-btn.done { background:rgba(168,230,0,.1); border-color:var(--b2); color:var(--lime); }
+.practice-title {
+  font-family:var(--sans); font-size:1rem; font-weight:700;
+  color:var(--cream); margin-bottom:10px;
+}
+.practice p { font-size:var(--fread,.9rem); font-family:var(--serif); color:var(--muted); line-height:1.82; margin-bottom:12px; }
+.practice p strong { color:var(--text); }
+.psteps { list-style:none; margin-top:14px; }
+.pstep {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:10px 0; border-bottom:1px solid var(--border);
+  font-size:var(--fread,.88rem); color:var(--text); line-height:1.7;
+  font-family:var(--serif); cursor:pointer; transition:color .2s;
+}
+.pstep:last-child { border-bottom:none; }
+.pstep.checked { color:var(--muted); text-decoration:line-through; }
+.pstep-cb {
+  width:16px; height:16px; flex-shrink:0; margin-top:3px;
+  border:1px solid var(--b2); background:var(--card);
+  display:flex; align-items:center; justify-content:center;
+  transition:all .2s; font-size:.6rem;
+}
+.pstep.checked .pstep-cb { background:var(--lime); border-color:var(--lime); color:var(--bg); }
+.pstep-text { flex:1; }
+
+/* chapter nav (prev/next) */
+.ch-nav {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:72px; padding-top:28px;
+  border-top:1px solid var(--border);
+  gap:12px;
+}
+.ch-nav-btn {
+  font-family:var(--sans); font-size:.72rem; font-weight:700;
+  letter-spacing:.06em; text-transform:uppercase;
+  padding:11px 20px; border:1px solid var(--border);
+  color:var(--muted); transition:all .25s;
+  display:flex; align-items:center; gap:8px; max-width:48%;
+  text-align:left;
+}
+.ch-nav-btn:hover { color:var(--lime); border-color:var(--b2); }
+.ch-nav-btn.next { text-align:right; }
+.ch-nav-label { font-family:var(--mono); font-size:.46rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:3px; }
+.ch-nav-name { color:var(--text2); font-size:.78rem; display:block; }
+.ch-nav-btn:hover .ch-nav-name { color:var(--lime); }
+@media(max-width:500px) {
+  .ch-nav-btn { font-size:.62rem; padding:9px 14px; }
+  .ch-nav-name { display:none; }
+}
+
+/* warn box */
+.warn-box {
+  background:var(--warn-bg); border:1px solid var(--warn-br);
+  border-left:3px solid var(--red);
+  padding:20px 26px; margin:34px 0;
+}
+.warn-box p { font-size:var(--fread,.9rem); color:var(--muted); line-height:1.82; }
+.warn-box p strong { color:var(--red); }
+
+/* chapter break */
+.ch-break {
+  position:relative; min-height:48vh;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin:64px 0;
+}
+.ch-break-bg { position:absolute; inset:0; background:var(--bg2); }
+.ch-break-glyph {
+  position:absolute; font-family:var(--sans); font-weight:800;
+  font-size:clamp(10rem,28vw,24rem); letter-spacing:-.06em;
+  color:transparent; -webkit-text-stroke:1px rgba(168,230,0,.055);
+  user-select:none; pointer-events:none;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+}
+[data-theme="light"] .ch-break-glyph { -webkit-text-stroke:1px rgba(60,100,0,.07); }
+.ch-break-inner {
+  position:relative; z-index:2; text-align:center; padding:52px 40px;
+}
+.ch-break-num {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.48em;
+  text-transform:uppercase; color:var(--lime); opacity:.65; margin-bottom:12px;
+}
+.ch-break-title {
+  font-family:var(--sans); font-size:clamp(1.7rem,4vw,2.9rem);
+  font-weight:800; color:var(--cream); letter-spacing:-.02em; line-height:1.1;
+}
+.ch-break-title em { font-style:italic; color:var(--lime); font-weight:400; }
+
+/* subheadings */
+h3.sub-h {
+  font-family:var(--sans); font-size:clamp(1.2rem,2.5vw,1.4rem); font-weight:800;
+  color:var(--cream); letter-spacing:-.02em; margin:52px 0 16px;
+}
+h4.sub-h2 {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--lime); margin:34px 0 12px; opacity:.75;
+}
+
+/* separator */
+.ch-sep {
+  display:flex; align-items:center; gap:18px;
+  margin:72px 0; opacity:.3;
+}
+.ch-sep::before,.ch-sep::after { content:''; flex:1; height:1px; background:var(--b2); }
+.ch-sep span { font-family:var(--mono); font-size:.58rem; letter-spacing:.25em; text-transform:uppercase; color:var(--lime); }
+
+/* ═══ EPILOG ═══ */
+.epilogue { padding:96px 48px; text-align:center; }
+@media(max-width:600px) { .epilogue { padding:64px 22px; } }
+.ep-title {
+  font-family:var(--sans); font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:800; color:var(--lime); letter-spacing:-.02em; margin-bottom:22px;
+}
+.ep-text {
+  font-family:var(--serif); font-size:var(--fread,1.1rem); font-style:italic;
+  color:var(--muted); line-height:1.98; max-width:560px; margin:0 auto 28px;
+}
+.ep-highlight {
+  font-family:var(--serif); font-size:var(--fread,1.1rem);
+  color:var(--cream); font-weight:600; font-style:normal;
+  max-width:560px; margin:0 auto 40px; line-height:1.9;
+}
+.ep-sig {
+  font-family:var(--sans); font-size:.95rem; font-weight:800;
+  color:var(--dim); letter-spacing:.1em; text-transform:uppercase; margin-top:48px;
+}
+.ep-footer {
+  max-width:720px; margin:72px auto 0; border-top:1px solid var(--border);
+  padding-top:36px; font-family:var(--mono); font-size:.56rem;
+  letter-spacing:.1em; color:var(--muted); text-align:center; line-height:2.2;
+}
+.ep-footer strong { color:var(--lime); }
+
+/* GRAIN — low z-index, pointer-events none */
+body::after {
+  content:''; position:fixed; inset:0; z-index:1; pointer-events:none;
+  opacity:.14;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#prolog">Langsung ke konten</a>
+<div id="prog-bar" role="progressbar" aria-label="Progress membaca"></div>
+
+<!-- ─── TOC ─── -->
+<div id="toc-overlay" role="dialog" aria-label="Daftar Isi" aria-modal="true">
+  <div class="toc-panel">
+    <div class="toc-head">
+      <div>
+        <div class="toc-ht">GERAK</div>
+        <div class="toc-hs">Panduan Dari Tahu Menjadi Melakukan</div>
+      </div>
+      <button class="toc-close-btn" onclick="closeTOC()" aria-label="Tutup daftar isi">Tutup ✕</button>
+    </div>
+    <div class="toc-body">
+      <span class="toc-part-label">Pembuka</span>
+      <div class="toc-entry" data-target="prolog" onclick="goTo('prolog')">
+        <span class="te-num">—</span>
+        <span class="te-name">Prolog: Jarak Paling Jauh</span>
+        <div class="te-meta"><span class="te-time">3 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <span class="toc-part-label">Bagian I — Memahami Hambatan</span>
+      <div class="toc-entry" data-target="bab1" onclick="goTo('bab1')">
+        <span class="te-num">01</span>
+        <span class="te-name">Kamu Tidak Kekurangan Ilmu</span>
+        <div class="te-meta"><span class="te-time">5 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <div class="toc-entry" data-target="bab2" onclick="goTo('bab2')">
+        <span class="te-num">02</span>
+        <span class="te-name">Prokrastinasi Bukan Malas</span>
+        <div class="te-meta"><span class="te-time">6 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <span class="toc-part-label">Bagian II — Membangun Sistem</span>
+      <div class="toc-entry" data-target="bab3" onclick="goTo('bab3')">
+        <span class="te-num">03</span>
+        <span class="te-name">Energi, Bukan Waktu</span>
+        <div class="te-meta"><span class="te-time">5 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <div class="toc-entry" data-target="bab4" onclick="goTo('bab4')">
+        <span class="te-num">04</span>
+        <span class="te-name">Sistem Mengalahkan Tujuan</span>
+        <div class="te-meta"><span class="te-time">5 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <span class="toc-part-label">Bagian III — Bergerak</span>
+      <div class="toc-entry" data-target="bab5" onclick="goTo('bab5')">
+        <span class="te-num">05</span>
+        <span class="te-name">Mulai Kecil, Efek Besar</span>
+        <div class="te-meta"><span class="te-time">5 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <div class="toc-entry" data-target="bab6" onclick="goTo('bab6')">
+        <span class="te-num">06</span>
+        <span class="te-name">Keputusan Cepat</span>
+        <div class="te-meta"><span class="te-time">5 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <span class="toc-part-label">Bagian IV — Mempertahankan</span>
+      <div class="toc-entry" data-target="bab7" onclick="goTo('bab7')">
+        <span class="te-num">07</span>
+        <span class="te-name">Fokus di Era Distraksi</span>
+        <div class="te-meta"><span class="te-time">6 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <div class="toc-entry" data-target="bab8" onclick="goTo('bab8')">
+        <span class="te-num">08</span>
+        <span class="te-name">Selesaikan</span>
+        <div class="te-meta"><span class="te-time">5 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+      <span class="toc-part-label">Penutup</span>
+      <div class="toc-entry" data-target="epilog" onclick="goTo('epilog')">
+        <span class="te-num">—</span>
+        <span class="te-name">Epilog: Hari Pertama Selalu Hari Ini</span>
+        <div class="te-meta"><span class="te-time">2 mnt</span><span class="te-done">✓ Selesai</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TOPNAV ─── -->
+<nav id="topnav" role="navigation" aria-label="Navigasi utama">
+  <div class="nav-brand">GERAK <span class="dot">▸</span></div>
+  <div class="nav-right">
+    <span class="nav-pct" id="prog-pct" aria-live="polite">0%</span>
+    <button class="nav-btn hide-sm" onclick="openTOC()" aria-label="Buka daftar isi">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="4" x2="14" y2="4"/><line x1="2" y1="8" x2="10" y2="8"/><line x1="2" y1="12" x2="12" y2="12"/></svg>
+      Daftar Isi
+    </button>
+    <button class="nav-btn" onclick="window.print()" aria-label="Cetak buku" title="Cetak">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="1" width="10" height="8" rx="1"/><rect x="1" y="5" width="14" height="7" rx="1"/><rect x="4" y="10" width="8" height="5" rx="1"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── TOOLBAR ─── -->
+<div id="toolbar" role="toolbar" aria-label="Pengaturan tampilan">
+  <div class="tb-group" aria-label="Ukuran teks">
+    <span class="tb-label">Teks</span>
+    <button class="tb-btn" id="fs-sm" onclick="setFont('sm')" aria-label="Teks kecil" title="Teks Kecil">A-</button>
+    <button class="tb-btn active" id="fs-md" onclick="setFont('md')" aria-label="Teks sedang" title="Teks Sedang">A</button>
+    <button class="tb-btn" id="fs-lg" onclick="setFont('lg')" aria-label="Teks besar" title="Teks Besar">A+</button>
+    <button class="tb-btn" id="fs-xl" onclick="setFont('xl')" aria-label="Teks sangat besar" title="Teks Sangat Besar">A++</button>
+  </div>
+  <div class="tb-group">
+    <button class="tb-btn tb-theme" id="theme-btn" onclick="toggleTheme()" aria-label="Ganti mode terang/gelap">
+      <span id="theme-icon">☀️</span> <span id="theme-lbl">Terang</span>
+    </button>
+  </div>
+</div>
+
+<!-- ─── CHAPTER DOTS ─── -->
+<nav id="ch-dots" aria-label="Navigasi bab">
+  <div class="ch-dot" data-target="cover" title="Cover" onclick="goTo('cover')"></div>
+  <div class="ch-dot" data-target="prolog" title="Prolog" onclick="goTo('prolog')"></div>
+  <div class="ch-dot" data-target="bab1" title="Bab 1" onclick="goTo('bab1')"></div>
+  <div class="ch-dot" data-target="bab2" title="Bab 2" onclick="goTo('bab2')"></div>
+  <div class="ch-dot" data-target="bab3" title="Bab 3" onclick="goTo('bab3')"></div>
+  <div class="ch-dot" data-target="bab4" title="Bab 4" onclick="goTo('bab4')"></div>
+  <div class="ch-dot" data-target="bab5" title="Bab 5" onclick="goTo('bab5')"></div>
+  <div class="ch-dot" data-target="bab6" title="Bab 6" onclick="goTo('bab6')"></div>
+  <div class="ch-dot" data-target="bab7" title="Bab 7" onclick="goTo('bab7')"></div>
+  <div class="ch-dot" data-target="bab8" title="Bab 8" onclick="goTo('bab8')"></div>
+  <div class="ch-dot" data-target="epilog" title="Epilog" onclick="goTo('epilog')"></div>
+</nav>
+
+<!-- ─── FAB BACK TO TOP ─── -->
+<button id="fab-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas" title="Ke atas">↑</button>
+
+<!-- ═══════════════════════════════════
+     COVER
+════════════════════════════════════ -->
+<section id="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-wm" aria-hidden="true">G</div>
+  <div class="cg cg1"></div>
+  <div class="cg cg2"></div>
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Buku Digital Gratis · munnnn666 × AI</div>
+    <h1 class="cover-title"><span class="hl">G</span>ERAK</h1>
+    <p class="cover-tagline">Panduan Dari <em>Tahu</em> Menjadi <em>Melakukan</em></p>
+
+    <div class="cover-audience" role="list" aria-label="Buku ini untuk:">
+      <span class="aud-tag" role="listitem">🎓 Pelajar & Mahasiswa</span>
+      <span class="aud-tag" role="listitem">🏠 Ibu & Bapak Rumah Tangga</span>
+      <span class="aud-tag" role="listitem">💼 Karyawan & Pekerja</span>
+      <span class="aud-tag" role="listitem">🛒 Pelaku Usaha Kecil</span>
+      <span class="aud-tag" role="listitem">🌱 Siapa Saja yang Ingin Berubah</span>
+    </div>
+
+    <div class="cover-meta">
+      <div class="cmeta"><span class="cmeta-n">8</span><span class="cmeta-l">Bab</span></div>
+      <div class="cmeta"><span class="cmeta-n">~40</span><span class="cmeta-l">Menit Baca</span></div>
+      <div class="cmeta"><span class="cmeta-n">8</span><span class="cmeta-l">Latihan</span></div>
+      <div class="cmeta"><span class="cmeta-n">∞</span><span class="cmeta-l">Manfaat</span></div>
+    </div>
+
+    <div class="cover-cta">
+      <a href="#prolog" class="btn-main">Mulai Membaca →</a>
+      <button class="btn-ghost" onclick="openTOC()">Lihat Daftar Isi</button>
+    </div>
+  </div>
+  <div class="cover-scroll" aria-hidden="true">
+    <div class="s-wire"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     PROLOG
+════════════════════════════════════ -->
+<section id="prolog">
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Prolog</div>
+    <div class="ch-readtime">⏱ 3 menit baca</div>
+    <h2 class="ch-title">Jarak Paling<br>Jauh di <em>Dunia</em></h2>
+    <p class="ch-opener">
+      Bukan dari bumi ke bulan. Bukan dari ujung samudra ke ujung lainnya.
+      Jarak paling jauh di dunia adalah jarak dari kepala ke tangan.
+    </p>
+
+    <p class="prose dropcap">
+      Kamu sudah tahu caranya. Sudah baca artikelnya, nonton videonya, dengerin podcastnya, atau dapat nasihat dari orang-orang di sekitarmu. Rencana sudah ada — mungkin bahkan sudah ditulis di catatan ponselmu. Tapi tetap saja, tidak ada yang berubah.
+    </p>
+    <p class="prose">
+      Cerita ini bukan tentang orang malas. Justru sebaliknya — ini tentang orang yang <em>terlalu banyak berencana</em> tapi tidak pernah mulai. Tentang orang yang sibuk mempersiapkan untuk mulai, tapi tidak pernah benar-benar mulai.
+    </p>
+
+    <div class="example-row">
+      <div class="example-card">
+        <span class="ex-who">Pelajar / Mahasiswa</span>
+        <p class="ex-text">Sudah tahu harus belajar untuk ujian besok. Sudah buka buku. Tapi malah buka TikTok selama dua jam.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Ibu / Bapak Rumah Tangga</span>
+        <p class="ex-text">Sudah niat mau mulai usaha kecil-kecilan dari rumah. Sudah riset. Sudah catat modal. Tapi belum pernah benar-benar mulai.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Karyawan</span>
+        <p class="ex-text">Sudah tahu harus belajar skill baru agar kariernya naik. Sudah daftar kursus online. Tapi modulnya belum dibuka sampai sekarang.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Siapa Saja</span>
+        <p class="ex-text">Sudah niat olahraga sejak awal tahun. Sudah beli sepatu lari. Masih di dalam dus sampai hari ini.</p>
+      </div>
+    </div>
+
+    <p class="prose">
+      Kamu tidak sendirian. Dan ini bukan tentang kegagalan karakter atau kelemahan diri. Ini adalah sebuah masalah yang bisa diselesaikan — kalau kamu tahu akarnya.
+    </p>
+
+    <div class="pullquote">
+      <span class="pq-label">Inti Buku Ini</span>
+      Pengetahuan tanpa aksi hanya menambah beban. Buku ini tidak akan memberimu lebih banyak ilmu — buku ini akan membantumu <em>bergerak</em>.
+    </div>
+
+    <div class="hbox">
+      <div class="hbox-label">Cara Terbaik Membaca Buku Ini</div>
+      <div class="hbox-title">Baca satu bab. Kerjakan latihannya. Baru lanjut.</div>
+      <p>Jangan baca semuanya sekaligus. Itu seperti menonton video cara berenang tanpa pernah masuk ke kolam. Setiap bab punya satu latihan — pendek, langsung bisa dikerjakan, tidak membutuhkan alat apapun.</p>
+    </div>
+
+    <div class="ch-nav">
+      <div></div>
+      <a href="#bab1" class="ch-nav-btn next" aria-label="Lanjut ke Bab 1">
+        <div><span class="ch-nav-label">Bab Berikutnya</span><span class="ch-nav-name">Kamu Tidak Kekurangan Ilmu</span></div>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAB 1 ═══ -->
+<div class="ch-break ch-reveal" id="bab1">
+  <div class="ch-break-bg"></div>
+  <div class="ch-break-glyph" aria-hidden="true">01</div>
+  <div class="ch-break-inner">
+    <div class="ch-break-num">Bab 01 · Bagian I — Memahami Hambatan</div>
+    <h2 class="ch-break-title">Kamu Tidak<br>Kekurangan <em>Ilmu</em></h2>
+  </div>
+</div>
+
+<section>
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Bab 01 · Hambatan Pertama</div>
+    <div class="ch-readtime">⏱ 5 menit baca</div>
+    <h2 class="ch-title">Terlalu Banyak<br><em>Tahu</em>, Terlalu<br>Sedikit <em>Lakukan</em>.</h2>
+    <p class="ch-opener">
+      Masalahmu bukan kurang informasi. Masalahmu adalah terlalu banyak informasi yang tidak pernah dieksekusi.
+    </p>
+
+    <div class="stat-grid" role="list">
+      <div class="sg-cell" role="listitem">
+        <span class="sg-num">70%</span>
+        <span class="sg-desc">Orang tahu apa yang harus dilakukan tapi tidak melakukannya</span>
+      </div>
+      <div class="sg-cell" role="listitem">
+        <span class="sg-num">2,5 jam</span>
+        <span class="sg-desc">Rata-rata waktu sehari untuk scroll media sosial — tapi jarang untuk bertindak</span>
+      </div>
+      <div class="sg-cell" role="listitem">
+        <span class="sg-num">&lt;1%</span>
+        <span class="sg-desc">Pengetahuan baru yang benar-benar mengubah perilaku tanpa latihan aktif</span>
+      </div>
+    </div>
+
+    <p class="prose dropcap">
+      Profesor Jeffrey Pfeffer dari Stanford menyebutnya <span class="en" title="Jarak antara tahu dan melakukan"><em>Knowing-Doing Gap</em></span> — kesenjangan antara tahu dan melakukan. Dan ini bukan soal kecerdasan. Orang pintar pun terjebak di sini. Bahkan sering justru orang yang paling banyak belajar yang paling sedikit bertindak.
+    </p>
+    <p class="prose">
+      Kenapa? Karena otak kita punya kebiasaan berbahaya: <strong>memperlakukan tahu seolah sudah melakukan.</strong> Ketika kamu selesai membaca artikel tentang cara memulai usaha, otakmu melepaskan sedikit dopamin — hormon kepuasan. Sama seperti kalau kamu benar-benar memulai usaha. Hanya sedikit, tapi cukup untuk membuat kamu merasa sudah "melakukan sesuatu" hari ini.
+    </p>
+
+    <h3 class="sub-h">Tiga Jebakan yang Membuat Kita Diam</h3>
+    <ul class="num-list" role="list">
+      <li>
+        <span class="n">01.</span>
+        <div><strong>Ngomong dulu, kerja belakangan.</strong> Membicarakan rencana memberikan kepuasan yang hampir sama dengan menjalankannya. Semakin kamu cerita tentang rencanamu ke orang lain, semakin nyata rasanya di kepala — padahal belum ada yang terjadi di dunia nyata.</div>
+      </li>
+      <li>
+        <span class="n">02.</span>
+        <div><strong>Takut yang menyamar jadi persiapan.</strong> "Aku belum siap" hampir selalu bukan soal kesiapan. Ini tentang ketakutan — takut gagal, takut dilihat orang, takut hasilnya jelek. Persiapan tanpa ujung adalah penundaan dengan wajah yang lebih terhormat.</div>
+      </li>
+      <li>
+        <span class="n">03.</span>
+        <div><strong>Terlalu banyak pilihan membuat bingung.</strong> Semakin kamu tahu, semakin besar gambarannya — dan semakin susah memilih langkah pertama. Ini paradoks: lebih banyak belajar bisa membuatmu lebih diam, bukan lebih bergerak.</div>
+      </li>
+    </ul>
+
+    <div class="pullquote">
+      <span class="pq-label">Yang Perlu Diingat</span>
+      Pengetahuan tanpa aksi hanya menambah beban — bukan kemampuan. Orang yang bertindak dengan ilmu 70% mengalahkan orang yang menunggu ilmu 100% yang tidak pernah datang.
+    </div>
+
+    <div class="warn-box">
+      <p><strong>Cek apakah kamu sedang terjebak:</strong> Kamu selalu punya alasan kenapa "belum waktunya". Kamu lebih suka belajar cara melakukan daripada mencoba melakukannya. Kamu merasa produktif padahal hanya mengonsumsi konten. Kamu menunggu kondisi yang "sempurna" untuk mulai — yang tidak pernah kunjung datang.</p>
+    </div>
+
+    <div class="practice">
+      <div class="practice-header">
+        <div class="practice-label">Latihan 01</div>
+        <button class="practice-done-btn" data-prac="p1" onclick="markDone('p1',this)">Tandai Selesai</button>
+      </div>
+      <div class="practice-title">Audit "Tahu tapi Tidak Lakukan"</div>
+      <p>Ambil kertas atau buka catatan di ponselmu. Jujurlah pada dirimu sendiri.</p>
+      <ul class="psteps" id="p1-steps">
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tulis <strong>tiga hal</strong> yang sudah kamu tahu cara melakukannya tapi belum dikerjakan dalam 3 bulan terakhir</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Di sebelah setiap hal itu, tulis <strong>satu langkah paling kecil</strong> yang bisa dilakukan hari ini</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Pilih <strong>satu</strong> dari tiga. Kerjakan langkah kecil itu — sekarang, sebelum lanjut baca</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Kalau sudah: tarik napas, dan ingat perasaan ini — <em>ini yang akan terus kamu bangun</em></span></li>
+      </ul>
+    </div>
+
+    <div class="ch-nav">
+      <a href="#prolog" class="ch-nav-btn" aria-label="Kembali ke Prolog">
+        <span>←</span>
+        <div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Prolog</span></div>
+      </a>
+      <a href="#bab2" class="ch-nav-btn next" aria-label="Lanjut ke Bab 2">
+        <div><span class="ch-nav-label">Berikutnya</span><span class="ch-nav-name">Prokrastinasi Bukan Malas</span></div>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAB 2 ═══ -->
+<div class="ch-break ch-reveal" id="bab2">
+  <div class="ch-break-bg"></div>
+  <div class="ch-break-glyph" aria-hidden="true">02</div>
+  <div class="ch-break-inner">
+    <div class="ch-break-num">Bab 02 · Bagian I — Memahami Hambatan</div>
+    <h2 class="ch-break-title">Prokrastinasi<br>Bukan <em>Malas</em></h2>
+  </div>
+</div>
+
+<section>
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Bab 02 · Sains Penundaan</div>
+    <div class="ch-readtime">⏱ 6 menit baca</div>
+    <h2 class="ch-title">Kamu Tidak Malas.<br>Kamu <em>Takut</em>.</h2>
+    <p class="ch-opener">
+      Menunda bukan soal kemalasan — ini adalah respons emosi terhadap sesuatu yang terasa mengancam. Dan ketika kamu tahu itu, kamu bisa mengubahnya.
+    </p>
+
+    <p class="prose dropcap">
+      Selama bertahun-tahun, orang percaya menunda adalah masalah manajemen waktu. Solusinya: jadwal lebih ketat, to-do list lebih panjang, alarm lebih banyak. Tapi ini tidak pernah benar-benar berhasil — karena <strong>menunda bukan masalah waktu. Ini masalah emosi.</strong>
+    </p>
+    <p class="prose">
+      Peneliti Fuschia Sirois dan Timothy Pychyl menemukan bahwa orang menunda bukan karena tidak ingin menyelesaikan tugasnya. Mereka menunda karena tugas itu memicu perasaan tidak enak: bosan, frustrasi, cemas, tidak yakin bisa berhasil, atau takut dihakimi. Menghindari tugas adalah cara otak mengatur perasaan — bukan tanda kelemahan.
+    </p>
+
+    <h3 class="sub-h">Empat Wajah Penundaan — Kamu yang Mana?</h3>
+
+    <div class="example-row">
+      <div class="example-card">
+        <span class="ex-who">Karena Ingin Sempurna</span>
+        <p class="ex-text">Tidak mau mulai karena takut hasilnya tidak bagus. <strong>Contoh:</strong> Naskah pidato yang sudah ditulis ulang 10 kali tapi tidak pernah dibacakan.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Karena Merasa Kewalahan</span>
+        <p class="ex-text">Tugasnya terlalu besar sehingga tidak tahu harus mulai dari mana. <strong>Contoh:</strong> Skripsi yang belum dibuka karena terasa terlalu berat untuk dimulai.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Karena Bosan</span>
+        <p class="ex-text">Tugasnya membosankan sehingga otak mencari rangsangan lain. <strong>Contoh:</strong> Laporan keuangan bulanan yang terus tergeser karena buka YouTube.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Karena Tidak Yakin Diri</span>
+        <p class="ex-text">"Aku tidak cukup bagus untuk ini." Menunda adalah cara melindungi harga diri — kalau tidak mencoba, tidak bisa gagal. <strong>Contoh:</strong> Tidak melamar kerja karena "pasti ditolak".</p>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="pq-label">Reframing Penting</span>
+      Ganti pertanyaan "Kenapa aku malas?" menjadi "Perasaan apa yang sedang aku hindari dengan menunda ini?"
+    </div>
+
+    <h3 class="sub-h">Cara Mengatasinya: Atur Perasaan, Bukan Paksa Diri</h3>
+    <p class="prose">
+      Solusinya bukan memaksa diri lebih keras atau memarahi diri sendiri. Solusinya adalah <strong>mengurangi ancaman emosional dari tugas itu.</strong> Beberapa cara yang terbukti berhasil:
+    </p>
+    <ul class="num-list">
+      <li>
+        <span class="n">01.</span>
+        <div><strong>Beri nama perasaannya.</strong> Cukup katakan dalam hati: "Aku menghindari ini karena aku cemas hasilnya tidak bagus." Penelitian menunjukkan bahwa menamai emosi secara harfiah mengurangi kekuatannya di otak.</div>
+      </li>
+      <li>
+        <span class="n">02.</span>
+        <div><strong>Pecah jadi sangat kecil.</strong> Bukan "kerjakan laporan keuangannya" — tapi "buka filenya selama 2 menit saja". Semakin kecil langkahnya, semakin kecil ancamannya di mata otak.</div>
+      </li>
+      <li>
+        <span class="n">03.</span>
+        <div><strong>Ubah suasana.</strong> Otak mengaitkan tempat dengan perilaku. Pindah ke ruangan lain, ke warung kopi, atau bahkan duduk menghadap ke arah yang berbeda bisa memutus kebiasaan menunda.</div>
+      </li>
+      <li>
+        <span class="n">04.</span>
+        <div><strong>Maafkan dirimu sendiri.</strong> Penelitian membuktikan: orang yang memaafkan diri setelah menunda lebih jarang menunda lagi. Sedangkan yang terus menyalahkan diri justru makin sering menunda — karena perasaan bersalah itu sendiri menjadi hal yang dihindari.</div>
+      </li>
+    </ul>
+
+    <div class="practice">
+      <div class="practice-header">
+        <div class="practice-label">Latihan 02</div>
+        <button class="practice-done-btn" data-prac="p2" onclick="markDone('p2',this)">Tandai Selesai</button>
+      </div>
+      <div class="practice-title">Temukan Emosi di Balik Penundaanmu</div>
+      <p>Pilih satu tugas yang sudah kamu tunda minimal satu minggu.</p>
+      <ul class="psteps" id="p2-steps">
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Duduk diam 60 detik, bayangkan kamu akan mengerjakan tugas itu <em>sekarang</em></span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Perhatikan perasaan yang muncul — cemas? bosan? takut? tulis dengan jujur</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tulis kalimat: <strong>"Aku menunda ini karena aku merasa ___"</strong></span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Buat satu langkah paling kecil yang bisa selesai dalam 5 menit. Kerjakan hanya itu saja.</span></li>
+      </ul>
+    </div>
+
+    <div class="ch-nav">
+      <a href="#bab1" class="ch-nav-btn"><span>←</span><div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Bab 01</span></div></a>
+      <a href="#bab3" class="ch-nav-btn next"><div><span class="ch-nav-label">Berikutnya</span><span class="ch-nav-name">Energi, Bukan Waktu</span></div><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAB 3 ═══ -->
+<div class="ch-break ch-reveal" id="bab3">
+  <div class="ch-break-bg"></div>
+  <div class="ch-break-glyph" aria-hidden="true">03</div>
+  <div class="ch-break-inner">
+    <div class="ch-break-num">Bab 03 · Bagian II — Membangun Sistem</div>
+    <h2 class="ch-break-title">Energi,<br>Bukan <em>Waktu</em></h2>
+  </div>
+</div>
+
+<section>
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Bab 03 · Sumber Daya Sejati</div>
+    <div class="ch-readtime">⏱ 5 menit baca</div>
+    <h2 class="ch-title">Semua Orang Punya<br>24 Jam. Tapi Bukan<br><em>Itu</em> Masalahnya.</h2>
+    <p class="ch-opener">
+      Waktu adalah sumber daya yang sama untuk semua orang. Tapi energi? Itu yang membedakan satu jam yang produktif dari empat jam yang hanya duduk tanpa hasil.
+    </p>
+
+    <p class="prose dropcap">
+      "Aku tidak ada waktu" — kita semua pernah berkata ini. Tapi coba perhatikan: ketika kamu <em>benar-benar</em> ingin melakukan sesuatu — nonton serial favorit, kumpul sama teman dekat — tiba-tiba waktu itu ada. Yang sebenarnya terjadi bukan tidak punya waktu. <strong>Kamu tidak punya energi.</strong>
+    </p>
+    <p class="prose">
+      Tony Schwartz dalam bukunya <em>The Power of Full Engagement</em> menjelaskan bahwa manusia perlu mengelola empat jenis energi sekaligus. Tanpa mengerti ini, kamu bisa punya jadwal yang sempurna tapi tetap tidak menghasilkan apa-apa.
+    </p>
+
+    <h3 class="sub-h">Empat Jenis Energi yang Perlu Kamu Kelola</h3>
+    <ul class="num-list">
+      <li>
+        <span class="n">⚡</span>
+        <div><strong>Energi Fisik — Fondasi segalanya.</strong> Tidur cukup, makan bergizi, dan bergerak. Kurang tidur satu malam saja sudah menurunkan kemampuan berpikir setara dengan kondisi mengantuk ekstrem. Tidak ada produktivitas yang bisa mengatasi tubuh yang kelelahan.</div>
+      </li>
+      <li>
+        <span class="n">💬</span>
+        <div><strong>Energi Emosional — Kualitas perasaan.</strong> Pertengkaran yang belum diselesaikan, kekhawatiran yang terus berputar di kepala, hubungan yang menegangkan — semua ini menguras energi kognitif diam-diam. Menyelesaikan konflik kecil bisa lebih meningkatkan fokus daripada minum kopi.</div>
+      </li>
+      <li>
+        <span class="n">🧠</span>
+        <div><strong>Energi Mental — Kapasitas berpikir dan memutuskan.</strong> Setiap keputusan — mau makan apa, perlu balas chat ini atau tidak, pilih baju yang mana — menguras sedikit kapasitas keputusan kita. Semakin banyak keputusan kecil, semakin sedikit energi untuk keputusan besar.</div>
+      </li>
+      <li>
+        <span class="n">🎯</span>
+        <div><strong>Energi Tujuan — Alasan dan makna.</strong> Ketika kamu tahu <em>mengapa</em> kamu mengerjakan sesuatu, energi untuk mengerjakannya datang lebih mudah. Mengerjakan hal yang terasa bermakna — meski berat — terasa lebih ringan dari hal yang terasa sia-sia meski mudah.</div>
+      </li>
+    </ul>
+
+    <div class="pullquote">
+      <span class="pq-label">Prinsip Utama</span>
+      Kelola energimu, bukan waktumu. Satu jam yang penuh energi menghasilkan lebih banyak dari empat jam yang kehabisan tenaga.
+    </div>
+
+    <h3 class="sub-h">Temukan "Jam Emas" Milikmu</h3>
+    <p class="prose">
+      Setiap orang punya jam di mana otak bekerja paling tajam. Bagi sebagian orang itu pagi hari. Bagi yang lain, sore atau malam. <strong>Kenali jam emasmu dan lindungi waktu itu untuk pekerjaan paling penting.</strong>
+    </p>
+
+    <div class="example-row">
+      <div class="example-card">
+        <span class="ex-who">Ibu Rumah Tangga</span>
+        <p class="ex-text">Energi tertinggi biasanya sebelum anak-anak bangun — gunakan waktu itu untuk hal penting bagimu, bukan langsung masak atau beres-beres.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Pelajar / Mahasiswa</span>
+        <p class="ex-text">Jangan belajar materi sulit saat energi sudah habis setelah seharian sekolah. Coba maju jam belajar ke pagi atau siang.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Karyawan</span>
+        <p class="ex-text">Jangan jadwalkan rapat penting setelah makan siang — itu adalah jam terendah energi mental bagi kebanyakan orang.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Pelaku Usaha</span>
+        <p class="ex-text">Pisahkan pekerjaan "berpikir berat" (strategi, desain) dengan pekerjaan "admin" (balas pesan, pembukuan). Jangan campur di jam yang sama.</p>
+      </div>
+    </div>
+
+    <div class="practice">
+      <div class="practice-header">
+        <div class="practice-label">Latihan 03</div>
+        <button class="practice-done-btn" data-prac="p3" onclick="markDone('p3',this)">Tandai Selesai</button>
+      </div>
+      <div class="practice-title">Peta Energi Harianmu</div>
+      <p>Selama 2–3 hari ke depan, perhatikan kapan energimu paling tinggi dan paling rendah.</p>
+      <ul class="psteps" id="p3-steps">
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Set pengingat setiap 2 jam. Saat bunyi, catat: jam berapa, energi 1–5, lagi ngapain</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Setelah 3 hari, lihat polanya: <strong>jam berapa kamu paling tajam?</strong></span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Geser satu tugas paling penting minggu depan ke jam energi tertinggimu</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Lindungi jam itu: tidak ada gangguan, tidak ada media sosial, hanya fokus pada satu hal</span></li>
+      </ul>
+    </div>
+
+    <div class="ch-nav">
+      <a href="#bab2" class="ch-nav-btn"><span>←</span><div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Bab 02</span></div></a>
+      <a href="#bab4" class="ch-nav-btn next"><div><span class="ch-nav-label">Berikutnya</span><span class="ch-nav-name">Sistem Mengalahkan Tujuan</span></div><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAB 4 ═══ -->
+<div class="ch-break ch-reveal" id="bab4">
+  <div class="ch-break-bg"></div>
+  <div class="ch-break-glyph" aria-hidden="true">04</div>
+  <div class="ch-break-inner">
+    <div class="ch-break-num">Bab 04 · Bagian II — Membangun Sistem</div>
+    <h2 class="ch-break-title">Sistem<br>Mengalahkan <em>Tujuan</em></h2>
+  </div>
+</div>
+
+<section>
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Bab 04 · Cara Berpikir Orang Konsisten</div>
+    <div class="ch-readtime">⏱ 5 menit baca</div>
+    <h2 class="ch-title">Lupakan<br><em>Tujuan</em>mu.</h2>
+    <p class="ch-opener">
+      Tujuan hanya menentukan ke mana. Sistem yang menentukan apakah kamu benar-benar sampai ke sana — dan tetap di sana.
+    </p>
+
+    <p class="prose dropcap">
+      Semua orang yang berhasil dan yang gagal dalam sebuah kompetisi punya tujuan yang sama: menang. Yang membedakan bukan besarnya keinginan — tapi kebiasaan harian yang mereka jalankan. James Clear dalam bukunya <em>Atomic Habits</em> berkata: <em>"Kamu tidak naik ke level tujuanmu. Kamu jatuh ke level sistemmu."</em>
+    </p>
+
+    <h3 class="sub-h">Masalah dengan Hanya Punya Tujuan</h3>
+    <ul class="num-list">
+      <li>
+        <span class="n">✗</span>
+        <div><strong>Tujuan menunda kebahagiaan.</strong> "Aku akan senang kalau sudah turun 10 kg." Ini berarti kamu menaruh kondisi untuk merasa baik di masa depan — sementara kamu hidup sekarang.</div>
+      </li>
+      <li>
+        <span class="n">✗</span>
+        <div><strong>Tujuan tidak menjaga setelah tercapai.</strong> Banyak orang berhasil diet, lalu sebulan kemudian balik lagi — karena setelah tujuan tercapai, tidak ada sistem yang menjaga.</div>
+      </li>
+      <li>
+        <span class="n">✗</span>
+        <div><strong>Tujuan bergantung pada motivasi.</strong> Motivasi naik turun. Sistem tidak. Sistem adalah rencana untuk hari-hari ketika kamu tidak ingin melakukan apa-apa.</div>
+      </li>
+    </ul>
+
+    <div class="pullquote">
+      <span class="pq-label">Pergeseran Cara Berpikir</span>
+      Bukan: "Aku ingin rajin belajar." — Tapi: "Aku adalah orang yang belajar setiap hari setelah Subuh selama 30 menit." Yang pertama adalah harapan. Yang kedua adalah identitas.
+    </div>
+
+    <h3 class="sub-h">Bangun Sistem yang Tidak Bisa Dilewatkan</h3>
+    <p class="prose">
+      Peneliti Peter Gollwitzer menemukan bahwa menetapkan <strong>kapan, di mana, dan apa yang spesifik</strong> meningkatkan kemungkinan seseorang benar-benar melakukan sesuatu hingga 2–3 kali lipat dibanding hanya punya niat.
+    </p>
+
+    <div class="hbox">
+      <div class="hbox-label">Formula Sistem</div>
+      <div class="hbox-title">"Setiap [waktu], di [tempat], aku akan [aksi spesifik] selama [durasi]."</div>
+      <p>
+        <strong>Contoh pelajar:</strong> "Setiap hari Senin–Jumat jam 7 pagi, di meja belajar, aku akan mengerjakan latihan soal selama 30 menit."<br><br>
+        <strong>Contoh ibu rumah tangga:</strong> "Setiap Senin dan Kamis jam 9 pagi setelah anak berangkat, di ruang tamu, aku akan mengerjakan bisnis online selama 1 jam."<br><br>
+        <strong>Contoh karyawan:</strong> "Setiap hari Selasa dan Kamis setelah makan siang, di meja kerja, aku akan belajar skill baru selama 20 menit."
+      </p>
+    </div>
+
+    <div class="practice">
+      <div class="practice-header">
+        <div class="practice-label">Latihan 04</div>
+        <button class="practice-done-btn" data-prac="p4" onclick="markDone('p4',this)">Tandai Selesai</button>
+      </div>
+      <div class="practice-title">Ubah Tujuan Menjadi Sistem</div>
+      <p>Ambil satu tujuan yang kamu punya. Ubah menjadi sistem konkret menggunakan formula di atas.</p>
+      <ul class="psteps" id="p4-steps">
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tulis tujuanmu sekarang: <strong>"Aku ingin ___"</strong></span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Identifikasi perilaku <em>harian atau mingguan</em> yang paling langsung mendekati tujuan itu</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tulis sistemnya dengan formula: <strong>"Setiap ___, di ___, aku akan ___ selama ___."</strong></span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tempel di tempat yang kamu lihat setiap hari — itu komitmenmu</span></li>
+      </ul>
+    </div>
+
+    <div class="ch-nav">
+      <a href="#bab3" class="ch-nav-btn"><span>←</span><div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Bab 03</span></div></a>
+      <a href="#bab5" class="ch-nav-btn next"><div><span class="ch-nav-label">Berikutnya</span><span class="ch-nav-name">Mulai Kecil, Efek Besar</span></div><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAB 5 ═══ -->
+<div class="ch-break ch-reveal" id="bab5">
+  <div class="ch-break-bg"></div>
+  <div class="ch-break-glyph" aria-hidden="true">05</div>
+  <div class="ch-break-inner">
+    <div class="ch-break-num">Bab 05 · Bagian III — Bergerak</div>
+    <h2 class="ch-break-title">Mulai <em>Kecil</em>,<br>Efek Besar</h2>
+  </div>
+</div>
+
+<section>
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Bab 05 · Aksi Terkecil</div>
+    <div class="ch-readtime">⏱ 5 menit baca</div>
+    <h2 class="ch-title">Dua Menit.<br>Hanya <em>Dua Menit</em>.</h2>
+    <p class="ch-opener">
+      Satu kebiasaan kecil yang dilakukan konsisten selama setahun mengalahkan seribu rencana besar yang tidak pernah dimulai.
+    </p>
+
+    <p class="prose dropcap">
+      James Clear menyebut ini <span class="en" title="Aturan Dua Menit"><em>Two-Minute Rule</em></span>: ketika ingin membangun kebiasaan baru, buat versinya yang bisa selesai dalam dua menit. Bukan "baca buku 1 jam" — tapi "buka buku". Bukan "olahraga 1 jam" — tapi "pakai sepatu lari". Bukan "mulai bisnis" — tapi "tulis satu produk yang ingin dijual".
+    </p>
+    <p class="prose">
+      Bukan tentang hasilnya dalam dua menit. Ini tentang <strong>membuktikan ke dirimu sendiri bahwa kamu adalah orang yang melakukan hal itu.</strong> Setiap kali kamu membuka buku — meski cuma satu halaman — kamu memperkuat identitas sebagai pembaca. Dan identitas itu perlahan mengubah segalanya.
+    </p>
+
+    <div class="stat-grid">
+      <div class="sg-cell">
+        <span class="sg-num">1%</span>
+        <span class="sg-desc">Lebih baik setiap hari = 37 kali lebih baik dalam setahun</span>
+      </div>
+      <div class="sg-cell">
+        <span class="sg-num">66 hari</span>
+        <span class="sg-desc">Rata-rata waktu membentuk kebiasaan baru (bukan 21 hari seperti mitos)</span>
+      </div>
+      <div class="sg-cell">
+        <span class="sg-num">40%</span>
+        <span class="sg-desc">Perilaku harian kita adalah kebiasaan otomatis — bukan keputusan sadar</span>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="pq-label">Hukum Momentum</span>
+      Benda yang bergerak lebih mudah terus bergerak daripada benda diam yang harus mulai bergerak. Tugasmu hanya: mulai — sekecil apapun.
+    </div>
+
+    <div class="example-row">
+      <div class="example-card">
+        <span class="ex-who">Versi 2 Menit untuk Pelajar</span>
+        <p class="ex-text"><strong>Ingin:</strong> Belajar rutin setiap hari<br><strong>Versi 2 menit:</strong> Buka buku pelajaran dan baca 1 halaman</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Versi 2 Menit untuk Ibu/Bapak</span>
+        <p class="ex-text"><strong>Ingin:</strong> Mulai usaha dari rumah<br><strong>Versi 2 menit:</strong> Tulis satu produk yang bisa dijual di kertas</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Versi 2 Menit untuk Karyawan</span>
+        <p class="ex-text"><strong>Ingin:</strong> Belajar skill baru<br><strong>Versi 2 menit:</strong> Buka satu video kursus dan putar 2 menit</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Versi 2 Menit untuk Semua</span>
+        <p class="ex-text"><strong>Ingin:</strong> Olahraga rutin<br><strong>Versi 2 menit:</strong> Pakai sepatu lari dan berdiri di pintu</p>
+      </div>
+    </div>
+
+    <div class="practice">
+      <div class="practice-header">
+        <div class="practice-label">Latihan 05</div>
+        <button class="practice-done-btn" data-prac="p5" onclick="markDone('p5',this)">Tandai Selesai</button>
+      </div>
+      <div class="practice-title">Rancang Versi 2 Menit dari Kebiasaanmu</div>
+      <p>Ambil satu kebiasaan yang ingin kamu bangun. Sederhanakan sampai tidak mungkin dilewatkan.</p>
+      <ul class="psteps" id="p5-steps">
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tulis kebiasaan yang ingin kamu bangun: <strong>"Aku ingin ___"</strong></span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Buat versi 2 menitnya — sesederhana mungkin, hampir konyol mudahnya</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Lakukan versi 2 menit itu setiap hari selama 30 hari — boleh lebih dari 2 menit, tapi minimal itu</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Setelah 30 hari: tingkatkan durasinya, tapi jangan ganti waktunya</span></li>
+      </ul>
+    </div>
+
+    <div class="ch-nav">
+      <a href="#bab4" class="ch-nav-btn"><span>←</span><div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Bab 04</span></div></a>
+      <a href="#bab6" class="ch-nav-btn next"><div><span class="ch-nav-label">Berikutnya</span><span class="ch-nav-name">Keputusan Cepat</span></div><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAB 6 ═══ -->
+<div class="ch-break ch-reveal" id="bab6">
+  <div class="ch-break-bg"></div>
+  <div class="ch-break-glyph" aria-hidden="true">06</div>
+  <div class="ch-break-inner">
+    <div class="ch-break-num">Bab 06 · Bagian III — Bergerak</div>
+    <h2 class="ch-break-title">Keputusan<br><em>Cepat</em></h2>
+  </div>
+</div>
+
+<section>
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Bab 06 · Berhenti Berpikir Terlalu Lama</div>
+    <div class="ch-readtime">⏱ 5 menit baca</div>
+    <h2 class="ch-title">Kamu Tidak Butuh<br>Lebih Banyak <em>Waktu</em>.<br>Kamu Butuh <em>Batas</em>.</h2>
+    <p class="ch-opener">
+      Keputusan yang tidak diambil adalah keputusan untuk tetap diam. Dan diam — di dunia yang terus bergerak — adalah pilihan paling mahal.
+    </p>
+
+    <p class="prose dropcap">
+      Ada dua jenis keputusan. Pertama, keputusan yang susah atau bahkan tidak bisa dibalik — seperti berhenti kerja, pindah kota, atau menikah. Jenis ini memang butuh pertimbangan matang. Kedua, keputusan yang bisa diubah kalau ternyata salah — seperti pilih aplikasi apa, mulai dari mana, atau desain seperti apa. Masalahnya: <strong>sebagian besar keputusan dalam hidup kita sebenarnya jenis kedua, tapi kita memperlakukannya seperti jenis pertama.</strong>
+    </p>
+    <p class="prose">
+      Kamu menghabiskan dua minggu memilih aplikasi catatan. Kamu riset tiga bulan sebelum membuka toko online padahal belum tahu produk apa yang laku. Kamu tidak yakin pilih jurusan mana — dan akhirnya tidak pilih keduanya. Ini bukan kehati-hatian. Ini <span class="en" title="Kelumpuhan karena terlalu banyak menganalisis"><em>analysis paralysis</em></span> — dan ini membuang energi yang harusnya dipakai untuk bekerja.
+    </p>
+
+    <h3 class="sub-h">Tiga Aturan Keputusan Lebih Cepat</h3>
+    <ul class="num-list">
+      <li>
+        <span class="n">01.</span>
+        <div><strong>Tetapkan batas waktu keputusan sebelum mulai berpikir.</strong> Keputusan kecil: 5 menit. Keputusan sedang: 24 jam. Keputusan besar: 1 minggu. Waktu tanpa batas menghasilkan penundaan tanpa batas.</div>
+      </li>
+      <li>
+        <span class="n">02.</span>
+        <div><strong>Pilih yang "cukup bagus", bukan yang "terbaik".</strong> Peneliti Barry Schwartz membuktikan: orang yang selalu mencari pilihan terbaik (<em>maximizer</em>) lebih tidak bahagia dan lebih lambat bergerak dibanding orang yang puas dengan yang cukup bagus (<em>satisficer</em>).</div>
+      </li>
+      <li>
+        <span class="n">03.</span>
+        <div><strong>Tanya: "Apa yang terjadi kalau aku salah?"</strong> Kalau jawabannya bisa diperbaiki — putuskan sekarang. Kesalahan yang bisa dikoreksi lebih berharga dari menunggu karena satu memberimu pelajaran, satunya tidak memberimu apa-apa.</div>
+      </li>
+    </ul>
+
+    <div class="pullquote">
+      <span class="pq-label">Kebenaran Pahit</span>
+      Keputusan "sempurna" yang diambil terlambat lebih buruk dari keputusan "cukup baik" yang diambil tepat waktu.
+    </div>
+
+    <div class="practice">
+      <div class="practice-header">
+        <div class="practice-label">Latihan 06</div>
+        <button class="practice-done-btn" data-prac="p6" onclick="markDone('p6',this)">Tandai Selesai</button>
+      </div>
+      <div class="practice-title">Selesaikan Satu Keputusan yang Tertunda</div>
+      <p>Pikirkan satu keputusan yang sudah kamu tunda lebih dari satu minggu.</p>
+      <ul class="psteps" id="p6-steps">
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tanya dirimu: kalau salah, apakah bisa diperbaiki? Kalau ya — lanjut</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Set timer 10 menit. Buat keputusan sebelum timer habis</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tulis keputusanmu dan <strong>satu langkah pertama</strong> untuk mengeksekusinya</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Lakukan langkah pertama itu dalam 24 jam ke depan</span></li>
+      </ul>
+    </div>
+
+    <div class="ch-nav">
+      <a href="#bab5" class="ch-nav-btn"><span>←</span><div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Bab 05</span></div></a>
+      <a href="#bab7" class="ch-nav-btn next"><div><span class="ch-nav-label">Berikutnya</span><span class="ch-nav-name">Fokus di Era Distraksi</span></div><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAB 7 ═══ -->
+<div class="ch-break ch-reveal" id="bab7">
+  <div class="ch-break-bg"></div>
+  <div class="ch-break-glyph" aria-hidden="true">07</div>
+  <div class="ch-break-inner">
+    <div class="ch-break-num">Bab 07 · Bagian IV — Mempertahankan</div>
+    <h2 class="ch-break-title">Fokus di Era<br><em>Distraksi</em></h2>
+  </div>
+</div>
+
+<section>
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Bab 07 · Kemampuan Paling Berharga</div>
+    <div class="ch-readtime">⏱ 6 menit baca</div>
+    <h2 class="ch-title">Fokus Adalah<br><em>Kekuatan Super</em><br>Zaman Ini.</h2>
+    <p class="ch-opener">
+      Di dunia di mana semua orang teralihkan oleh notifikasi, scroll, dan kebisingan digital — kemampuan untuk duduk diam dan fokus pada satu hal menjadi keunggulan yang langka dan tak ternilai.
+    </p>
+
+    <p class="prose dropcap">
+      Cal Newport, profesor dan penulis buku <em>Deep Work</em>, mendefinisikan <span class="en" title="Kerja Mendalam — kondisi bekerja tanpa gangguan pada tugas yang menuntut konsentrasi tinggi"><em>deep work</em></span> sebagai: bekerja pada tugas yang menuntut pemikiran dalam kondisi tanpa gangguan. Ini berbeda dengan <span class="en" title="Kerja Dangkal — tugas yang bisa dilakukan sambil terganggu"><em>shallow work</em></span>: tugas rutin yang bisa dilakukan sambil diganggu — balas pesan, mengisi form, kegiatan administratif.
+    </p>
+    <p class="prose">
+      Masalahnya: <strong>dunia modern dirancang untuk menghancurkan kemampuan fokus kita.</strong> Rata-rata notifikasi datang setiap 8 menit. Setelah satu gangguan, butuh sekitar 23 menit untuk kembali ke kedalaman fokus yang sama. Artinya, jika kamu terganggu 6 kali per jam — secara teknis kamu tidak pernah benar-benar fokus dalam hari itu.
+    </p>
+
+    <div class="stat-grid">
+      <div class="sg-cell">
+        <span class="sg-num">23 mnt</span>
+        <span class="sg-desc">Waktu untuk kembali fokus setelah satu gangguan kecil</span>
+      </div>
+      <div class="sg-cell">
+        <span class="sg-num">4 jam</span>
+        <span class="sg-desc">Batas maksimum fokus mendalam berkualitas per hari bagi kebanyakan orang</span>
+      </div>
+      <div class="sg-cell">
+        <span class="sg-num">40%</span>
+        <span class="sg-desc">Penurunan kemampuan berpikir efektif akibat beralih-alih antara tugas</span>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Kondisi yang Menciptakan Fokus Mendalam</h3>
+    <p class="prose">
+      Psikolog Mihaly Csikszentmihalyi menyebut kondisi fokus terdalam sebagai <span class="en" title="Kondisi mengalir — keadaan di mana kamu sepenuhnya terserap dalam aktivitas"><em>flow state</em></span>: kondisi di mana kamu sepenuhnya terserap, waktu terasa terbang, dan hasilmu optimal. Flow tidak datang kebetulan. Ia diciptakan:
+    </p>
+    <ul class="num-list">
+      <li>
+        <span class="n">1.</span>
+        <div><strong>Tantangan seimbang dengan kemampuanmu.</strong> Terlalu mudah = bosan dan ngantuk. Terlalu sulit = cemas dan mau menyerah. Focus terdalam ada di titik manis di antara keduanya.</div>
+      </li>
+      <li>
+        <span class="n">2.</span>
+        <div><strong>Tujuan yang jelas dan spesifik.</strong> Bukan "kerjakan tugasnya" — tapi "selesaikan bagian pertama dari tugasnya sampai selesai". Otak butuh target yang bisa diukur.</div>
+      </li>
+      <li>
+        <span class="n">3.</span>
+        <div><strong>Lingkungan yang bebas gangguan.</strong> Notifikasi mati. Ponsel di laci atau di ruangan lain. Satu tab browser saja. Jangan melawan godaan — singkirkan sumbernya.</div>
+      </li>
+    </ul>
+
+    <div class="hbox">
+      <div class="hbox-label">Strategi Praktis</div>
+      <div class="hbox-title">Jangan melawan distraksi satu per satu — hilangkan aksesnya sebelum mulai</div>
+      <p>Kekuatan untuk menahan godaan itu terbatas dan habis seiring waktu. Lingkungan yang dirancang dengan baik tidak membutuhkan kekuatan itu. <strong>Matikan semua notifikasi</strong> sebelum sesi fokus — bukan saat notifikasi sudah muncul.</p>
+    </div>
+
+    <div class="example-row">
+      <div class="example-card">
+        <span class="ex-who">Pelajar yang Belajar</span>
+        <p class="ex-text">Taruh ponsel di kamar lain saat belajar. Bukan di meja — di kamar lain. Hanya keberadaan ponsel di meja mengurangi kemampuan berpikir meski ponsel tidak dipegang.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Ibu/Bapak yang Bekerja dari Rumah</span>
+        <p class="ex-text">Buat "jam kerja" yang diketahui anggota keluarga. Selama 1 jam, tidak boleh diganggu kecuali darurat. Konsisten dengan batas ini lebih efektif dari sekedar "nanti ya".</p>
+      </div>
+    </div>
+
+    <div class="practice">
+      <div class="practice-header">
+        <div class="practice-label">Latihan 07</div>
+        <button class="practice-done-btn" data-prac="p7" onclick="markDone('p7',this)">Tandai Selesai</button>
+      </div>
+      <div class="practice-title">Sesi Fokus Pertamamu (60–90 Menit)</div>
+      <p>Jadwalkan satu sesi fokus penuh minggu ini. Bukan nanti — tetapkan hari dan jamnya sekarang.</p>
+      <ul class="psteps" id="p7-steps">
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Pilih hari dan jam — idealnya di jam energi tertinggimu (ingat latihan bab 3)</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tetapkan <em>satu tugas spesifik</em> yang akan dikerjakan — bukan "kerja di proyek X" tapi "selesaikan bagian Y dari proyek X"</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Sebelum mulai: matikan semua notifikasi, taruh ponsel jauh dari jangkauan, tutup semua tab kecuali yang dibutuhkan</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Set timer. Kerjakan. Tidak boleh keluar dari tugas itu sampai timer selesai.</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Setelah selesai: catat apa yang berhasil diselesaikan. Perhatikan betapa banyaknya.</span></li>
+      </ul>
+    </div>
+
+    <div class="ch-nav">
+      <a href="#bab6" class="ch-nav-btn"><span>←</span><div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Bab 06</span></div></a>
+      <a href="#bab8" class="ch-nav-btn next"><div><span class="ch-nav-label">Berikutnya</span><span class="ch-nav-name">Selesaikan</span></div><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAB 8 ═══ -->
+<div class="ch-break ch-reveal" id="bab8">
+  <div class="ch-break-bg"></div>
+  <div class="ch-break-glyph" aria-hidden="true">08</div>
+  <div class="ch-break-inner">
+    <div class="ch-break-num">Bab 08 · Bagian IV — Mempertahankan</div>
+    <h2 class="ch-break-title"><em>Selesaikan</em>.<br>Selesai Lebih Baik<br>dari Sempurna.</h2>
+  </div>
+</div>
+
+<section>
+  <div class="chapter ch-reveal">
+    <div class="ch-kicker">Bab 08 · Menang Atas Perfeksionisme</div>
+    <div class="ch-readtime">⏱ 5 menit baca</div>
+    <h2 class="ch-title">Karya Terbaik<br>yang Tidak Ada<br>Tidak Berguna untuk <em>Siapapun</em>.</h2>
+    <p class="ch-opener">
+      Perfeksionisme bukan standar tinggi. Ini ketakutan yang memakai topeng standar tinggi. Dan ia telah membunuh lebih banyak proyek daripada kegagalan yang sesungguhnya.
+    </p>
+
+    <p class="prose dropcap">
+      Ada momen dalam setiap pekerjaan di mana kamu harus memilih: kirim yang ada, atau tunggu sampai sempurna. Dan "sempurna" selalu terasa seperti 20% lagi dari posisi kamu sekarang. Selalu ada satu hal lagi yang bisa diperbaiki. Satu kata yang masih kurang pas. Satu detail yang mengganggu.
+    </p>
+    <p class="prose">
+      Brené Brown menulis: perfeksionisme bukan tentang standar tinggi — ini tentang perlindungan diri. Ini keyakinan bahwa kalau kita tampil sempurna, kita bisa menghindari kritik dan rasa malu. <strong>Perfeksionisme adalah tentang ego, bukan kualitas.</strong>
+    </p>
+
+    <h3 class="sub-h">Tanda Kamu Perfeksionis (Bukan Standar Tinggi)</h3>
+    <ul class="num-list">
+      <li><span class="n">✗</span><div>Kamu lebih takut dilihat orang ketika gagal daripada benar-benar gagalnya</div></li>
+      <li><span class="n">✗</span><div>Kamu tidak mulai karena tidak bisa membayangkan melakukannya dengan sempurna</div></li>
+      <li><span class="n">✗</span><div>Kamu menunda-nunda mengirim, menerbitkan, atau membagikan sesuatu karena "belum siap"</div></li>
+      <li><span class="n">✗</span><div>Kamu menghabiskan lebih banyak waktu memoles daripada menciptakan</div></li>
+    </ul>
+
+    <div class="pullquote">
+      <span class="pq-label">Kebenaran tentang Selesai</span>
+      Jualan online yang sudah buka tapi masih kasar lebih nyata dari rencana toko yang sempurna di kepala. Skripsi yang sudah dikumpul meski tidak sempurna lebih berharga dari mahakarya yang tidak pernah ada.
+    </div>
+
+    <h3 class="sub-h">Strategi: Buat Versi 0.1</h3>
+    <p class="prose">
+      Jangan buat versi final. Buat <strong>versi 0.1</strong> — draft pertama yang jelek, produk pertama yang mentah, postingan pertama yang pendek. Tujuannya bukan kualitas. Tujuannya adalah <em>keberadaan</em>. Sesuatu yang ada bisa diperbaiki. Sesuatu yang tidak ada — tidak bisa.
+    </p>
+
+    <div class="example-row">
+      <div class="example-card">
+        <span class="ex-who">Pelajar / Mahasiswa</span>
+        <p class="ex-text">Kumpulkan draft skripsi yang "belum sempurna" daripada tidak mengumpulkan sama sekali. Dosen bisa memberi masukan. Kosong tidak bisa.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Pelaku Usaha</span>
+        <p class="ex-text">Buka toko online sekarang dengan 3 produk yang ada, bukan setelah foto produk sempurna dan deskripsi lengkap. Pembeli pertama mengajarkan lebih banyak dari riset selama sebulan.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Siapa Saja dengan Ide</span>
+        <p class="ex-text">Bagikan idenya sekarang — tulisan pendek, video sederhana, obrolan santai. Respons orang nyata mengubah ide abstrak menjadi sesuatu yang konkret dan berkembang.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-who">Karyawan</span>
+        <p class="ex-text">Kirim proposal yang "cukup bagus" ke atasan sekarang daripada menunggu sempurna. Masukan lebih awal = hasil akhir yang lebih baik.</p>
+      </div>
+    </div>
+
+    <div class="practice">
+      <div class="practice-header">
+        <div class="practice-label">Latihan 08</div>
+        <button class="practice-done-btn" data-prac="p8" onclick="markDone('p8',this)">Tandai Selesai</button>
+      </div>
+      <div class="practice-title">Kirim Sesuatu Hari Ini</div>
+      <p>Ada sesuatu yang sedang kamu tunda karena "belum sempurna"? Ini saatnya.</p>
+      <ul class="psteps" id="p8-steps">
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Identifikasi satu hal yang sudah "cukup selesai" tapi belum kamu kirim, bagikan, atau terbitkan</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Tanya jujur: apakah penundaan ini tentang kualitas — atau tentang ketakutan?</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text">Selesaikan versi "cukup" dalam 2 jam ke depan</span></li>
+        <li class="pstep" onclick="toggleStep(this)"><div class="pstep-cb"></div><span class="pstep-text"><strong>Kirim. Bagikan. Kumpulkan.</strong> Jangan baca ulang lebih dari sekali setelah selesai.</span></li>
+      </ul>
+    </div>
+
+    <div class="ch-nav">
+      <a href="#bab7" class="ch-nav-btn"><span>←</span><div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Bab 07</span></div></a>
+      <a href="#epilog" class="ch-nav-btn next"><div><span class="ch-nav-label">Berikutnya</span><span class="ch-nav-name">Epilog</span></div><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     EPILOG
+════════════════════════════════════ -->
+<section id="epilog">
+  <div class="chapter ch-reveal">
+    <div class="ch-sep"><span>◆</span></div>
+    <div class="epilogue">
+      <h2 class="ep-title">Hari Pertama<br>Selalu Hari Ini.</h2>
+      <p class="ep-text">
+        Kamu sudah membaca delapan bab. Kamu sudah mengerti kenapa kamu tidak bergerak, bagaimana mengelola energi, cara membangun sistem, dan bagaimana memulai dari yang kecil.
+      </p>
+      <p class="ep-text">
+        Sekarang ada satu pilihan di depanmu: tutup buku ini dan kembali ke hidup seperti biasa — atau ambil satu langkah kecil, hari ini, sekarang.
+      </p>
+      <p class="ep-highlight">
+        Tidak perlu sempurna. Tidak perlu besar. Tidak perlu ada yang melihat. Cukup satu langkah — satu tugas yang dibuka, satu keputusan yang diambil, satu pesan yang dikirim, satu kalimat yang ditulis.
+      </p>
+      <p class="ep-text">
+        Motivasi tidak datang sebelum aksi. Ia datang <em>setelah</em> aksi. Kamu tidak akan pernah merasa 100% siap. Kamu tidak akan punya waktu yang sempurna. Yang ada hanyalah sekarang, dan pilihan untuk bergerak atau tidak.
+      </p>
+      <p class="ep-highlight" style="font-style:italic; font-family:var(--serif)">
+        Jadi — apa satu hal yang akan kamu lakukan hari ini?
+      </p>
+      <div class="ep-sig">— Selamat Bergerak.</div>
+      <div class="ep-footer">
+        <p><strong>GERAK</strong> — Panduan Dari Tahu Menjadi Melakukan</p>
+        <p>Edisi Digital 2026 · 8 Bab · 8 Latihan · ±40 Menit Baca</p>
+        <p>Untuk semua orang — pelajar, orang tua, karyawan, pelaku usaha</p>
+        <p style="margin-top:14px">Kolaborasi <strong>munnnn666</strong> × Kecerdasan Buatan</p>
+        <p style="margin-top:14px;opacity:.5">Gratis selamanya. Bagikan ke siapa saja.</p>
+      </div>
+    </div>
+
+    <div class="ch-nav" style="max-width:720px;margin:0 auto;padding:0 48px 80px">
+      <a href="#bab8" class="ch-nav-btn"><span>←</span><div><span class="ch-nav-label">Sebelumnya</span><span class="ch-nav-name">Bab 08</span></div></a>
+      <a href="#cover" class="ch-nav-btn next"><div><span class="ch-nav-label">Kembali ke</span><span class="ch-nav-name">Halaman Depan</span></div><span>↑</span></a>
+    </div>
+  </div>
+</section>
+
+<script>
+'use strict';
+/* ════════════════════════════════════
+   PROGRESS BAR + PCT
+════════════════════════════════════ */
+const bar = document.getElementById('prog-bar');
+const pct = document.getElementById('prog-pct');
+const fab = document.getElementById('fab-top');
+const nav = document.getElementById('topnav');
+
+function updateProgress() {
+  const st = window.scrollY;
+  const dh = document.documentElement.scrollHeight - window.innerHeight;
+  const p  = dh > 0 ? Math.max(0, Math.min(1, st / dh)) : 0;
+  bar.style.transform = `scaleX(${p})`;
+  pct.textContent = Math.round(p * 100) + '%';
+  fab.classList.toggle('show', st > 300);
+}
+
+/* NAV HIDE */
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const sy = window.scrollY;
+  nav.classList.toggle('hide', sy > lastY && sy > 80);
+  lastY = sy;
+  updateProgress();
+  updateDots();
+  saveProgress();
+}, { passive: true });
+updateProgress();
+
+/* ════════════════════════════════════
+   CHAPTER DOTS — active tracking
+════════════════════════════════════ */
+const sections = ['cover','prolog','bab1','bab2','bab3','bab4','bab5','bab6','bab7','bab8','epilog'];
+const dots = document.querySelectorAll('#ch-dots .ch-dot');
+
+function updateDots() {
+  const mid = window.scrollY + window.innerHeight * 0.4;
+  let current = 0;
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= mid) current = i;
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  updateTOCActive(sections[current]);
+}
+
+/* ════════════════════════════════════
+   TOC ACTIVE
+════════════════════════════════════ */
+function updateTOCActive(id) {
+  document.querySelectorAll('.toc-entry').forEach(e => {
+    e.classList.toggle('current', e.dataset.target === id);
+  });
+}
+
+/* ════════════════════════════════════
+   NAVIGATE
+════════════════════════════════════ */
+function goTo(id) {
+  closeTOC();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 320);
+}
+
+/* ════════════════════════════════════
+   TOC OPEN / CLOSE
+════════════════════════════════════ */
+function openTOC() {
+  const ov = document.getElementById('toc-overlay');
+  ov.classList.add('open');
+  requestAnimationFrame(() => ov.classList.add('vis'));
+  document.querySelector('.toc-close-btn').focus();
+}
+function closeTOC() {
+  const ov = document.getElementById('toc-overlay');
+  ov.classList.remove('vis');
+  setTimeout(() => ov.classList.remove('open'), 310);
+}
+document.getElementById('toc-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeTOC();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeTOC();
+});
+
+/* ════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════ */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.ch-reveal').forEach(el => revObs.observe(el));
+
+/* ════════════════════════════════════
+   INTERACTIVE STEPS (checkboxes)
+════════════════════════════════════ */
+function toggleStep(el) {
+  el.classList.toggle('checked');
+  savePractice();
+}
+
+/* ════════════════════════════════════
+   MARK PRACTICE DONE
+════════════════════════════════════ */
+function markDone(id, btn) {
+  btn.classList.toggle('done');
+  btn.textContent = btn.classList.contains('done') ? '✓ Selesai!' : 'Tandai Selesai';
+  const entry = document.querySelector('.toc-entry[data-target="' + 'bab' + id.replace('p','') + '"]');
+  if (entry) entry.classList.toggle('done', btn.classList.contains('done'));
+  savePractice();
+}
+
+/* ════════════════════════════════════
+   PERSISTENCE (sessionStorage)
+════════════════════════════════════ */
+function savePractice() {
+  try {
+    const state = {};
+    document.querySelectorAll('.pstep').forEach((el, i) => {
+      state['step_' + i] = el.classList.contains('checked');
+    });
+    document.querySelectorAll('.practice-done-btn').forEach(btn => {
+      state['done_' + btn.dataset.prac] = btn.classList.contains('done');
+    });
+    sessionStorage.setItem('gerak_practice', JSON.stringify(state));
+  } catch(e) {}
+}
+
+function loadPractice() {
+  try {
+    const raw = sessionStorage.getItem('gerak_practice');
+    if (!raw) return;
+    const state = JSON.parse(raw);
+    document.querySelectorAll('.pstep').forEach((el, i) => {
+      if (state['step_' + i]) el.classList.add('checked');
+    });
+    document.querySelectorAll('.practice-done-btn').forEach(btn => {
+      if (state['done_' + btn.dataset.prac]) {
+        btn.classList.add('done');
+        btn.textContent = '✓ Selesai!';
+      }
+    });
+  } catch(e) {}
+}
+loadPractice();
+
+function saveProgress() {
+  try {
+    sessionStorage.setItem('gerak_scroll', window.scrollY);
+  } catch(e) {}
+}
+
+/* ════════════════════════════════════
+   FONT SIZE
+════════════════════════════════════ */
+function setFont(size) {
+  document.documentElement.dataset.font = size;
+  document.querySelectorAll('.tb-btn[id^="fs-"]').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('fs-' + size);
+  if (btn) btn.classList.add('active');
+  try { localStorage.setItem('gerak_font', size); } catch(e) {}
+}
+
+/* THEME */
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.dataset.theme === 'dark';
+  html.dataset.theme = isDark ? 'light' : 'dark';
+  document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+  document.getElementById('theme-lbl').textContent  = isDark ? 'Gelap' : 'Terang';
+  try { localStorage.setItem('gerak_theme', html.dataset.theme); } catch(e) {}
+}
+
+/* RESTORE settings */
+(function() {
+  try {
+    const font  = localStorage.getItem('gerak_font');
+    const theme = localStorage.getItem('gerak_theme');
+    if (font)  setFont(font);
+    if (theme) {
+      document.documentElement.dataset.theme = theme;
+      const isDark = theme === 'dark';
+      document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+      document.getElementById('theme-lbl').textContent  = isDark ? 'Gelap' : 'Terang';
+    }
+  } catch(e) {}
+})();
+
+/* initial dot update */
+updateDots();
+</script>
+</body>
+</html>

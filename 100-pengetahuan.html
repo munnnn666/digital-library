@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark" data-fs="md">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Pengetahuan — munnnn666</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root {
+  --gold: #c9a84c; --gold2: #e8c870; --gold3: #f5e0a0;
+  --nav-h: 60px; --sb-w: 280px;
+  --radius: 3px;
+  --transition: 0.22s ease;
+}
+[data-theme="dark"] {
+  --bg: #0d0d0d; --bg2: #111; --bg3: #161616;
+  --surface: #1a1a1a; --surface2: #202020;
+  --border: #2a2a2a; --border2: #333;
+  --text: #e8e4dc; --text-muted: #7a7570; --text-dim: #3a3530;
+  --shadow: rgba(0,0,0,0.5);
+}
+[data-theme="light"] {
+  --bg: #f5f2ec; --bg2: #ede9e0; --bg3: #e8e3d8;
+  --surface: #ffffff; --surface2: #f9f6f0;
+  --border: #ddd8cc; --border2: #ccc6b8;
+  --text: #1a1612; --text-muted: #6a6560; --text-dim: #aaa49a;
+  --shadow: rgba(0,0,0,0.08);
+}
+[data-fs="sm"] { font-size: 14px; }
+[data-fs="md"] { font-size: 16px; }
+[data-fs="lg"] { font-size: 18px; }
+
+/* ── RESET ── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.7; overflow-x: hidden; transition: background var(--transition), color var(--transition); }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; color: inherit; }
+
+/* ── PROGRESS BAR ── */
+#pbar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold2)); width: 0%; z-index: 9999; transition: width .1s linear; }
+
+/* ── NAV ── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px; padding: 0 20px;
+  z-index: 900; backdrop-filter: blur(8px);
+  transition: background var(--transition), border-color var(--transition);
+}
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; flex-shrink: 0; }
+#search-wrap { flex: 1; max-width: 400px; position: relative; }
+#search-input {
+  width: 100%; padding: 8px 36px 8px 14px; border-radius: var(--radius);
+  border: 1px solid var(--border2); background: var(--surface);
+  color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px;
+  outline: none; transition: border-color var(--transition), background var(--transition);
+}
+#search-input:focus { border-color: var(--gold); }
+#search-input::placeholder { color: var(--text-muted); }
+.search-icon { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 14px; pointer-events: none; }
+.nav-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.nav-btn {
+  width: 34px; height: 34px; border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; color: var(--text-muted); border: 1px solid var(--border);
+  background: var(--surface); transition: all var(--transition); position: relative;
+}
+.nav-btn:hover, .nav-btn.active { color: var(--gold); border-color: var(--gold); background: var(--surface2); }
+.nav-btn .badge {
+  position: absolute; top: -5px; right: -5px; background: var(--gold);
+  color: #000; font-size: 9px; font-weight: 700; font-family: 'DM Mono', monospace;
+  width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.fs-btn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .05em; }
+
+/* ── LAYOUT ── */
+#layout { display: flex; padding-top: var(--nav-h); min-height: 100vh; }
+
+/* ── SIDEBAR ── */
+#sidebar {
+  width: var(--sb-w); flex-shrink: 0; position: fixed;
+  top: var(--nav-h); bottom: 0; left: 0;
+  background: var(--bg2); border-right: 1px solid var(--border);
+  overflow-y: auto; padding: 20px 0; z-index: 800;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+}
+#sidebar::-webkit-scrollbar { width: 4px; }
+#sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+.sb-section { padding: 0 16px; margin-bottom: 8px; }
+.sb-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-dim); padding: 8px 4px 6px; }
+
+/* Overall progress */
+.sb-progress { padding: 12px 16px; margin: 0 0 8px; }
+.sb-prog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.sb-prog-label { font-size: 12px; color: var(--text-muted); }
+.sb-prog-num { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold); font-weight: 500; }
+.sb-prog-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.sb-prog-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold2)); border-radius: 2px; transition: width .5s ease; }
+
+/* Filter buttons */
+.filter-btn {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 9px 12px; border-radius: var(--radius); margin-bottom: 2px;
+  font-size: 13px; color: var(--text-muted); text-align: left;
+  transition: all var(--transition); position: relative;
+}
+.filter-btn:hover { background: var(--surface); color: var(--text); }
+.filter-btn.active { background: var(--surface2); color: var(--text); }
+.filter-btn.active::before { content: ''; position: absolute; left: 0; top: 20%; bottom: 20%; width: 2px; background: var(--chapter-color, var(--gold)); border-radius: 0 2px 2px 0; }
+.filter-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--chapter-color, var(--gold)); flex-shrink: 0; }
+.filter-count { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); }
+.filter-prog { margin-left: 4px; width: 28px; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+.filter-prog-fill { height: 100%; background: var(--chapter-color, var(--gold)); border-radius: 2px; opacity: .6; }
+
+/* Tag filters */
+.tag-list { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; }
+.tag-chip {
+  padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 500;
+  border: 1px solid var(--border2); color: var(--text-muted);
+  transition: all var(--transition); cursor: pointer;
+}
+.tag-chip:hover { border-color: var(--gold); color: var(--gold); }
+.tag-chip.active { background: var(--gold); border-color: var(--gold); color: #000; }
+
+/* ── MAIN ── */
+#main { flex: 1; margin-left: var(--sb-w); padding: 32px 40px 80px; min-width: 0; }
+
+/* Hero */
+#hero { padding: 48px 0 64px; }
+.hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(44px, 6vw, 80px); font-weight: 900; line-height: 1.0; letter-spacing: -.02em; margin-bottom: 16px; }
+.hero-title span { display: block; background: linear-gradient(135deg, var(--gold), var(--gold2), var(--gold3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(15px, 2vw, 20px); color: var(--text-muted); margin-bottom: 32px; }
+.hero-stats { display: flex; gap: 40px; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--gold); display: block; line-height: 1; }
+.stat-label { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+
+/* Results header */
+#results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+#results-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; }
+#results-count { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); }
+#clear-filters { font-size: 12px; color: var(--gold); padding: 4px 10px; border: 1px solid var(--gold); border-radius: 20px; opacity: .7; transition: opacity var(--transition); display: none; }
+#clear-filters:hover { opacity: 1; }
+
+/* Chapter group */
+.chapter-group { margin-bottom: 48px; }
+.chapter-heading {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.chapter-heading-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--ch-color); opacity: .12; line-height: 1; flex-shrink: 0; }
+.chapter-heading-text h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 2px; }
+.chapter-heading-text p { font-size: 12px; color: var(--text-muted); }
+
+/* Knowledge card */
+.k-card {
+  background: var(--surface); border-left: 3px solid var(--card-color, var(--gold));
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 28px 28px 24px; margin-bottom: 16px;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  position: relative;
+}
+.k-card:hover { transform: translateX(4px); box-shadow: -4px 0 24px var(--shadow); background: var(--surface2); }
+.k-card.is-read { border-left-style: solid; }
+.k-card.is-read .k-num::after { content: ' ✓'; opacity: .5; }
+
+.k-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.k-num { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .18em; color: var(--card-color, var(--gold)); opacity: .8; }
+.k-actions { display: flex; gap: 4px; flex-shrink: 0; }
+.k-action {
+  width: 28px; height: 28px; border-radius: var(--radius); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: var(--text-dim); transition: all var(--transition);
+  background: transparent;
+}
+.k-action:hover { border-color: var(--gold); color: var(--gold); background: var(--surface2); }
+.k-action.bookmarked { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,.08); }
+
+.k-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; line-height: 1.3; margin-bottom: 14px; }
+.k-body { color: var(--text-muted); font-size: 14px; line-height: 1.85; }
+.k-body strong { color: var(--text); font-weight: 600; }
+.k-insight {
+  margin-top: 18px; padding: 14px 18px 14px 32px; border-radius: var(--radius);
+  background: rgba(201,168,76,.05); border: 1px solid rgba(201,168,76,.1);
+  font-size: 13px; color: var(--gold3); font-style: italic; position: relative;
+}
+.k-insight::before { content: '"'; position: absolute; left: 10px; top: 8px; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--gold); opacity: .4; line-height: 1; }
+.k-footer { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+.k-tag { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--card-color, var(--gold)); color: var(--card-color, var(--gold)); opacity: .55; }
+
+/* Empty state */
+#empty { text-align: center; padding: 80px 20px; display: none; }
+#empty h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 10px; color: var(--text-muted); }
+#empty p { font-size: 14px; color: var(--text-dim); }
+
+/* ── RANDOM MODAL ── */
+#random-modal {
+  position: fixed; inset: 0; z-index: 9000;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  opacity: 0; pointer-events: none; transition: opacity var(--transition);
+}
+#random-modal.open { opacity: 1; pointer-events: all; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.7); backdrop-filter: blur(4px); }
+.modal-box {
+  position: relative; background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 36px; max-width: 560px; width: 100%;
+  max-height: 80vh; overflow-y: auto;
+  transform: translateY(20px); transition: transform var(--transition);
+}
+#random-modal.open .modal-box { transform: translateY(0); }
+.modal-close { position: absolute; top: 16px; right: 16px; width: 28px; height: 28px; border-radius: var(--radius); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 16px; transition: all var(--transition); }
+.modal-close:hover { color: var(--text); border-color: var(--border2); }
+.modal-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+
+/* ── TOAST ── */
+#toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius);
+  padding: 10px 20px; font-size: 13px; color: var(--text); z-index: 9999;
+  transition: transform .3s ease, opacity .3s ease; opacity: 0;
+}
+#toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ── FAB RANDOM ── */
+#fab-random {
+  position: fixed; bottom: 28px; right: 28px; z-index: 800;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #b8933a);
+  color: #000; font-size: 20px; box-shadow: 0 4px 20px rgba(201,168,76,.3);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s, box-shadow .2s;
+}
+#fab-random:hover { transform: scale(1.1) rotate(20deg); box-shadow: 0 8px 32px rgba(201,168,76,.4); }
+
+/* ── SCROLL TO TOP ── */
+#back-top {
+  position: fixed; bottom: 92px; right: 28px; z-index: 800;
+  width: 40px; height: 40px; border-radius: var(--radius);
+  background: var(--surface2); border: 1px solid var(--border2);
+  color: var(--text-muted); font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(10px); transition: all .3s;
+}
+#back-top.visible { opacity: 1; transform: translateY(0); }
+#back-top:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── MOBILE ── */
+#sb-toggle { display: none; }
+@media (max-width: 900px) {
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: translateX(0); }
+  #main { margin-left: 0; padding: 24px 20px 80px; }
+  #sb-toggle { display: flex; }
+  .hero-stats { gap: 24px; }
+  #hero { padding: 32px 0 48px; }
+  #penutup { margin-left: 0 !important; }
+}
+
+/* ── UTILS ── */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 48px 0; }
+.highlight { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div id="pbar"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <button class="nav-btn" id="sb-toggle" title="Menu">☰</button>
+  <div class="nav-logo">munnnn666</div>
+  <div id="search-wrap">
+    <input id="search-input" type="text" placeholder="Cari pengetahuan..." autocomplete="off">
+    <span class="search-icon">⌕</span>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-btn" id="btn-bookmarks" title="Bookmark saya">🔖<span class="badge" id="bm-badge" style="display:none">0</span></button>
+    <button class="nav-btn fs-btn" id="btn-fs" title="Ukuran teks">Aa</button>
+    <button class="nav-btn" id="btn-theme" title="Ganti tema">🌙</button>
+  </div>
+</nav>
+
+<!-- LAYOUT -->
+<div id="layout">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <!-- Progress -->
+    <div class="sb-progress">
+      <div class="sb-prog-header">
+        <span class="sb-prog-label">Progress Baca</span>
+        <span class="sb-prog-num" id="prog-text">0/100</span>
+      </div>
+      <div class="sb-prog-bar"><div class="sb-prog-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+
+    <!-- Chapters -->
+    <div class="sb-section">
+      <div class="sb-label">Bab</div>
+      <button class="filter-btn active" data-filter="chapter" data-value="" style="--chapter-color: var(--gold)">
+        <span class="filter-dot"></span> Semua Bab
+        <span class="filter-count">100</span>
+      </button>
+      <button class="filter-btn" data-filter="chapter" data-value="bm" style="--chapter-color: var(--gold)">
+        <span style="font-size:14px">🔖</span> Bookmark
+        <span class="filter-count" id="bm-count">0</span>
+      </button>
+    </div>
+
+    <div class="sb-section" id="chapter-filters"></div>
+
+    <!-- Tags -->
+    <div class="sb-section" style="margin-top:8px">
+      <div class="sb-label">Tag</div>
+      <div class="tag-list" id="tag-list"></div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main id="main">
+    <!-- KATA PENGANTAR -->
+    <div id="pengantar" style="margin-bottom:48px;padding:40px;background:var(--surface);border-radius:2px;border-left:3px solid var(--gold)">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Kata Pengantar</div>
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1.25;margin-bottom:24px">Kamu tidak perlu baca ini kalau yang kamu cari adalah motivasi.</div>
+      <div style="color:var(--text-muted);font-size:15px;line-height:1.9;max-width:640px">
+        <p style="margin-bottom:16px">Buku ini bukan tentang semangat. Bukan tentang mindset positif. Bukan tentang "percaya pada dirimu sendiri."</p>
+        <p style="margin-bottom:16px">Buku ini tentang <strong style="color:var(--text)">pengetahuan yang seharusnya diajarkan sejak dulu, tapi tidak pernah diajarkan.</strong></p>
+        <p style="margin-bottom:16px">Kita menghabiskan bertahun-tahun di bangku sekolah dan kuliah — belajar hal-hal yang sebagian besar tidak pernah kita pakai. Sementara itu, tidak ada yang pernah mengajarkan kita cara berpikir dengan jernih. Cara membuat keputusan yang baik di bawah ketidakpastian. Cara membaca data tanpa ditipu. Cara memahami kenapa manusia — termasuk kita sendiri — berperilaku seperti yang mereka lakukan.</p>
+        <p style="margin-bottom:16px">Aku menyusun buku ini karena satu alasan sederhana: <strong style="color:var(--text)">aku ingin punya ini ketika aku lebih muda.</strong></p>
+        <p style="margin-bottom:16px">Bukan seratus fakta untuk dihafalkan. Tapi seratus fondasi untuk berpikir — dipilih berdasarkan satu kriteria: pengetahuan mana yang paling banyak membuka pintu ke pengetahuan lain?</p>
+        <p style="margin-bottom:16px">Ada yang dari sains. Ada yang dari sejarah dan filsafat. Ada yang dari psikologi dan ekonomi. Tapi semuanya punya satu benang merah: <strong style="color:var(--text)">leverage</strong>. Kuasai satu, dan satu itu membantumu memahami puluhan hal lain yang belum pernah kamu pelajari.</p>
+        <p style="margin-bottom:16px">Cara terbaik membaca buku ini bukan dari halaman pertama ke terakhir. Baca yang menarik perhatianmu. Tandai yang mengganggumu. Kembali ke yang pernah kamu lewati ketika kamu siap.</p>
+        <p style="margin-bottom:24px">Tidak ada ujian. Tidak ada rangkuman yang harus dihafal.<br>Yang ada hanya satu pertanyaan yang worth dijawab: <em>setelah membaca ini, apakah caramu berpikir berubah?</em></p>
+        <p>Kalau iya — buku ini berhasil.</p>
+      </div>
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:16px">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--gold)">munnnn666</div>
+          <div style="font-size:12px;color:var(--text-dim);margin-top:3px">Penulis &amp; Kurator</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero (shown when no filter) -->
+    <div id="hero">
+      <div class="hero-eyebrow">Buku Digital · Edisi Pertama</div>
+      <h1 class="hero-title">100<br><span>Pengetahuan</span></h1>
+      <p class="hero-sub">Fondasi Manusia yang Benar-benar Cerdas</p>
+      <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:32px;padding:10px 20px;border:1px solid var(--border2);border-radius:3px;background:var(--surface)">
+        <span style="font-size:13px;color:var(--text-muted)">Ditulis oleh</span>
+        <span style="font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:var(--gold);letter-spacing:.05em">munnnn666</span>
+      </div>
+      <div class="hero-stats">
+        <div><span class="stat-num">100</span><span class="stat-label">Pengetahuan</span></div>
+        <div><span class="stat-num">9</span><span class="stat-label">Bidang</span></div>
+        <div><span class="stat-num" id="stat-read">0</span><span class="stat-label">Dibaca</span></div>
+      </div>
+    </div>
+
+    <!-- Results header -->
+    <div id="results-header">
+      <div>
+        <div id="results-title">Semua Pengetahuan</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span id="results-count" class="highlight">100 item</span>
+        <button id="clear-filters">✕ Reset</button>
+      </div>
+    </div>
+
+    <!-- Knowledge list -->
+    <div id="knowledge-list"></div>
+    <div id="empty"><h3>Tidak ada hasil</h3><p>Coba kata kunci atau filter yang berbeda.</p></div>
+  </main>
+</div>
+
+<!-- HALAMAN PENUTUP -->
+<div id="penutup" style="border-top:1px solid var(--border);margin-left:var(--sb-w);transition:margin var(--transition),background var(--transition)">
+
+  <!-- Tantangan 30 Hari -->
+  <div style="max-width:780px;margin:0 auto;padding:80px 40px 0">
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Sebelum Kamu Tutup Buku Ini</div>
+    <div style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.15;margin-bottom:32px">Satu hal yang membedakan<br>orang yang belajar<br><span style="background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">dari orang yang berkembang.</span></div>
+    <div style="color:var(--text-muted);font-size:15px;line-height:1.9;max-width:600px;margin-bottom:48px">
+      <p style="margin-bottom:16px">Kamu baru saja membaca — atau setidaknya melewati — seratus pengetahuan. Sebagian mungkin terasa familiar. Sebagian mungkin baru. Sebagian mungkin membuatmu berhenti sejenak dan berpikir.</p>
+      <p style="margin-bottom:16px">Tapi membaca tidak mengubah apapun. <strong style="color:var(--text)">Yang mengubah adalah apa yang kamu lakukan setelah membaca.</strong></p>
+      <p>Ini bukan ujian. Ini bukan PR. Ini hanya satu tantangan sederhana yang aku tawarkan — ambil kalau kamu mau.</p>
+    </div>
+
+    <!-- 30 Hari Challenge Card -->
+    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:2px;padding:36px;margin-bottom:64px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-20px;font-size:100px;opacity:.04;line-height:1;pointer-events:none">30</div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px">Tantangan 30 Hari</div>
+      <div style="color:var(--text-muted);font-size:14px;margin-bottom:28px">Satu pengetahuan. Satu hari. Tiga puluh hari.</div>
+      <div style="display:grid;gap:16px">
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:2px;padding:4px 10px;flex-shrink:0;margin-top:2px">HARI 1–7</div>
+          <div style="color:var(--text-muted);font-size:14px;line-height:1.7">Pilih satu pengetahuan dari <strong style="color:var(--text)">Bab 1: Meta-Kognisi</strong> setiap hari. Terapkan dalam satu keputusan nyata — sekecil apapun. Tulis satu kalimat tentang hasilnya.</div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:2px;padding:4px 10px;flex-shrink:0;margin-top:2px">HARI 8–21</div>
+          <div style="color:var(--text-muted);font-size:14px;line-height:1.7">Acak. Gunakan tombol 🎲 di pojok kanan bawah. Biarkan buku yang memilih untukmu. Satu pengetahuan, satu hari, satu aplikasi nyata.</div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:2px;padding:4px 10px;flex-shrink:0;margin-top:2px">HARI 22–30</div>
+          <div style="color:var(--text-muted);font-size:14px;line-height:1.7">Kembali ke yang kamu bookmark. Baca ulang. Tanya: apakah pemahaman kamu berubah setelah beberapa minggu? Hampir pasti iya.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin-bottom:64px"></div>
+
+    <!-- Pesan Penutup -->
+    <div style="margin-bottom:64px">
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.3;margin-bottom:32px">Satu hal terakhir<br>yang perlu kamu tahu.</div>
+      <div style="color:var(--text-muted);font-size:15px;line-height:1.9;max-width:600px">
+        <p style="margin-bottom:16px">Tidak ada buku — termasuk ini — yang bisa mengubah hidupmu.</p>
+        <p style="margin-bottom:16px">Yang bisa mengubah hidupmu adalah <strong style="color:var(--text)">keputusan kecil yang kamu buat hari ini, besok, dan lusa</strong> — diinformasikan oleh cara berpikir yang lebih baik.</p>
+        <p style="margin-bottom:16px">Buku ini hanya alat. Kamu yang memutuskan apakah mau memakainya.</p>
+        <p style="margin-bottom:16px">Kalau ada satu pengetahuan dari seratus yang ada di sini yang mengubah satu keputusan penting dalam hidupmu — aku rasa itu sudah lebih dari cukup.</p>
+        <p>Terima kasih sudah membaca.</p>
+      </div>
+    </div>
+
+    <!-- Author sign-off -->
+    <div style="display:flex;align-items:center;gap:20px;padding:32px;background:var(--surface);border-radius:2px;border-left:3px solid var(--gold);margin-bottom:80px">
+      <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#b8933a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:#000;flex-shrink:0">M</div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:var(--gold);margin-bottom:3px">munnnn666</div>
+        <div style="font-size:13px;color:var(--text-dim)">Penulis · 100 Pengetahuan</div>
+      </div>
+      <div style="margin-left:auto;font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--text-dim);text-align:right;max-width:200px">"Mulai dari mana kamu berada. Bukan dari mana kamu ingin berada."</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="text-align:center;padding:48px 40px;border-top:1px solid var(--border);background:var(--bg2)">
+    <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px">100 Pengetahuan</div>
+    <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted);letter-spacing:.1em;margin-bottom:6px">Ditulis &amp; dikurasi oleh</div>
+    <div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:500;color:var(--gold);letter-spacing:.08em;margin-bottom:24px">munnnn666</div>
+    <div style="width:40px;height:1px;background:var(--border);margin:0 auto 20px"></div>
+    <p style="color:var(--text-dim);font-size:12px;max-width:360px;margin:0 auto;line-height:1.8">Fondasi Manusia yang Benar-benar Cerdas.<br>Dokumen ini dilisensikan untuk penggunaan pribadi.<br>Dilarang disebarluaskan tanpa izin penulis.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="text-align:center;padding:60px 40px 40px;border-top:1px solid var(--border);margin-left:var(--sb-w);transition:margin var(--transition)">
+  <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px">100 Pengetahuan</div>
+  <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--text-muted);letter-spacing:.1em;margin-bottom:6px">Ditulis & dikurasi oleh</div>
+  <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--gold);letter-spacing:.08em;margin-bottom:20px">munnnn666</div>
+  <div style="width:48px;height:1px;background:var(--border);margin:0 auto 20px"></div>
+  <p style="color:var(--text-dim);font-size:13px;max-width:400px;margin:0 auto;line-height:1.8">Fondasi Manusia yang Benar-benar Cerdas.<br>Dibuat untuk mereka yang ingin berpikir lebih baik,<br>hidup lebih sadar, dan terus bertumbuh.</p>
+</footer>
+
+<!-- RANDOM MODAL -->
+<div id="random-modal">
+  <div class="modal-backdrop" id="modal-bd"></div>
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-eyebrow">🎲 Pengetahuan Acak</div>
+    <div id="modal-content"></div>
+    <div style="display:flex;gap:8px;margin-top:24px">
+      <button id="btn-random-next" style="padding:10px 20px;border:1px solid var(--gold);color:var(--gold);border-radius:3px;font-size:13px;transition:all .2s">Acak lagi →</button>
+      <button id="btn-random-bm" style="padding:10px 20px;border:1px solid var(--border2);color:var(--text-muted);border-radius:3px;font-size:13px;transition:all .2s">🔖 Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- FAB -->
+<button id="fab-random" title="Pengetahuan acak">🎲</button>
+<button id="back-top" title="Kembali ke atas">↑</button>
+
+<script>
+/* ══════════════════════════════════════════
+   DATA LAYER
+══════════════════════════════════════════ */
+const CHAPTERS = [
+  { id:1, name:'Meta-Kognisi',       emoji:'🧠', color:'#c9a84c', desc:'Cara berpikir tentang cara berpikir' },
+  { id:2, name:'Matematika & Logika',emoji:'🔢', color:'#4c8fc9', desc:'Bahasa universal realitas' },
+  { id:3, name:'Bahasa & Komunikasi',emoji:'🗣️', color:'#c94c8f', desc:'Kecerdasan yang bisa disampaikan' },
+  { id:4, name:'Sains Fundamental',  emoji:'🔬', color:'#4cc94c', desc:'Model kerja alam semesta' },
+  { id:5, name:'Psikologi & Manusia',emoji:'🧬', color:'#c98f4c', desc:'Kita hidup bersama manusia lain' },
+  { id:6, name:'Sejarah & Filsafat', emoji:'📜', color:'#8f4cc9', desc:'Pelajaran dari eksperimen terbesar' },
+  { id:7, name:'Teknologi & Sistem', emoji:'💻', color:'#4cc9c9', desc:'Dunia digerakkan oleh ini' },
+  { id:8, name:'Ekonomi & Praktis',  emoji:'💰', color:'#c9c94c', desc:'Cara sumber daya dialokasikan' },
+  { id:9, name:'Kesehatan & Tubuh',  emoji:'🏃', color:'#c94c4c', desc:'Hardware yang menjalankan segalanya' },
+];
+
+const KD = [
+  // ── BAB 1: META-KOGNISI ──
+  {id:1,ch:1,title:'Membaca Aktif dan Kritis',tag:'Fondasi',
+   body:'Mayoritas orang membaca pasif — menyerap kata tanpa bertanya apakah itu benar atau apa yang hilang. Membaca aktif berarti **berdialog dengan teks**: buat catatan tepi, tandai klaim yang meragukan, tanya "siapa yang diuntungkan dari informasi ini?" Hubungkan dengan apa yang sudah kamu tahu. Orang yang membaca aktif tidak hanya lebih paham, mereka juga lebih sulit dimanipulasi.',
+   insight:'Buku yang dibaca sekali dan dilupakan sama nilainya dengan buku yang tidak dibaca.'},
+  {id:2,ch:1,title:'Cara Belajar dari Nol Secara Efisien',tag:'Produktivitas',
+   body:'Ada cara belajar yang benar dan ada yang hanya terasa produktif. Mengulang catatan terasa kerja keras tapi hasilnya minimal. **Teknik retrieval** — menutup buku dan mencoba mengingat isinya — jauh lebih efektif. Prinsip Feynman: kalau tidak bisa menjelaskan dengan sederhana kepada anak kecil, kamu belum benar-benar paham.',
+   insight:'Cara belajar yang benar adalah skill paling underrated yang tidak diajarkan di sekolah.'},
+  {id:3,ch:1,title:'Identifikasi Bias Kognitif Diri Sendiri',tag:'Kesadaran Diri',
+   body:'Otakmu bukan mesin logika — dia mesin bertahan hidup yang pintar merasionalisasi. **Bias konfirmasi** membuatmu mencari bukti yang mendukung keyakinanmu. **Dunning-Kruger** membuatmu merasa paling pintar justru saat tahu paling sedikit. Satu kebiasaan kunci: selalu tanya "apa yang harus benar agar aku salah?"',
+   insight:'Orang paling berbahaya adalah yang tidak tahu bahwa pikirannya bisa salah.'},
+  {id:4,ch:1,title:'Membedakan Korelasi dan Kausalitas',tag:'Berpikir Kritis',
+   body:'Di negara dengan lebih banyak bangau, angka kelahiran lebih tinggi — bukan karena bangau membawa bayi, tapi keduanya berkorelasi dengan populasi pedesaan. **Korelasi** = dua hal terjadi bersamaan. **Kausalitas** = satu hal menyebabkan yang lain. Selalu tanya: ada tidak variabel ketiga yang menjelaskan keduanya?',
+   insight:'Statistik tidak pernah berbohong. Yang berbohong adalah cara kita membacanya.'},
+  {id:5,ch:1,title:'Membangun dan Menguji Hipotesis',tag:'Metodologi',
+   body:'Ilmuwan terbaik bukan yang paling banyak tahu — tapi yang paling cepat salah secara produktif. Hipotesis adalah tebakan terstruktur: "Saya percaya X karena Y. Jika benar, bisa dibuktikan dengan Z." **Berpikir hipotetis** memaksamu memisahkan opini dari fakta — berguna jauh di luar laboratorium.',
+   insight:'Gagal cepat lebih baik dari gagal mahal. Hipotesis yang baik membuat kegagalan informatif.'},
+  {id:6,ch:1,title:'Keputusan di Bawah Ketidakpastian',tag:'Pengambilan Keputusan',
+   body:'Hidup tidak memberimu informasi lengkap sebelum harus memutuskan. Kerangka **Expected Value**: kalikan probabilitas dengan dampaknya. Bukan hanya "apa yang paling mungkin?" tapi "apa konsekuensinya jika aku salah?" Keputusan dengan downside kecil boleh diambil meski peluang 50/50.',
+   insight:'Keputusan yang baik bukan yang hasilnya selalu bagus — tapi yang prosesnya benar.'},
+  {id:7,ch:1,title:'Mengukur Trade-off',tag:'Kerangka Berpikir',
+   body:'Tidak ada keputusan tanpa harga. Memilih A selalu berarti tidak memilih B. Ekonom menyebutnya **opportunity cost**. Orang buruk dalam trade-off fokus pada apa yang didapat. Orang baik juga memperhitungkan apa yang dilepaskan. Waktu adalah contoh terbaik: setiap jam untuk X adalah jam yang tidak untuk Y.',
+   insight:'Setiap "ya" mengandung seribu "tidak" yang tersembunyi.'},
+  {id:8,ch:1,title:'Mengenali Manipulasi Logika',tag:'Pertahanan Diri',
+   body:'Ada puluhan cara argumen terlihat valid tapi sebenarnya kosong. **Strawman**: menyerang versi argumen lawan yang lebih lemah. **Ad hominem**: menyerang orangnya, bukan argumennya. **False dichotomy**: "kalau bukan A, pasti B" padahal ada pilihan lain. Kenali ini bukan untuk menang debat, tapi untuk tidak tertipu.',
+   insight:'Argumen yang paling meyakinkan belum tentu yang paling benar.'},
+  {id:9,ch:1,title:'Bertanya dengan Tepat',tag:'Komunikasi',
+   body:'Kualitas jawabanmu dibatasi oleh kualitas pertanyaanmu. Pertanyaan tertutup: "Apakah ini berhasil?" → Ya/Tidak. Pertanyaan terbuka spesifik: "Dalam kondisi apa ini paling berhasil, dan kapan ia gagal?" → Membuka nuansa. Satu pertanyaan terbaik di hampir setiap situasi: **"Apa yang saya tidak tanyakan yang seharusnya saya tanyakan?"**',
+   insight:'Einstein akan menghabiskan 55 menit dari satu jam untuk merumuskan pertanyaannya.'},
+  {id:10,ch:1,title:'Tahu Kapan Kamu Tidak Tahu',tag:'Kebijaksanaan',
+   body:'Empat zona: (1) Tahu bahwa kamu tahu, (2) Tahu bahwa kamu tidak tahu, (3) Tidak tahu bahwa kamu tahu, (4) **Tidak tahu bahwa kamu tidak tahu** — ini yang paling berbahaya. Cara melatihnya: setelah menjawab sesuatu, ukur keyakinanmu dalam persentase. Kalibrasi diri agar tahu kapan percaya diri dan kapan harus tanya lebih lanjut.',
+   insight:'"Aku tahu bahwa aku tidak tahu apa-apa" — dan itulah kenapa Socrates dianggap paling bijak.'},
+  // ── BAB 2: MATEMATIKA ──
+  {id:11,ch:2,title:'Aritmatika dan Estimasi Cepat',tag:'Numerasi',
+   body:'Bukan soal kalkulator — ini soal **intuisi angka**. Bisa estimasi bahwa "ini kira-kira 10 juta" lebih berharga dari hitung persis "9.847.312" dalam pengambilan keputusan cepat. Pembulatan cerdas dan sanity check — sebelum percaya angka manapun, tanya: masuk akalkah ini secara kasar?',
+   insight:'CFO yang baik tidak butuh Excel untuk tahu bahwa angka di laporan terlihat salah.'},
+  {id:12,ch:2,title:'Aljabar Dasar',tag:'Berpikir Sistemik',
+   body:'Aljabar mengajarkan satu hal paling berguna: **cara berpikir tentang hubungan antar variabel**. "Jika X naik, apa yang terjadi pada Y?" Ini bukan hanya soal persamaan di kertas — ini cara berpikir sistemik yang berguna dalam bisnis, sains, bahkan hubungan manusia.',
+   insight:'Setiap kali kamu berpikir "jika-maka", kamu sedang melakukan aljabar.'},
+  {id:13,ch:2,title:'Statistik Dasar: Mean, Median, Distribusi',tag:'Literasi Data',
+   body:'Rata-rata bisa menipu. Jika 9 orang berpenghasilan Rp 3 juta dan 1 orang Rp 30 juta, rata-rata Rp 5,7 juta tidak merepresentasikan siapapun. **Median lebih jujur.** Memahami distribusi — apakah data tersebar merata atau mengumpul — mengubah cara kamu membaca berita, riset, dan klaim bisnis.',
+   insight:'Separuh populasi berada di bawah median — fakta yang mengubah cara kita melihat "rata-rata orang".'},
+  {id:14,ch:2,title:'Probabilitas dan Berpikir dengan Angka',tag:'Pengambilan Keputusan',
+   body:'Otak manusia sangat buruk memproses probabilitas secara intuitif. Kita takut naik pesawat (risiko 1 dalam jutaan) tapi tidak takut naik motor (jauh lebih berbahaya). **Berpikir probabilistik** berarti membiasakan diri dengan persentase, bukan hanya "mungkin" atau "tidak mungkin".',
+   insight:'80% ahli yang yakin ternyata benar hanya 40% kali — kalibrasi lebih penting dari keyakinan.'},
+  {id:15,ch:2,title:'Logika Formal: Dan, Atau, Jika-Maka',tag:'Logika',
+   body:'Banyak perdebatan tidak produktif karena dua pihak menggunakan logika berbeda tanpa sadar. Memahami operasi logika dasar membuatmu bisa **menstrukturkan argumen** dan menemukan lubang dalam argumen orang lain dengan presisi, bukan emosi.',
+   insight:'"Jika hujan, maka jalan basah" tidak sama dengan "Jika jalan basah, maka pasti hujan."'},
+  {id:16,ch:2,title:'Membaca Grafik dan Data Visual',tag:'Literasi Visual',
+   body:'Grafik bisa berbohong tanpa berbohong: sumbu Y yang tidak dimulai dari nol membuat perubahan kecil terlihat dramatis. **Sebelum percaya grafik apapun, tanya:** apa sumbu X dan Y-nya? Apa skalanya? Siapa yang membuatnya dan apa kepentingannya?',
+   insight:'Visualisasi data adalah salah satu alat persuasi paling kuat — dan paling mudah dimanipulasi.'},
+  {id:17,ch:2,title:'Eksponensial dan Compound Growth',tag:'Finansial Kritis',
+   body:'Rp 10 juta yang tumbuh 10% per tahun menjadi Rp 17,4 juta dalam 5 tahun — tapi Rp 67,3 juta dalam 20 tahun. **Pertumbuhan eksponensial tidak terasa signifikan di awal, tapi hasilnya mengejutkan di akhir.** Berlaku juga sebaliknya: hutang berbunga tinggi yang tidak dibayar tumbuh dengan cara yang sama.',
+   insight:'Einstein menyebut compound interest sebagai "keajaiban dunia kedelapan".'},
+  {id:18,ch:2,title:'Fermi Estimation',tag:'Problem Solving',
+   body:'"Berapa banyak tukang cukur di Jakarta?" Kamu tidak perlu survei. Estimasi populasi, seberapa sering orang potong rambut, kapasitas satu tukang cukur per hari — lalu hitung. **Kemampuan memecah masalah besar menjadi sub-estimasi yang bisa dihitung** sangat berguna di bisnis dan kehidupan.',
+   insight:'Ahli fisika Fermi bisa mengestimasi kekuatan bom atom dari selembar kertas yang jatuh.'},
+  {id:19,ch:2,title:'Geometri dan Intuisi Spasial',tag:'Intuisi',
+   body:'Intuisi spasial — kemampuan membayangkan objek dan hubungannya dalam ruang — berkorelasi dengan kemampuan memecahkan masalah kompleks. Juga praktis: memahami luas, volume, dan proporsi berguna dalam desain, arsitektur, dan memperkirakan apakah furnitur muat di ruangan.',
+   insight:'Otak yang terlatih visualisasi spasial lebih baik dalam memahami data multidimensi.'},
+  {id:20,ch:2,title:'Konsep Optimasi',tag:'Efisiensi',
+   body:'Hidup penuh masalah optimasi: bagaimana mendapat hasil maksimal dengan usaha minimal? Konsep ini mengajarkan bahwa **tidak ada solusi sempurna, hanya trade-off yang paling bijak** — dan ada cara sistematis untuk menemukannya.',
+   insight:'Setiap diet, jadwal, anggaran, dan strategi bisnis pada dasarnya adalah masalah optimasi.'},
+  {id:21,ch:2,title:'Teori Permainan (Game Theory)',tag:'Strategi',
+   body:'Ketika keputusanmu bergantung pada keputusan orang lain, kamu sedang bermain game theory. **Prisoner\'s Dilemma** menjelaskan kenapa dua pihak yang rasional bisa sama-sama memilih kerja sama atau mengkhianati. Memahami ini mengubah cara kamu bernegosiasi, berkompetisi, dan berkolaborasi.',
+   insight:'Perang nuklir tidak pernah terjadi bukan karena tidak ada yang mau — tapi karena game theory mencegahnya.'},
+  {id:22,ch:2,title:'Membangun Model Mental',tag:'Kerangka Berpikir',
+   body:'Model mental adalah peta mini tentang bagaimana sesuatu bekerja. Kamu tidak perlu benar 100% — model yang 80% benar sudah cukup untuk keputusan yang jauh lebih baik. **Kumpulkan model dari berbagai bidang** dan otak-silangkan untuk memahami situasi baru.',
+   insight:'Charlie Munger menyebut pikirannya sebagai "kisi-kisi model mental" yang diterapkan pada setiap situasi baru.'},
+  {id:23,ch:2,title:'Diminishing Returns',tag:'Efisiensi',
+   body:'Jam pertama latihan menghasilkan peningkatan besar. Jam kesepuluh pada hari yang sama menghasilkan hampir nol — bahkan kontraproduktif. **Diminishing returns berlaku hampir di semua hal**: makanan, uang, kerja keras, informasi. Tahu kapan "cukup" sama pentingnya dengan cara menambah lebih.',
+   insight:'Lebih banyak tidak selalu lebih baik. Titik optimal sering ada di tengah, bukan di ekstrem.'},
+  {id:24,ch:2,title:'Set Theory Dasar',tag:'Logika',
+   body:'Cara berpikir tentang kelompok, kategori, dan keanggotaan. "Siapa yang termasuk dalam kelompok ini?" dan "apa yang dimiliki bersama oleh dua kelompok?" adalah inti dari set theory. Berguna dalam segmentasi pasar, logika pemrograman, dan cara kamu memilah informasi.',
+   insight:'Kemampuan mengkategorisasi adalah salah satu kekuatan paling mendasar dari kognisi manusia.'},
+  {id:25,ch:2,title:'Membaca Laporan Keuangan',tag:'Keuangan',
+   body:'Tiga dokumen kunci: **Laporan Laba Rugi** (apakah untung?), **Neraca** (apa yang dimiliki dan dihutang?), **Arus Kas** (apakah uang masuk lebih banyak dari yang keluar?). Bisa membaca ketiganya membuatmu tidak mudah ditipu dan lebih baik dalam keputusan bisnis.',
+   insight:'Perusahaan bisa untung di atas kertas tapi bangkrut karena kehabisan kas. Arus kas tidak pernah berbohong.'},
+  // ── BAB 3: BAHASA ──
+  {id:26,ch:3,title:'Menulis dengan Jelas dan Ringkas',tag:'Komunikasi Tertulis',
+   body:'Menulis yang baik bukan soal kosakata luas atau kalimat panjang. Sebaliknya — **kalimat pendek lebih kuat**. Satu ide per paragraf. Hilangkan kata yang tidak menambah makna. Tes sederhana: baca keras-keras. Jika kehabisan napas atau terdengar kaku, potong dan sederhanakan.',
+   insight:'"Maaf saya tidak sempat menulis surat singkat, maka saya tulis surat panjang." — Blaise Pascal'},
+  {id:27,ch:3,title:'Berbicara Persuasif Tanpa Manipulatif',tag:'Pengaruh',
+   body:'**Persuasi etis**: berikan alasan yang valid dan biarkan orang memutuskan sendiri. **Manipulasi**: eksploitasi kelemahan psikologis untuk memaksakan keputusan. Kunci persuasi yang kuat: pahami motivasi audiensmu lebih dalam dari mereka sendiri, lalu tunjukkan bagaimana idemu melayani motivasi itu.',
+   insight:'Orang paling persuasif di dunia bukan yang paling lantang — tapi yang paling memahami orang lain.'},
+  {id:28,ch:3,title:'Mendengar Aktif',tag:'Relasi',
+   body:'Mayoritas orang tidak mendengar — mereka menunggu giliran bicara. **Mendengar aktif** berarti fokus sepenuhnya pada apa yang dikatakan. Tandanya: kamu bisa merangkum apa yang baru dikatakan dengan akurat, termasuk nuansanya. Keterampilan ini mengubah hubungan profesional dan personal secara dramatis.',
+   insight:'Tuhan memberimu dua telinga dan satu mulut bukan tanpa alasan.'},
+  {id:29,ch:3,title:'Struktur Argumen yang Baik',tag:'Berpikir Kritis',
+   body:'Argumen yang baik punya tiga komponen: **klaim** (apa yang kamu percaya), **bukti** (mengapa), dan **warrant** (kenapa bukti itu relevan terhadap klaim). Kebanyakan debat tidak produktif karena orang melewati satu komponen ini.',
+   insight:'Pendapat tanpa argumen hanyalah pernyataan. Argumen tanpa bukti hanyalah kepercayaan.'},
+  {id:30,ch:3,title:'Memberi dan Menerima Kritik',tag:'Pengembangan Diri',
+   body:'Kritik yang baik bukan serangan — ini data. **Memberi:** spesifik tentang perilaku, bukan karakter. "Laporanmu kurang data pendukung" bukan "kamu ceroboh." **Menerima:** resistansi pertama terhadap kritik hampir selalu emosional. Tunda reaksi, cari kernel kebenaran sebelum merespons.',
+   insight:'Orang yang tidak bisa menerima kritik tidak bisa berkembang, seberapapun cerdasnya mereka.'},
+  {id:31,ch:3,title:'Bahasa Inggris sebagai Bahasa Global',tag:'Akses Pengetahuan',
+   body:'Ini bukan soal gaya hidup — ini soal akses. **Lebih dari 50% konten internet berbahasa Inggris.** Hampir semua riset ilmiah terkini dipublikasikan dalam bahasa Inggris. Tidak fasih berarti kamu belajar dari sumber-sumber second-hand yang sudah diterjemahkan.',
+   insight:'Setiap bahasa yang kamu kuasai membuka dunia yang sama sekali berbeda.'},
+  {id:32,ch:3,title:'Membaca Bahasa Tubuh',tag:'Kecerdasan Emosional',
+   body:'Dalam komunikasi emosional, kata-kata hanya sebagian kecil dari pesan. Sisanya: nada suara, ekspresi wajah, postur. **Apa yang tidak dikatakan sering lebih informatif dari yang dikatakan.** Sinyal ketidaknyamanan: menyilangkan tangan, kontak mata yang dihindari, senyum yang tidak sampai ke mata.',
+   insight:'Berbohong dengan kata-kata mudah. Berbohong dengan seluruh tubuh jauh lebih sulit.'},
+  {id:33,ch:3,title:'Menyesuaikan Gaya Komunikasi',tag:'Empati',
+   body:'Pesan yang sama harus dikemas berbeda untuk CEO, engineer, dan pelanggan awam. Ini bukan kepalsuan — ini empati. Sebelum berbicara atau menulis, tanya: apa yang sudah mereka tahu? Apa yang paling relevan bagi mereka? Apa yang mereka takutkan atau harapkan?',
+   insight:'Menulis untuk semua orang sama dengan menulis untuk tidak ada orang.'},
+  {id:34,ch:3,title:'Storytelling: Ide Menjadi Narasi',tag:'Presentasi',
+   body:'Data tidak menggerakkan orang. Cerita menggerakkan orang. Otak manusia terprogram untuk merespons narasi — karakter, konflik, resolusi. Struktur sederhana yang selalu berhasil: **situasi saat ini → masalah yang muncul → solusi → kehidupan setelahnya.**',
+   insight:'Fakta memberi tahu. Cerita menjual. Orang terbaik melakukan keduanya sekaligus.'},
+  {id:35,ch:3,title:'Bernegosiasi Tanpa Merusak Hubungan',tag:'Negosiasi',
+   body:'Negosiasi bukan perang. **Prinsip Harvard Negotiation**: fokus pada kepentingan (mengapa), bukan posisi (apa yang diminta). Dua orang bertengkar soal jendela mungkin sama-sama setuju jika jendela di ruang sebelah dibuka. Taktik terkuat: diam setelah mengajukan penawaran.',
+   insight:'Negosiasi terbaik adalah yang membuat kedua pihak merasa menang.'},
+  // ── BAB 4: SAINS ──
+  {id:36,ch:4,title:'Fisika Dasar: Gerak, Energi, Termodinamika',tag:'Prinsip Universal',
+   body:'Hukum Newton menjelaskan mengapa benda bergerak dan berhenti. Hukum kekekalan energi menjelaskan mengapa tidak ada yang gratis di alam semesta. **Hukum kedua termodinamika**: segala sesuatu cenderung menuju kekacauan (entropi) — dan butuh energi untuk menjaga keteraturan.',
+   insight:'Kenapa organisasi tanpa upaya aktif selalu memburuk? Entropi. Berlaku di mana-mana.'},
+  {id:37,ch:4,title:'Kimia Dasar: Atom, Ikatan, Reaksi',tag:'Ilmu Alam',
+   body:'Semua materi terbuat dari atom yang berikatan. Memahami ini membantumu mengerti: mengapa obat bekerja, mengapa makanan berubah ketika dimasak, mengapa plastik tidak terurai, mengapa logam berkarat. **Kimia adalah bahasa materi.**',
+   insight:'Racun vs obat seringkali hanya soal dosis dan cara ikatan molekulnya.'},
+  {id:38,ch:4,title:'Biologi Sel: Bagaimana Kehidupan Bekerja',tag:'Biologi',
+   body:'Sel adalah unit terkecil kehidupan. Di dalamnya ada DNA yang menyimpan instruksi, mitokondria yang memproduksi energi, dan membran yang mengatur apa yang masuk dan keluar. Memahami biologi sel membantumu mengerti kanker, cara obat bekerja, dan mengapa tidur dan nutrisi memengaruhi segalanya.',
+   insight:'Kamu adalah koleksi 37 triliun sel yang entah bagaimana berkolaborasi menjadi "kamu".'},
+  {id:39,ch:4,title:'Evolusi dan Seleksi Alam',tag:'Teori Besar',
+   body:'Teori evolusi Darwin adalah salah satu ide paling unifying dalam sains. Intinya: varian yang lebih cocok dengan lingkungan bertahan dan bereproduksi lebih banyak. **Tapi evolusi bukan hanya biologi** — bisnis, teknologi, budaya semuanya berevolusi dengan mekanisme yang mirip.',
+   insight:'Kita bukan puncak evolusi — kita hanya titik sementara dalam perjalanan yang belum berakhir.'},
+  {id:40,ch:4,title:'Cara Kerja Sistem Saraf dan Otak',tag:'Neurosains',
+   body:'Otakmu adalah 1,5 kg jaringan yang mengonsumsi 20% energi tubuh. Di dalamnya 86 miliar neuron berkomunikasi melalui sinyal listrik dan kimia. **Yang paling berguna dipahami**: otak punya sistem cepat (intuitif, otomatis) dan lambat (analitis). Kebanyakan keputusan dibuat oleh sistem cepat — itulah mengapa bias kognitif begitu kuat.',
+   insight:'Otak yang tidak dimengerti oleh pemiliknya adalah alat yang tidak bisa digunakan secara penuh.'},
+  {id:41,ch:4,title:'Genetika Dasar',tag:'Biologi',
+   body:'DNA adalah instruksi manual tubuhmu — ditulis dalam 4 huruf yang berulang dalam 3 miliar pasang. Gen menentukan banyak hal, tapi bukan segalanya. **Epigenetik** menunjukkan bahwa lingkungan dan perilaku bisa mengubah ekspresi gen.',
+   insight:'Genetik menentukan batas bawah dan batas atas potensimu. Kamu yang menentukan di mana dalam rentang itu kamu berada.'},
+  {id:42,ch:4,title:'Cara Kerja Ekosistem',tag:'Berpikir Sistemik',
+   body:'Serigala yang dimasukkan kembali ke Yellowstone mengubah aliran sungai — karena rusa tidak lagi merumput di tepi sungai, vegetasi tumbuh, mengubah erosi, mengubah aliran air. Ini **trophic cascade**. Pelajarannya: sistem kompleks punya sebab-akibat yang jauh dan tidak terduga.',
+   insight:'Tidak ada tindakan yang benar-benar terisolasi dalam sistem yang saling terhubung.'},
+  {id:43,ch:4,title:'Cara Kerja Iklim dan Cuaca',tag:'Sains Lingkungan',
+   body:'Cuaca adalah apa yang terjadi minggu ini. Iklim adalah pola selama puluhan tahun. CO₂ dan gas rumah kaca memerangkap panas — ini fisika dasar yang sudah terbukti 150 tahun. Memahami ini membuatmu bisa menilai isu perubahan iklim secara ilmiah, bukan ideologis.',
+   insight:'Iklim bukan opini. Ia adalah fisika yang berjalan dalam skala waktu yang tidak intuitif bagi manusia.'},
+  {id:44,ch:4,title:'Astronomi: Skala Alam Semesta',tag:'Perspektif',
+   body:'Bumi itu kecil. Tata surya kita berada di pinggiran galaksi Bima Sakti yang berisi 200-400 miliar bintang. Dan Bima Sakti hanya satu dari lebih dari 2 triliun galaksi. Memahami skala ini melatih kemampuan berpikir dalam rentang yang berbeda — berguna dalam banyak masalah kompleks.',
+   insight:'Kita adalah debu bintang yang cukup sadar diri untuk mempertanyakan asal-usulnya.'},
+  {id:45,ch:4,title:'Cara Kerja Gelombang',tag:'Fisika',
+   body:'Cahaya, suara, radio, X-ray, WiFi — semuanya adalah gelombang, yang berbeda hanya frekuensinya. Memahami ini membantumu mengerti: mengapa langit biru, bagaimana MRI bekerja, mengapa musik bass terasa di dada, dan bagaimana informasi bisa dikirim melalui udara tanpa kabel.',
+   insight:'Alam semesta lebih "berisik" dari yang bisa kita dengar — kita hanya mendeteksi sebagian kecil dari spektrum gelombang.'},
+  {id:46,ch:4,title:'Relativitas dan Keterbatasannya',tag:'Fisika Modern',
+   body:'Einstein menunjukkan bahwa waktu bukan konstanta — ia melambat ketika kecepatan meningkat. GPS di ponselmu harus mengkoreksi efek relativitas agar akurat. **Relativitas mengajarkan**: banyak hal yang kita anggap absolut ternyata bergantung pada kerangka referensi.',
+   insight:'Kebenaran yang kamu lihat bergantung dari mana kamu berdiri — secara harfiah dan metaforis.'},
+  {id:47,ch:4,title:'Vaksin dan Sistem Imun',tag:'Kesehatan',
+   body:'Sistem imunmu adalah militer paling canggih yang ada. Ia punya pasukan garis depan (imunitas bawaan) dan pasukan spesialis yang bisa mengingat musuh (imunitas adaptif). **Vaksin** melatih pasukan spesialis ini mengenali musuh tanpa mengalami pertempuran sesungguhnya.',
+   insight:'Herd immunity bukan teori — ini matematika. Cukup banyak orang imun, patogen tidak punya inang untuk menyebar.'},
+  {id:48,ch:4,title:'Cara Kerja Obat di Tubuh',tag:'Farmakologi',
+   body:'Obat bekerja dengan meniru, memblokir, atau mengubah sinyal kimia di tubuh. Tidak ada obat tanpa efek samping — yang berbeda hanya **profil risiko-manfaatnya**. Itulah mengapa dosis dan konteks sangat penting.',
+   insight:'"Semua obat adalah racun; semua racun adalah obat. Yang membedakan adalah dosis." — Paracelsus'},
+  {id:49,ch:4,title:'Cara Energi Diproduksi dan Ditransfer',tag:'Fisika Terapan',
+   body:'Energi tidak diciptakan atau dihancurkan — hanya diubah bentuknya. Matahari → cahaya, tanaman → kimia, tubuh → gerak dan panas. Memahami rantai energi ini membantumu berpikir tentang keberlanjutan, efisiensi, dan konsekuensi dari pilihan energi.',
+   insight:'Setiap joule yang kamu gunakan hari ini punya jejak yang panjang dan tidak sederhana.'},
+  {id:50,ch:4,title:'Cara Membaca Paper Ilmiah',tag:'Literasi Ilmiah',
+   body:'Berita sains sering melebih-lebihkan hasil penelitian. Membaca paper aslinya membuatmu melihat: seberapa besar sampelnya? Apakah ada kontrol? Struktur: Abstract → Introduction → **Methods** → Results → **Discussion**. Jika hanya bisa baca dua bagian: Methods dan Discussion.',
+   insight:'"Studi menunjukkan..." adalah kalimat yang paling sering disalahgunakan dalam jurnalisme modern.'},
+  // ── BAB 5: PSIKOLOGI ──
+  {id:51,ch:5,title:'Motivasi Intrinsik vs Ekstrinsik',tag:'Motivasi',
+   body:'**Motivasi ekstrinsik**: melakukan sesuatu untuk hadiah atau menghindari hukuman. **Motivasi intrinsik**: karena menemukan makna atau rasa ingin tahu. Untuk pekerjaan kreatif dan kompleks, motivasi ekstrinsik (uang, pujian) justru bisa merusak performa jangka panjang. Otonomi, penguasaan, dan tujuan adalah motor paling kuat.',
+   insight:'Bayar orang cukup sehingga uang bukan masalah lagi — lalu berikan makna, bukan bonus.'},
+  {id:52,ch:5,title:'Cara Kerja Memori dan Kenapa Kita Salah Ingat',tag:'Neurosains',
+   body:'Memori bukan rekaman video. Setiap kali mengingat sesuatu, kamu sebenarnya **merekonstruksi** memori itu — dan dalam proses itu, detail bisa berubah. Saksi mata yang paling yakin pun bisa salah. Kenangan yang paling emosional justru paling rentan terhadap distorsi.',
+   insight:'Nostalgia adalah kenangan yang sudah diedit otomatis oleh otakmu untuk membuatnya lebih baik dari aslinya.'},
+  {id:53,ch:5,title:'Emosi sebagai Data, Bukan Musuh',tag:'Kecerdasan Emosional',
+   body:'Emosi bukan kelemahan — mereka adalah sistem informasi yang berevolusi jutaan tahun. Rasa takut → ada ancaman. Rasa marah → ada pelanggaran nilai. Rasa sedih → ada kehilangan yang perlu diproses. **Masalah bukan emosi itu sendiri** — tapi tindakan impulsif berdasarkan emosi yang belum diproses.',
+   insight:'Nama emosi yang tepat mengurangi intensitasnya — beri nama yang benar dan kamu punya lebih banyak kontrol.'},
+  {id:54,ch:5,title:'Cara Kerja Kebiasaan',tag:'Perilaku',
+   body:'Kebiasaan bekerja dalam loop: **cue → routine → reward**. Kunci mengubah kebiasaan bukan menghilangkan rutinitas — tapi mengganti rutinitas dengan mempertahankan cue dan reward yang sama. 40-50% dari tindakanmu setiap hari adalah kebiasaan, bukan pilihan sadar.',
+   insight:'Kamu tidak naik level dengan motivasi — kamu naik level dengan sistem kebiasaan yang dibangun ketika motivasi ada.'},
+  {id:55,ch:5,title:'Efek Lingkungan terhadap Perilaku',tag:'Desain Perilaku',
+   body:'Eksperimen Stanford Prison menunjukkan: orang baik bisa berperilaku buruk dalam lingkungan yang salah. Kita terlalu melebih-lebihkan karakter dan meremehkan situasi. **Desain lingkunganmu dengan sengaja**: jika mau makan sehat, jangan simpan junk food di rumah.',
+   insight:'Kamu adalah rata-rata dari lingkungan tempatmu menghabiskan waktu — bukan hanya orang-orangnya, tapi semuanya.'},
+  {id:56,ch:5,title:'Dinamika Kelompok dan Sosial',tag:'Sosial',
+   body:'**Groupthink**: kelompok yang kohesif menekan pendapat berbeda dan membuat keputusan yang lebih buruk dari individu terbaik di dalamnya. **Difusi tanggung jawab**: semakin banyak orang yang menyaksikan masalah, semakin sedikit yang merasa bertanggung jawab bertindak.',
+   insight:'Komite tidak menciptakan karya seni — individu berani yang dikelilingi kelompok yang tepat menciptakannya.'},
+  {id:57,ch:5,title:'Psikologi Trauma Dasar',tag:'Kesehatan Mental',
+   body:'Trauma bukan hanya tentang kejadian besar — ia adalah respons sistem saraf terhadap pengalaman yang overwhelm kapasitas seseorang. Trauma bisa tertanam dalam cara bereaksi, berkomunikasi, dan membuat keputusan — sering tanpa disadari. Perilaku yang tampak "irasional" sering punya akar trauma yang tidak terlihat.',
+   insight:'Bukan "apa yang salah denganmu?" — tapi "apa yang terjadi padamu?"'},
+  {id:58,ch:5,title:'Bias Konfirmasi dan Cara Melawannya',tag:'Kesadaran Diri',
+   body:'Otakmu secara aktif mencari informasi yang membenarkan apa yang sudah kamu percaya. Cara melawan: **secara sengaja cari argumen terkuat dari pihak berlawanan** — bukan untuk setuju, tapi untuk memastikan keyakinanmu tahan uji. Jika tidak bisa mempresentasikan pandangan lawan dengan adil, kamu belum cukup memahaminya.',
+   insight:'Filter gelembung bukan hanya di media sosial — ia ada di dalam otakmu sejak lahir.'},
+  {id:59,ch:5,title:'Cara Kerja Kepercayaan Antar Manusia',tag:'Relasi',
+   body:'Kepercayaan dibangun dari tiga komponen: **kompetensi** (bisa melakukannya), **integritas** (akan melakukannya jika berjanji), dan **kepedulian** (mempertimbangkan kepentingan orang lain). Kepercayaan dibangun perlahan dalam tetes kecil konsistensi — dan hancur seketika dalam satu tindakan pengkhianatan.',
+   insight:'Reputasimu adalah rata-rata dari semua interaksimu, bukan hanya yang terbesar atau terbaru.'},
+  {id:60,ch:5,title:'Introvert/Ekstrovert sebagai Spektrum',tag:'Pemahaman Diri',
+   body:'Introvert bukan pemalu dan ekstrovert bukan berisik. Perbedaan mendasarnya adalah **sumber energi**: introvert mendapat energi dari waktu sendirian, ekstrovert dari interaksi sosial. Ambivert adalah yang paling umum. Kelola dirimu sesuai kebutuhan energimu, bukan ekspektasi sosial.',
+   insight:'Dunia yang dirancang untuk ekstrovert tidak berarti introvert kurang valid — hanya kurang terdengar.'},
+  // ── BAB 6: SEJARAH ──
+  {id:61,ch:6,title:'Pola Besar Sejarah Peradaban',tag:'Makro-Sejarah',
+   body:'Peradaban lahir, tumbuh, dan runtuh — tidak ada yang abadi. Yang berulang: kemunculan dari krisis, periode keemasan ketika stabilitas dan inovasi bertemu, kemudian stagnasi, korupsi, dan runtuh dari dalam atau diserang dari luar. Yang sama setiap kali: keserakahan dan kekuasaan yang tidak terkontrol.',
+   insight:'Sejarah tidak berulang, tapi ia berima. — Mark Twain'},
+  {id:62,ch:6,title:'Ideologi: Lahir, Tumbuh, Runtuh',tag:'Pemikiran Politik',
+   body:'Ideologi lahir sebagai respons terhadap masalah nyata yang belum terpecahkan. Kapitalisme muncul sebagai alternatif feodalisme. Komunisme sebagai kritik kapitalisme industri. Setiap ideologi punya **kernel kebenaran** yang menarik pengikut awalnya — dan kelemahan struktural yang akhirnya menghancurkannya.',
+   insight:'Ideologi terbaik adalah yang paling jujur tentang batas-batasnya sendiri.'},
+  {id:63,ch:6,title:'Filsafat Dasar: Epistemologi, Etika, Logika',tag:'Filsafat',
+   body:'**Epistemologi**: bagaimana kita tahu apa yang kita tahu? **Etika**: apa yang benar dan salah? **Logika**: bagaimana argumen valid dibangun? Filsafat bukan abstrak — ini adalah fondasi dari semua bidang lain. Hukum butuh etika. Sains butuh epistemologi. Matematika butuh logika.',
+   insight:'Orang yang tidak berfilsafat tetap menjalankan filsafat — hanya saja tanpa sadar, dan biasanya milik orang lain.'},
+  {id:64,ch:6,title:'Cara Berpikir tentang Moralitas',tag:'Etika',
+   body:'Tiga kerangka utama: **Utilitarianisme** — tindakan terbaik menghasilkan kebahagiaan terbanyak bagi jumlah terbanyak. **Deontologi** — ada aturan moral yang harus diikuti terlepas konsekuensi. **Virtue Ethics** — fokus pada karakter: apa yang dilakukan orang berbudi luhur? Tidak ada yang sepenuhnya benar — ketiganya saling melengkapi.',
+   insight:'Moralitas yang tidak pernah diuji hanyalah preferensi yang belum berhadapan dengan realita.'},
+  {id:65,ch:6,title:'Sejarah Sains dan Pergeseran Paradigma',tag:'Sejarah Sains',
+   body:'Selama berabad-abad, semua orang yakin matahari mengelilingi bumi. Fisika Newton dianggap final sampai Einstein. **Pelajarannya**: konsensus ilmiah saat ini adalah yang terbaik yang kita punya sekarang — bukan kebenaran final. Ilmu pengetahuan maju bukan karena orang pintar setuju, tapi karena orang berani mempertanyakan yang sudah diterima.',
+   insight:'Setiap revolusi ilmiah dimulai dari seseorang yang bersedia terlihat bodoh di depan rekan-rekannya.'},
+  {id:66,ch:6,title:'Cara Kekuasaan Bekerja',tag:'Politik',
+   body:'Kekuasaan jarang dipertahankan dengan kekerasan semata — itu terlalu mahal. Yang lebih efektif adalah **legitimasi**: membuat orang percaya bahwa kekuasaan itu adil, benar, atau tak terhindarkan. Agama, ideologi, narasi nasional — semuanya bisa menjadi alat legitimasi.',
+   insight:'Setiap struktur kekuasaan punya cerita yang ia ceritakan tentang dirinya sendiri untuk membenarkan keberadaannya.'},
+  {id:67,ch:6,title:'Stoicisme: Kontrol Apa yang Bisa Dikontrol',tag:'Filsafat Hidup',
+   body:'Filsafat Stoa mengajarkan satu prinsip yang mengubah segalanya: ada hal yang **dalam kendalimu** (pikiran, penilaian, tindakan) dan **di luar kendalimu** (cuaca, opini orang lain, masa lalu, kematian). Penderitaan hampir selalu berasal dari menginginkan yang di luar kendalimu.',
+   insight:'Marcus Aurelius memimpin kekaisaran terbesar sambil menulis catatan tentang mengendalikan pikirannya sendiri — bukan dunia di sekitarnya.'},
+  {id:68,ch:6,title:'Membaca Sejarah Tanpa Bias Presentisme',tag:'Sejarah Kritis',
+   body:'**Presentisme**: menghakimi orang masa lalu dengan standar moral masa kini. Tokoh sejarah bertindak dalam konteks yang sangat berbeda — nilai, pengetahuan, dan tekanan sosial yang berbeda. Bukan berarti membenarkan kekejaman — tapi memahaminya secara akurat agar bisa belajar dari sejarah.',
+   insight:'Generasi berikutnya akan menghakimi kita juga. Pertanyaannya: untuk apa?'},
+  {id:69,ch:6,title:'Pelajaran dari Kegagalan Peradaban',tag:'Studi Kasus',
+   body:'Roma runtuh dari kombinasi: overextension militer, debasement mata uang, korupsi institusi, ketidakmampuan beradaptasi. **Pola yang berulang**: keberhasilan melahirkan kompleksitas, kompleksitas melahirkan kerapuhan, kerapuhan yang tidak dikelola melahirkan keruntuhan.',
+   insight:'Setiap peradaban mati dari dalam sebelum musuh dari luar bisa menghancurkannya.'},
+  {id:70,ch:6,title:'Cara Berpikir tentang Keadilan',tag:'Filsafat Politik',
+   body:'Keadilan bukan konsep tunggal. **Keadilan prosedural**: prosesnya adil. **Keadilan distributif**: hasilnya dibagi secara adil. **Keadilan restoratif**: memperbaiki kerusakan, bukan hanya menghukum. Konflik tentang keadilan sering terjadi karena orang menggunakan definisi berbeda tanpa menyadarinya.',
+   insight:'Hampir tidak ada orang yang merasa dirinya tidak adil — semua orang punya narasi yang membenarkan dirinya.'},
+  // ── BAB 7: TEKNOLOGI ──
+  {id:71,ch:7,title:'Cara Kerja Internet dan Jaringan',tag:'Infrastruktur',
+   body:'Internet bukan satu entitas terpusat — ia adalah jaringan dari jaringan yang saling terhubung melalui protokol bersama. Data dikirim dalam **paket** yang bisa mengambil rute berbeda dan dirakit kembali di tujuan. DNS mengubah nama domain menjadi alamat IP numerik.',
+   insight:'Internet dirancang untuk bertahan dari serangan nuklir — itulah mengapa ia tidak punya titik kegagalan tunggal.'},
+  {id:72,ch:7,title:'Logika Dasar Pemrograman',tag:'Pemikiran Komputasional',
+   body:'Kamu tidak perlu bisa coding untuk memahami logika pemrograman. **Variabel** menyimpan data. **Kondisi** membuat keputusan. **Loop** mengulangi tugas. **Fungsi** mengemas logika yang bisa digunakan ulang. Ini adalah cara berpikir tentang otomasi, sistem, dan instruksi yang tepat.',
+   insight:'Bisa berpikir seperti programmer berarti bisa berpikir tentang sistem — bukan hanya langkah-langkah.'},
+  {id:73,ch:7,title:'Cara Kerja Database',tag:'Data',
+   body:'Hampir semua aplikasi modern menyimpan data dalam database. Database relasional menyimpan data dalam tabel yang saling terhubung. **SQL** adalah bahasa untuk mengambil, menyaring, dan menggabungkan data. Memahami konsep database membantumu berpikir tentang bagaimana data diorganisir.',
+   insight:'Data yang tidak terorganisasi bukan aset — ia adalah beban.'},
+  {id:74,ch:7,title:'Otomasi dan Batasannya',tag:'Masa Depan Kerja',
+   body:'Otomasi tidak menggantikan pekerjaan — ia menggantikan **tugas-tugas dalam pekerjaan**. Yang bisa diotomasi: tugas berulang, berbasis aturan, bisa didefinisikan tepat. Yang sulit: kreativitas, empati, penilaian dalam situasi ambigu. Pekerjaan masa depan adalah yang menggunakan otomasi, bukan yang bersaing dengannya.',
+   insight:'Bukan AI yang mengambil pekerjaanmu — tapi orang yang tahu cara menggunakan AI.'},
+  {id:75,ch:7,title:'Cara Kerja AI dan Machine Learning',tag:'Kecerdasan Buatan',
+   body:'AI modern bukan program dengan aturan yang dikodekan manual. Ia **belajar pola dari data** dalam jumlah masif. Yang penting dipahami: AI sangat baik dalam mengenali pola dan generalisasi — tapi tidak "mengerti" dalam arti manusia. Ia bisa sangat yakin dan sangat salah sekaligus.',
+   insight:'AI adalah cermin dari data yang digunakan untuk melatihnya — termasuk semua bias yang ada di dalamnya.'},
+  {id:76,ch:7,title:'Keamanan Digital Dasar',tag:'Keamanan',
+   body:'Serangan siber terbesar tidak dimulai dari kode yang canggih — tapi dari **phishing** dan **password yang lemah**. Pertahanan paling efektif: gunakan password manager, aktifkan two-factor authentication, dan selalu skeptis terhadap link atau lampiran yang tidak diminta.',
+   insight:'Sistem keamanan terkuat di dunia sering dibobol bukan dari sistemnya — tapi dari manusianya.'},
+  {id:77,ch:7,title:'Membaca Dokumentasi Teknis',tag:'Belajar Mandiri',
+   body:'Kemampuan membaca dokumentasi teknis adalah superpower yang underrated. Pendekatan yang benar: mulai dari quick start, pahami konsep kunci, baru masuk ke referensi detail. **Jangan baca dari awal sampai akhir** — dokumentasi adalah referensi, bukan novel.',
+   insight:'Orang yang bisa belajar dari dokumentasi tidak perlu bergantung pada tutorial orang lain.'},
+  {id:78,ch:7,title:'Cara Kerja Sistem Operasi',tag:'Komputasi',
+   body:'Sistem operasi adalah manajer antara hardware dan software. Ia mengalokasikan CPU, memori, dan penyimpanan ke berbagai program yang berjalan bersamaan. Memahami prinsip ini membantu: men-debug masalah performa, memahami kenapa aplikasi crash, dan menggunakan komputer lebih efisien.',
+   insight:'Komputer yang lambat hampir selalu bisa diperbaiki dengan memahami apa yang sebenarnya terjadi di dalamnya.'},
+  {id:79,ch:7,title:'Privasi Data',tag:'Privasi',
+   body:'Data adalah komoditas abad ini. Setiap klik, pencarian, dan lokasi menciptakan profil yang sangat detail tentang dirimu. **Model bisnis yang "gratis"** sering berarti kamu adalah produknya — data perilakumu dijual kepada pengiklan. Kamu harus sadar tentang apa yang kamu pertukarkan dengan kenyamanan digital.',
+   insight:'Jika kamu tidak membayar produk, kamu adalah produknya.'},
+  {id:80,ch:7,title:'Mengevaluasi Teknologi Baru',tag:'Skeptisisme Kritis',
+   body:'Teknologi baru selalu datang dengan hype yang besar. **Gartner Hype Cycle** menggambarkan pola yang berulang: ekspektasi melambung, diikuti kekecewaan, lalu teknologi menemukan tempatnya yang nyata. Pertanyaan evaluasi terbaik: masalah nyata apa yang dipecahkannya lebih baik dari solusi yang sudah ada?',
+   insight:'Web3, Metaverse, NFT — setiap dekade punya teknologi hype-nya. Yang bertahan adalah yang benar-benar memecahkan masalah.'},
+  // ── BAB 8: EKONOMI ──
+  {id:81,ch:8,title:'Pasar: Penawaran, Permintaan, Harga',tag:'Ekonomi Dasar',
+   body:'Harga adalah sinyal. Ketika harga naik, itu berarti permintaan melebihi penawaran — dan sinyal itu mendorong lebih banyak produsen untuk masuk. **Pasar bebas mengalokasikan sumber daya melalui sinyal harga** — tapi ini tidak selalu menghasilkan distribusi yang adil untuk semua jenis barang.',
+   insight:'Setiap kali kamu membeli sesuatu, kamu sedang "memilih" dalam pemilu ekonomi yang berlangsung setiap detik.'},
+  {id:82,ch:8,title:'Inflasi, Suku Bunga, Nilai Waktu Uang',tag:'Makroekonomi',
+   body:'**Inflasi**: daya beli uangmu turun seiring waktu. **Suku bunga** adalah harga dari uang — ketika naik, meminjam lebih mahal dan ekonomi melambat. **Nilai waktu uang**: uang hari ini lebih berharga dari uang di masa depan karena bisa diinvestasikan dan tumbuh.',
+   insight:'Menyimpan uang cash di bawah kasur bukan "aman" — nilainya terkikis inflasi setiap tahun.'},
+  {id:83,ch:8,title:'Mengelola Keuangan Pribadi',tag:'Keuangan Pribadi',
+   body:'Prinsip dasar: **habiskan lebih sedikit dari yang kamu hasilkan, dan investasikan selisihnya**. Langkah konkret: (1) Catat pengeluaran satu bulan untuk melihat realitanya. (2) Bangun dana darurat 3-6 bulan pengeluaran. (3) Lunasi hutang berbunga tinggi. (4) Baru investasi. Urutan ini penting.',
+   insight:'Kebanyakan masalah keuangan bukan soal penghasilan yang kurang — tapi pengeluaran yang tidak disadari.'},
+  {id:84,ch:8,title:'Cara Kerja Investasi dan Risiko',tag:'Investasi',
+   body:'Investasi adalah pertukaran uang hari ini dengan harapan lebih banyak uang di masa depan. **Risiko dan return berkorelasi**: tidak ada investasi yang "aman sekaligus menguntungkan banyak." Yang menawarkan keduanya adalah penipuan. Diversifikasi mengurangi risiko tanpa mengurangi return secara proporsional.',
+   insight:'Waktu di pasar lebih penting dari waktu pasar yang tepat. Mulai lebih awal selalu menang.'},
+  {id:85,ch:8,title:'Membaca Insentif di Balik Keputusan',tag:'Analisis Sistem',
+   body:'"Tunjukkan insentifnya, aku akan tunjukkan hasilnya." — Charlie Munger. Hampir setiap kebijakan, keputusan bisnis, atau rekomendasi bisa dipahami lebih dalam dengan tanya: **siapa yang diuntungkan jika ini terjadi?** Dokter yang dibayar per prosedur punya insentif berbeda dari dokter yang dibayar per kesehatan pasien.',
+   insight:'Bukan kejahatan yang menjelaskan sebagian besar kekacauan dunia — tapi insentif yang tidak selaras.'},
+  {id:86,ch:8,title:'Ekonomi Perilaku: Manusia Tidak Selalu Rasional',tag:'Psikologi Ekonomi',
+   body:'**Loss aversion**: kehilangan Rp 100.000 terasa dua kali lebih menyakitkan dari senangnya mendapat Rp 100.000. **Anchoring**: angka pertama yang kamu dengar mempengaruhi semua penilaian berikutnya. **Status quo bias**: kita lebih suka kondisi saat ini meskipun ada pilihan yang lebih baik.',
+   insight:'Desain yang tahu tentang ekonomi perilaku sangat kuat: itulah kenapa default setting begitu penting.'},
+  {id:87,ch:8,title:'Cara Kerja Bisnis',tag:'Bisnis',
+   body:'Bisnis yang sehat punya revenue lebih tinggi dari biaya. **Gross margin**: seberapa efisien memproduksi. **Operating margin**: setelah semua biaya operasional. **Net margin**: setelah pajak dan bunga. Revenue adalah vanity, profit adalah sanity, cash flow adalah reality.',
+   insight:'Bisnis tidak bangkrut karena tidak untung — ia bangkrut karena kehabisan kas.'},
+  {id:88,ch:8,title:'Supply Chain dan Ketergantungan Global',tag:'Ekonomi Global',
+   body:'Hampir tidak ada produk modern yang dibuat di satu tempat. Gangguan di satu titik — pandemi, perang, bencana alam — bisa menghentikan rantai yang panjang. **Efisiensi vs ketahanan**: supply chain paling efisien (just-in-time, tanpa stok) adalah yang paling rapuh ketika terjadi gangguan.',
+   insight:'Globalisasi membuat dunia lebih efisien — dan lebih rapuh secara bersamaan.'},
+  {id:89,ch:8,title:'Keputusan Finansial Besar',tag:'Keuangan Pribadi',
+   body:'Framework untuk keputusan besar: (1) Hitung total cost of ownership, bukan hanya harga awal. (2) Pertimbangkan opportunity cost. (3) Tanya: apa skenario terburuknya dan bisa saya tanggung? (4) Tidur dulu sebelum memutuskan. **Keputusan yang tidak bisa di-reverse** butuh threshold keyakinan yang jauh lebih tinggi.',
+   insight:'Keputusan finansial terbesar bukan tentang investasi mana yang terbaik — tapi tentang pilihan gaya hidup yang kamu buat setiap hari.'},
+  {id:90,ch:8,title:'Cara Kerja Pajak dan Redistribusi',tag:'Kebijakan Publik',
+   body:'Pajak adalah harga dari masyarakat yang terorganisir — infrastruktur, keamanan, pendidikan, kesehatan publik. **Pajak progresif** (orang kaya membayar persentase lebih tinggi) vs **flat** (semua membayar persentase sama) — keduanya punya argumen yang bisa dipertahankan.',
+   insight:'Pajak yang kamu bayar adalah investasi dalam infrastruktur yang memungkinkan kesuksesan ekonomimu sendiri.'},
+  // ── BAB 9: KESEHATAN ──
+  {id:91,ch:9,title:'Tidur: Non-Negotiable',tag:'Prioritas',
+   body:'Tidur bukan kemewahan — ia adalah pemeliharaan sistem. Saat tidur, otakmu membuang racun metabolik, konsolidasi memori, dan memperbaiki jaringan. **Kurang tidur kronis** (di bawah 7 jam) merusak kognitif, sistem imun, regulasi emosi, dan metabolisme. Lebih mengkhawatirkan: orang yang kurang tidur tidak bisa menilai betapa buruknya performa mereka.',
+   insight:'Tidak ada badge of honor dalam kurang tidur. Itu hanya kerusakan yang terakumulasi perlahan.'},
+  {id:92,ch:9,title:'Nutrisi: Makro, Mikro, dan Mitos',tag:'Nutrisi',
+   body:'**Makronutrien**: karbohidrat (energi), protein (bangunan dan perbaikan), lemak (hormon, otak). **Mikronutrien**: vitamin dan mineral. Mitos yang perlu dibuang: lemak tidak membuat gemuk (gula dan kalori berlebih yang membuat gemuk), detox tidak perlu (hati dan ginjalmu sudah melakukannya). Diet terbaik adalah yang bisa kamu pertahankan seumur hidup.',
+   insight:'Diet terbaik bukan yang paling ekstrem — tapi yang paling konsisten.'},
+  {id:93,ch:9,title:'Olahraga pada Tubuh dan Otak',tag:'Kesehatan Fisik',
+   body:'Olahraga adalah obat paling kuat yang tersedia tanpa resep. Manfaatnya: peningkatan kognitif (BDNF — pupuk otak), regulasi mood (serotonin, dopamin), penurunan risiko hampir semua penyakit kronis, peningkatan kualitas tidur. 150 menit aktivitas sedang per minggu — berjalan cepat termasuk — sudah menghasilkan sebagian besar manfaat.',
+   insight:'Jika olahraga bisa dikemas dalam pil, ia akan menjadi obat paling laris dalam sejarah manusia.'},
+  {id:94,ch:9,title:'Stres dan Cara Kerja Kortisol',tag:'Kesehatan',
+   body:'Stres akut itu baik — ia mempersiapkan tubuh untuk bertindak. **Masalahnya adalah stres kronis**: ketika kortisol tinggi terus-menerus, ia merusak sistem imun, meningkatkan tekanan darah, merusak tidur, dan menghambat konsolidasi memori. Stres modern tidak punya titik akhir alami seperti menghindar dari predator.',
+   insight:'Tubuhmu tidak membedakan presentasi di depan bos dan ancaman singa — ia memproduksi respons yang sama.'},
+  {id:95,ch:9,title:'Membaca Sinyal Tubuh Sebelum Jadi Penyakit',tag:'Kesadaran Tubuh',
+   body:'Kelelahan kronis, sakit kepala berulang, gangguan pencernaan yang tidak normal — ini bukan hal "biasa" yang harus diabaikan. **Tahu baseline tubuhmu sendiri**: apa yang normal untukmu? Perubahan dari normal adalah sinyal yang perlu diperhatikan, bukan diabaikan dengan harapan akan hilang sendiri.',
+   insight:'Penyakit serius hampir selalu punya peringatan dini yang diabaikan.'},
+  {id:96,ch:9,title:'Kesehatan Mental sebagai Kontinum',tag:'Kesehatan Mental',
+   body:'Kesehatan mental bukan kategori biner "sehat" atau "sakit mental" — ini adalah **spektrum yang bergerak**. Semua orang bergerak di sepanjang kontinum ini sepanjang hidupnya tergantung kondisi, pengalaman, dan sumber daya yang dimiliki. Perawatan proaktif layaknya kita merawat kesehatan fisik.',
+   insight:'Tidak perlu "cukup sakit" untuk layak mendapat dukungan kesehatan mental.'},
+  {id:97,ch:9,title:'Cara Kerja Sistem Kardiovaskular',tag:'Kardiovaskular',
+   body:'Jantungmu berdenyut sekitar 100.000 kali sehari, memompa darah melalui 100.000 km pembuluh darah. **Penyakit kardiovaskular** adalah penyebab kematian nomor satu di dunia — dan sebagian besar bisa dicegah. Faktor risiko yang bisa dikontrol: hipertensi, kolesterol LDL tinggi, merokok, obesitas, tidak aktif, stres kronis.',
+   insight:'Jantungmu bekerja tanpa istirahat selama kamu hidup — minimal beri dia nutrisi dan olahraga yang layak.'},
+  {id:98,ch:9,title:'Pertolongan Pertama Dasar',tag:'Keselamatan',
+   body:'CPR yang dilakukan oleh orang di sekitar korban sebelum ambulans tiba meningkatkan peluang bertahan hidup dari serangan jantung secara dramatis. **Yang minimal harus diketahui setiap orang**: CPR dasar, posisi pemulihan, cara menggunakan AED, dan kapan harus segera ke rumah sakit.',
+   insight:'Dalam 4 menit tanpa oksigen, otak mulai rusak permanen. Waktu yang kamu punya sebelum ambulans tiba bisa menjadi penentu.'},
+  {id:99,ch:9,title:'Cara Kerja Sistem Imun',tag:'Imunologi',
+   body:'Sistemmu imun adalah jaringan pertahanan berlapis paling canggih di alam. **Garis depan**: kulit, mukus, pH. **Garis kedua**: peradangan dan sel pembunuh non-spesifik. **Garis ketiga**: antibodi spesifik yang mengingat musuh. Yang merusak sistem imun: kurang tidur, stres kronis, nutrisi buruk, alkohol berlebihan.',
+   insight:'Sistem imunmu adalah dokter terbaik yang pernah ada — dan dia bekerja 24 jam tanpa libur.'},
+  {id:100,ch:9,title:'Menjaga Konsistensi Jangka Panjang',tag:'Filosofi Hidup',
+   body:'Ini adalah pengetahuan yang membuat 99 pengetahuan lainnya menjadi nyata. Rahasia konsistensi jangka panjang: **jangan mengandalkan motivasi — bangun sistem**. Jadikan perilaku yang baik menjadi yang termudah, bukan yang terberat. Terima bahwa ada hari buruk dan jangan biarkan hari buruk berubah menjadi minggu buruk. Mulai dari mana kamu berada sekarang, bukan dari mana kamu ingin berada.',
+   insight:'Kamu tidak perlu menjadi luar biasa setiap hari. Kamu hanya perlu tidak berhenti.'},
+];
+
+/* ══════════════════════════════════════════
+   STATE
+══════════════════════════════════════════ */
+const state = {
+  search: '',
+  chapter: null,   // null = all, 'bm' = bookmarks, 1-9 = chapter id
+  tag: null,
+  bookmarks: new Set(JSON.parse(localStorage.getItem('nova_bm') || '[]')),
+  read: new Set(JSON.parse(localStorage.getItem('nova_read') || '[]')),
+  theme: localStorage.getItem('nova_theme') || 'dark',
+  fontSize: localStorage.getItem('nova_fs') || 'md',
+  randomItem: null,
+};
+
+/* ══════════════════════════════════════════
+   STORAGE HELPERS
+══════════════════════════════════════════ */
+const saveBookmarks = () => localStorage.setItem('nova_bm', JSON.stringify([...state.bookmarks]));
+const saveRead      = () => localStorage.setItem('nova_read', JSON.stringify([...state.read]));
+
+/* ══════════════════════════════════════════
+   FILTERING
+══════════════════════════════════════════ */
+function getFiltered() {
+  let items = KD;
+  if (state.chapter === 'bm') {
+    items = items.filter(i => state.bookmarks.has(i.id));
+  } else if (state.chapter) {
+    items = items.filter(i => i.ch === state.chapter);
+  }
+  if (state.tag) {
+    items = items.filter(i => i.tag === state.tag);
+  }
+  if (state.search) {
+    const q = state.search.toLowerCase();
+    items = items.filter(i =>
+      i.title.toLowerCase().includes(q) ||
+      i.body.toLowerCase().includes(q) ||
+      i.tag.toLowerCase().includes(q)
+    );
+  }
+  return items;
+}
+
+/* ══════════════════════════════════════════
+   RENDER HELPERS
+══════════════════════════════════════════ */
+function parseBody(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n\n/g, '<br><br>');
+}
+
+function getChapterColor(chId) {
+  return CHAPTERS.find(c => c.id === chId)?.color || '#c9a84c';
+}
+
+function renderCard(item) {
+  const color = getChapterColor(item.ch);
+  const isBm = state.bookmarks.has(item.id);
+  const isRead = state.read.has(item.id);
+  return `
+    <div class="k-card${isRead ? ' is-read' : ''}" data-id="${item.id}" style="--card-color:${color}">
+      <div class="k-card-top">
+        <span class="k-num">PENGETAHUAN #${String(item.id).padStart(2,'0')}</span>
+        <div class="k-actions">
+          <button class="k-action${isBm ? ' bookmarked' : ''}" data-bm="${item.id}" title="Bookmark">🔖</button>
+          <button class="k-action" data-share="${item.id}" title="Salin">⎘</button>
+        </div>
+      </div>
+      <div class="k-title">${item.title}</div>
+      <div class="k-body">${parseBody(item.body)}</div>
+      <div class="k-insight">${item.insight}</div>
+      <div class="k-footer"><span class="k-tag">${item.tag}</span></div>
+    </div>`;
+}
+
+function renderModalContent(item) {
+  if (!item) return '';
+  const color = getChapterColor(item.ch);
+  const ch = CHAPTERS.find(c => c.id === item.ch);
+  return `
+    <div style="font-size:11px;font-family:'DM Mono',monospace;color:${color};letter-spacing:.15em;margin-bottom:10px">${ch.emoji} ${ch.name} · #${item.id}</div>
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:14px;line-height:1.3">${item.title}</div>
+    <div style="color:var(--text-muted);font-size:14px;line-height:1.8;margin-bottom:16px">${parseBody(item.body)}</div>
+    <div style="padding:14px 18px 14px 32px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.1);border-radius:3px;font-size:13px;color:var(--gold3);font-style:italic;position:relative">
+      <span style="position:absolute;left:10px;top:8px;font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);opacity:.4;line-height:1">"</span>
+      ${item.insight}
+    </div>`;
+}
+
+/* ══════════════════════════════════════════
+   MAIN RENDER
+══════════════════════════════════════════ */
+function render() {
+  const filtered = getFiltered();
+  const isFiltered = state.search || state.chapter || state.tag;
+  const list = document.getElementById('knowledge-list');
+  const empty = document.getElementById('empty');
+  const hero = document.getElementById('hero');
+  const resultsTitle = document.getElementById('results-title');
+  const resultsCount = document.getElementById('results-count');
+  const clearBtn = document.getElementById('clear-filters');
+
+  // Hero, pengantar & penutup visibility
+  const pengantar = document.getElementById('pengantar');
+  const penutup   = document.getElementById('penutup');
+  hero.style.display     = isFiltered ? 'none' : '';
+  pengantar.style.display = isFiltered ? 'none' : '';
+  penutup.style.display   = isFiltered ? 'none' : '';
+
+  // Results title
+  if (state.chapter === 'bm') resultsTitle.textContent = 'Bookmark Saya';
+  else if (state.chapter) resultsTitle.textContent = CHAPTERS[state.chapter-1].emoji + ' ' + CHAPTERS[state.chapter-1].name;
+  else if (state.search) resultsTitle.textContent = `Hasil: "${state.search}"`;
+  else if (state.tag) resultsTitle.textContent = `Tag: ${state.tag}`;
+  else resultsTitle.textContent = 'Semua Pengetahuan';
+
+  resultsCount.textContent = `${filtered.length} item`;
+  clearBtn.style.display = isFiltered ? '' : 'none';
+
+  // Empty state
+  if (filtered.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+
+  // Group by chapter if showing all or filtering by chapter
+  if (!state.search && !state.tag && (!state.chapter || state.chapter !== 'bm') && state.chapter) {
+    // Single chapter view — no grouping header needed (but add chapter header)
+    const ch = CHAPTERS[state.chapter - 1];
+    list.innerHTML = `
+      <div class="chapter-group">
+        <div class="chapter-heading" style="--ch-color:${ch.color}">
+          <span class="chapter-heading-num">${String(state.chapter).padStart(2,'0')}</span>
+          <div class="chapter-heading-text">
+            <h2>${ch.emoji} ${ch.name}</h2>
+            <p>${ch.desc}</p>
+          </div>
+        </div>
+        ${filtered.map(renderCard).join('')}
+      </div>`;
+  } else if (!state.search && !state.tag && !state.chapter) {
+    // All chapters — group by chapter
+    let html = '';
+    CHAPTERS.forEach(ch => {
+      const items = filtered.filter(i => i.ch === ch.id);
+      if (items.length === 0) return;
+      html += `
+        <div class="chapter-group" id="chg-${ch.id}">
+          <div class="chapter-heading" style="--ch-color:${ch.color}">
+            <span class="chapter-heading-num">${String(ch.id).padStart(2,'0')}</span>
+            <div class="chapter-heading-text">
+              <h2>${ch.emoji} ${ch.name}</h2>
+              <p>${ch.desc}</p>
+            </div>
+          </div>
+          ${items.map(renderCard).join('')}
+        </div>`;
+    });
+    list.innerHTML = html;
+  } else {
+    // Search / tag / bookmarks — flat list
+    list.innerHTML = filtered.map(renderCard).join('');
+  }
+
+  // Re-attach observers for read tracking
+  attachReadObservers();
+  updateSidebar();
+}
+
+function updateSidebar() {
+  // Overall progress
+  const readCount = state.read.size;
+  document.getElementById('prog-text').textContent = `${readCount}/100`;
+  document.getElementById('prog-fill').style.width = (readCount) + '%';
+  document.getElementById('stat-read').textContent = readCount;
+
+  // Bookmark counts
+  const bmCount = state.bookmarks.size;
+  document.getElementById('bm-count').textContent = bmCount;
+  const badge = document.getElementById('bm-badge');
+  badge.textContent = bmCount;
+  badge.style.display = bmCount > 0 ? 'flex' : 'none';
+
+  // Chapter filter progress bars
+  document.querySelectorAll('#chapter-filters .filter-btn[data-chid]').forEach(btn => {
+    const chId = parseInt(btn.dataset.chid);
+    const chItems = KD.filter(i => i.ch === chId);
+    const readInCh = chItems.filter(i => state.read.has(i.id)).length;
+    const fill = btn.querySelector('.filter-prog-fill');
+    if (fill) fill.style.width = (readInCh / chItems.length * 100) + '%';
+  });
+
+  // Active states
+  document.querySelectorAll('[data-filter="chapter"]').forEach(b => {
+    const val = b.dataset.value;
+    const active = (val === '' && !state.chapter) || (val === 'bm' && state.chapter === 'bm') || (val !== '' && val !== 'bm' && parseInt(val) === state.chapter);
+    b.classList.toggle('active', active);
+  });
+  document.querySelectorAll('.tag-chip').forEach(chip => {
+    chip.classList.toggle('active', chip.dataset.tag === state.tag);
+  });
+}
+
+/* ══════════════════════════════════════════
+   READ TRACKING (IntersectionObserver)
+══════════════════════════════════════════ */
+let readTimers = {};
+function attachReadObservers() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = parseInt(entry.target.dataset.id);
+      if (entry.isIntersecting) {
+        readTimers[id] = setTimeout(() => {
+          if (!state.read.has(id)) {
+            state.read.add(id);
+            saveRead();
+            entry.target.classList.add('is-read');
+            const numEl = entry.target.querySelector('.k-num');
+            if (numEl) numEl.textContent = `PENGETAHUAN #${String(id).padStart(2,'0')} ✓`;
+            document.getElementById('prog-text').textContent = `${state.read.size}/100`;
+            document.getElementById('prog-fill').style.width = state.read.size + '%';
+            document.getElementById('stat-read').textContent = state.read.size;
+          }
+        }, 2000);
+      } else {
+        clearTimeout(readTimers[id]);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.k-card').forEach(card => observer.observe(card));
+}
+
+/* ══════════════════════════════════════════
+   EVENTS
+══════════════════════════════════════════ */
+// Search
+document.getElementById('search-input').addEventListener('input', e => {
+  state.search = e.target.value.trim();
+  state.chapter = null;
+  state.tag = null;
+  render();
+});
+
+// Bookmark filter button
+document.getElementById('btn-bookmarks').addEventListener('click', () => {
+  state.chapter = state.chapter === 'bm' ? null : 'bm';
+  state.search = ''; state.tag = null;
+  document.getElementById('search-input').value = '';
+  document.getElementById('btn-bookmarks').classList.toggle('active', state.chapter === 'bm');
+  render();
+});
+
+// Theme toggle
+document.getElementById('btn-theme').addEventListener('click', () => {
+  state.theme = state.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', state.theme);
+  document.getElementById('btn-theme').textContent = state.theme === 'dark' ? '🌙' : '☀️';
+  localStorage.setItem('nova_theme', state.theme);
+});
+
+// Font size cycle
+const fsSizes = ['sm','md','lg'];
+document.getElementById('btn-fs').addEventListener('click', () => {
+  const idx = fsSizes.indexOf(state.fontSize);
+  state.fontSize = fsSizes[(idx + 1) % fsSizes.length];
+  document.documentElement.setAttribute('data-fs', state.fontSize);
+  localStorage.setItem('nova_fs', state.fontSize);
+});
+
+// Clear filters
+document.getElementById('clear-filters').addEventListener('click', () => {
+  state.search = ''; state.chapter = null; state.tag = null;
+  document.getElementById('search-input').value = '';
+  document.getElementById('btn-bookmarks').classList.remove('active');
+  render();
+});
+
+// Card actions (bookmark + share) — event delegation
+document.getElementById('knowledge-list').addEventListener('click', e => {
+  // Bookmark
+  const bmBtn = e.target.closest('[data-bm]');
+  if (bmBtn) {
+    const id = parseInt(bmBtn.dataset.bm);
+    if (state.bookmarks.has(id)) { state.bookmarks.delete(id); bmBtn.classList.remove('bookmarked'); }
+    else { state.bookmarks.add(id); bmBtn.classList.add('bookmarked'); }
+    saveBookmarks();
+    updateSidebar();
+    showToast(state.bookmarks.has(id) ? '🔖 Disimpan ke bookmark' : '✕ Dihapus dari bookmark');
+    return;
+  }
+  // Share
+  const shareBtn = e.target.closest('[data-share]');
+  if (shareBtn) {
+    const id = parseInt(shareBtn.dataset.share);
+    const item = KD.find(i => i.id === id);
+    if (item) {
+      const text = `📌 #${id} — ${item.title}\n\n"${item.insight}"\n\n— dari buku "100 Pengetahuan" oleh munnnn666`;
+      navigator.clipboard.writeText(text).then(() => showToast('✓ Tersalin ke clipboard'));
+    }
+  }
+});
+
+// Chapter filter (sidebar)
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-filter="chapter"]');
+  if (!btn) return;
+  const val = btn.dataset.value;
+  if (val === 'bm') {
+    state.chapter = state.chapter === 'bm' ? null : 'bm';
+    document.getElementById('btn-bookmarks').classList.toggle('active', state.chapter === 'bm');
+  } else if (val === '') {
+    state.chapter = null;
+  } else {
+    state.chapter = state.chapter === parseInt(val) ? null : parseInt(val);
+  }
+  state.search = ''; state.tag = null;
+  document.getElementById('search-input').value = '';
+  render();
+  // Mobile: close sidebar
+  if (window.innerWidth <= 900) document.getElementById('sidebar').classList.remove('open');
+});
+
+// Tag filter
+document.addEventListener('click', e => {
+  const chip = e.target.closest('.tag-chip');
+  if (!chip) return;
+  const tag = chip.dataset.tag;
+  state.tag = state.tag === tag ? null : tag;
+  state.search = ''; state.chapter = null;
+  document.getElementById('search-input').value = '';
+  render();
+});
+
+// Random modal
+const randomModal = document.getElementById('random-modal');
+let currentRandomId = null;
+
+function openRandom() {
+  const unread = KD.filter(i => !state.read.has(i.id));
+  const pool = unread.length > 0 ? unread : KD;
+  const item = pool[Math.floor(Math.random() * pool.length)];
+  currentRandomId = item.id;
+  state.randomItem = item;
+  document.getElementById('modal-content').innerHTML = renderModalContent(item);
+  document.getElementById('btn-random-bm').textContent = state.bookmarks.has(item.id) ? '🔖 Tersimpan' : '🔖 Simpan';
+  randomModal.classList.add('open');
+}
+
+document.getElementById('fab-random').addEventListener('click', openRandom);
+document.getElementById('btn-random-next').addEventListener('click', openRandom);
+document.getElementById('modal-close').addEventListener('click', () => randomModal.classList.remove('open'));
+document.getElementById('modal-bd').addEventListener('click', () => randomModal.classList.remove('open'));
+document.getElementById('btn-random-bm').addEventListener('click', () => {
+  if (!currentRandomId) return;
+  if (state.bookmarks.has(currentRandomId)) { state.bookmarks.delete(currentRandomId); }
+  else { state.bookmarks.add(currentRandomId); }
+  saveBookmarks();
+  document.getElementById('btn-random-bm').textContent = state.bookmarks.has(currentRandomId) ? '🔖 Tersimpan' : '🔖 Simpan';
+  updateSidebar();
+  showToast(state.bookmarks.has(currentRandomId) ? '🔖 Disimpan ke bookmark' : '✕ Dihapus dari bookmark');
+});
+
+// Mobile sidebar toggle
+document.getElementById('sb-toggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Back to top + progress bar
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('pbar').style.width = (scrolled / total * 100) + '%';
+  backTop.classList.toggle('visible', scrolled > 600);
+});
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ══════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════ */
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+/* ══════════════════════════════════════════
+   BUILD SIDEBAR
+══════════════════════════════════════════ */
+function buildSidebar() {
+  const cf = document.getElementById('chapter-filters');
+  cf.innerHTML = '<div class="sb-label">Per Bab</div>' + CHAPTERS.map(ch => `
+    <button class="filter-btn" data-filter="chapter" data-value="${ch.id}" data-chid="${ch.id}" style="--chapter-color:${ch.color}">
+      <span class="filter-dot"></span>
+      <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${ch.emoji} ${ch.name}</span>
+      <div class="filter-prog"><div class="filter-prog-fill" style="--chapter-color:${ch.color};width:0%"></div></div>
+      <span class="filter-count">${KD.filter(i => i.ch === ch.id).length}</span>
+    </button>`).join('');
+
+  // Tags
+  const tags = [...new Set(KD.map(i => i.tag))].sort();
+  document.getElementById('tag-list').innerHTML = tags.map(tag =>
+    `<button class="tag-chip" data-tag="${tag}">${tag}</button>`).join('');
+}
+
+/* ══════════════════════════════════════════
+   INIT
+══════════════════════════════════════════ */
+function init() {
+  document.documentElement.setAttribute('data-theme', state.theme);
+  document.documentElement.setAttribute('data-fs', state.fontSize);
+  document.getElementById('btn-theme').textContent = state.theme === 'dark' ? '🌙' : '☀️';
+  buildSidebar();
+  render();
+}
+
+init();
+</script>
+</body>
+</html>
